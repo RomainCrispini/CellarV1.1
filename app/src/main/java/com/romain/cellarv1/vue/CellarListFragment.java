@@ -40,7 +40,6 @@ import java.util.List;
 public class CellarListFragment extends Fragment {
 
     private AccesLocal accesLocal;
-    private Cursor mCursor;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -108,6 +107,17 @@ public class CellarListFragment extends Fragment {
 
 
 
+
+        /*
+
+        ArrayList<WineBottle> wineBottleArrayList;
+        MyAdapterCellarRecyclerView.CellarViewHolder cellarViewHolder = new MyAdapterCellarRecyclerView.CellarViewHolder(onContextItemSelected());
+        int position = viewHolder.getAdapterPosition();
+        WineBottle wineBottle = wineBottleArrayList.get(position);
+
+         */
+
+
         MySwipeHelper swipeHelper = new MySwipeHelper(getContext(), mRecyclerView, 200) {
             @Override
             public void instanciateMyButton(final RecyclerView.ViewHolder viewHolder, List<MyButton> buffer) {
@@ -120,22 +130,22 @@ public class CellarListFragment extends Fragment {
                             @Override
                             public void onClick(int pos) {
 
+
                                 int position = viewHolder.getAdapterPosition();
                                 ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleList();
-
                                 wineBottleArrayList.remove(position);
                                 mAdapter.notifyItemRemoved(position);
 
-                                //accesLocal = new AccesLocal(getContext());
-                                //takeOutBottle(8);
 
-                                Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_LONG).show();
+
+
+                                //Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_LONG).show();
                             }
                         }
                 ));
 
                 buffer.add(new MyButton(getContext(),
-                        "Update",
+                        "like",
                         30,
                         0, //R.drawable.essai,
                         Color.parseColor("#FF9502"),
@@ -153,6 +163,13 @@ public class CellarListFragment extends Fragment {
 
             }
         };
+
+
+
+
+
+
+
 
 
 

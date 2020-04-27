@@ -46,18 +46,12 @@ public class AccesLocal {
         bd.close();
     }
 
-
-
-
-/*
-    public void addLikeToABottle() {
+    public void addLikeToABottle(String random) {
         bd = accesBD.getWritableDatabase();
-        String requete = "insert into bottle (like) values (1)";
+        String requete = "update bottle set favorite = '1' where random = random";
+        //bd.insert("bottle", "favorite = ?", new String[] { favorite });
         bd.execSQL(requete);
         bd.close();
-
-
-
     }
 
     public void addLikeToABottle2(HashMap<String, String> queryValues) {
@@ -69,7 +63,7 @@ public class AccesLocal {
 
 
 
- */
+
 
 
 

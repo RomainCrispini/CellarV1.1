@@ -75,7 +75,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
             cardView = itemView.findViewById(R.id.cardView);
 
-
             pastilleImageBottle = itemView.findViewById(R.id.pastilleImageBottle);
 
             like = itemView.findViewById(R.id.like);
@@ -89,11 +88,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         View v = LayoutInflater.from(mContext).inflate(R.layout.activity_cellar_custom_list_view, viewGroup, false);
         CellarViewHolder cellarViewHolder = new CellarViewHolder(v);
 
-
-
-
-
-
         //return new CellarViewHolder(v);
         return cellarViewHolder;
     }
@@ -105,31 +99,31 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
 
 
-        //holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String value;
-                value = wineBottle.getRandom();
+                // Pour set 1 dans la propriété favorite d'une bottle
+                String value1;
+                value1 = wineBottle.getRandom();
                 AccesLocal accesLocal = new AccesLocal(mContext);
-                accesLocal.takeOutBottle(value);
+                accesLocal.addLikeToABottle(value1);
 
-                //holder.itemView.getTag();
-                //holder.like.setImageResource(R.drawable.icon_like_cardview);
-                //holder.like.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
-                //int position = (int) v.getTag();
-                //Toast.makeText(v.getContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
-                Toast.makeText(v.getContext(), value, Toast.LENGTH_SHORT).show();
+
+                // Pour Supprimer une bouteille de la bdd
+                //String value2;
+                //value2 = wineBottle.getRandom();
+                //AccesLocal accesLocal = new AccesLocal(mContext);
+                //accesLocal.takeOutBottle(value2);
+
+
+                Toast.makeText(v.getContext(), value1, Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
 
-
-
-        //Glide.with(mContext).load(wineBottleArrayList.get(position).getImage()).into(holder.cardView);
 
         // On applique l'animation sur la pastille de la bouteille
         holder.pastilleImageBottle.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_image_cardview));
@@ -140,7 +134,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         // On set les infos dans le cardview layout
         WineBottle currentItem = wineBottleArrayList.get(position);
 
-
         Tools tools = new Tools();
         holder.image.setImageBitmap(tools.stringToBitmap(currentItem.getImage()));
 
@@ -148,10 +141,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         holder.appellation.setText(currentItem.getAppellation());
         holder.domain.setText(currentItem.getDomain());
         holder.year.setText(currentItem.getYear().toString());
-
-        //String id = "ESSAI";
-        //holder.itemView.setTag(id);
-
 
         // On set la couleur du vin sous la pastille de l'image de l'étiquette
         switch(currentItem.getWineColor().trim()) {
@@ -169,8 +158,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 break;
         }
 
-
-        // On set la CardView d'un coeur si la bouteille est like
+        // On set la CardView d'un coeur si la bouteille est favorite = 1
         switch(currentItem.getFavorite()) {
             case "0" :
                 holder.like.setImageResource(R.drawable.icon_like_cardview);

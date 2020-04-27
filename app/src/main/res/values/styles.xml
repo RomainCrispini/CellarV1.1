@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorSecondary</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/green_dark</item>
+        <item name="android:textColor">@color/green_dark</item>
+        <item name="android:textColorHint">@color/green_dark</item>
+    </style>
+
+    <style name="customAnimFab">
+        <item name="background">@color/green_dark</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="darkMode">
+
+    </style>
+
+    <style name="lightMode">
+
+    </style>
+
+
+
+
+</resources>

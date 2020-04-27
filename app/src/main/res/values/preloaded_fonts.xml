@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/archivo_narrow</item>
+        <item>@font/pragati_narrow</item>
+        <item>@font/roboto</item>
+        <item>@font/yanone_kaffeesatz</item>
+    </array>
+</resources>

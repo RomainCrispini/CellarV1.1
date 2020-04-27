@@ -16,10 +16,12 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
             + "domain TEXT,"
             + "appellation TEXT,"
             + "year INTEGER,"
+            + "apogee INTEGER,"
             + "number INTEGER,"
             + "estimate INTEGER,"
             + "image TEXT,"
-            + "like INTEGER);";
+            + "favorite TEXT,"
+            + "random TEXT);";
 
 
 

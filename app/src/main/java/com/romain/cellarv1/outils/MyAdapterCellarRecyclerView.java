@@ -2,6 +2,8 @@ package com.romain.cellarv1.outils;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -99,19 +101,19 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
     @Override
     public void onBindViewHolder(@NonNull final CellarViewHolder holder, int position) {
 
-        //final AccesLocal accesLocal = new AccesLocal(mContext);
-
-        final String value;
         final WineBottle wineBottle = wineBottleArrayList.get(position);
-        value = wineBottle.getDateAddNewBottle().toString();
+
 
 
         //holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String value;
+                value = wineBottle.getRandom();
                 AccesLocal accesLocal = new AccesLocal(mContext);
-                //accesLocal.takeOutBottle(value);
+                accesLocal.takeOutBottle(value);
 
                 //holder.itemView.getTag();
                 //holder.like.setImageResource(R.drawable.icon_like_cardview);
@@ -169,12 +171,12 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
 
         // On set la CardView d'un coeur si la bouteille est like
-        switch(currentItem.getLike()) {
-            case 0 :
+        switch(currentItem.getFavorite()) {
+            case "0" :
                 holder.like.setImageResource(R.drawable.icon_like_cardview);
                 holder.like.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
                 break;
-            case 1 :
+            case "1" :
                 holder.like.setImageResource(R.drawable.icon_like_cardview);
                 holder.like.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
                 break;

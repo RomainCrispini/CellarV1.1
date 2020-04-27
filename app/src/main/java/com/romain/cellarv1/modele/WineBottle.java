@@ -14,13 +14,15 @@ public class WineBottle implements Serializable {
     private String domain;
     private String appellation;
     private Integer year;
+    private Integer apogee;
     private Integer number;
     private Integer estimate;
     private String image;
-    private Integer like;
+    private String favorite;
+    private String random;
 
     // Constructeur
-    public WineBottle(Date dateAddNewBottle, String country, String region, String wineColor, String domain, String appellation, Integer year, Integer number, Integer estimate, String image, Integer like) {
+    public WineBottle(Date dateAddNewBottle, String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String random) {
         this.dateAddNewBottle = dateAddNewBottle;
         this.country = country;
         this.region = region;
@@ -28,21 +30,15 @@ public class WineBottle implements Serializable {
         this.domain = domain;
         this.appellation = appellation;
         this.year = year;
+        this.apogee = apogee;
         this.number = number;
         this.estimate = estimate;
         this.image = image;
-        this.like = like;
+        this.favorite = favorite;
+        this.random = random;
     }
 
     // Getters et setters
-    public Integer getLike() {
-        return like;
-    }
-
-    public void setLike(Integer like) {
-        this.like = like;
-    }
-
     public Date getDateAddNewBottle() {
         return dateAddNewBottle;
     }
@@ -99,6 +95,14 @@ public class WineBottle implements Serializable {
         this.year = year;
     }
 
+    public Integer getApogee() {
+        return apogee;
+    }
+
+    public void setApogee(Integer apogee) {
+        this.apogee = apogee;
+    }
+
     public Integer getNumber() {
         return number;
     }
@@ -115,12 +119,28 @@ public class WineBottle implements Serializable {
         this.estimate = estimate;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public void setImage(String image) {
         this.image = image;
     }
 
-    public String getImage() {
-        return image;
+    public String getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(String favorite) {
+        this.favorite = favorite;
+    }
+
+    public String getRandom() {
+        return random;
+    }
+
+    public void setRandom(String random) {
+        this.random = random;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class Controle {
     private static Controle instance = null;
 
     private static WineBottle wineBottle;
-    private static String serializableFile = "saveWineBottle";
+    //private static String serializableFile = "saveWineBottle";
     private static AccesLocal accesLocal; // Permet d'accéder à la classe AccesLocal
     private static ArrayList<WineBottle> wineBottleList;
 
@@ -50,13 +50,15 @@ public class Controle {
      * @param domain
      * @param appellation
      * @param year
+     * @param apogee
      * @param number
      * @param estimate
      * @param image
-     * @param like
+     * @param favorite
+     * @param random
      */
-    public void createWineBottle(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer number, Integer estimate, String image, Integer like, Context context) {
-        wineBottle = new WineBottle(new Date(), country, region, wineColor, domain, appellation, year, number, estimate, image, like);
+    public void createWineBottle(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String random, Context context) {
+        wineBottle = new WineBottle(new Date(), country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
         //Serializer.serialize(serializableFile, wineBottle, context);
         accesLocal.add(wineBottle);
         //Toast.makeText(context.getApplicationContext(), "Bouteille enregistrée !", Toast.LENGTH_LONG).show();
@@ -68,13 +70,18 @@ public class Controle {
     //}
 
 
+
     /**
      * Récupération de l'objet sérialisé (la bouteille)
-     * @param context
+     * @param
      */
+    /*
     private static void recoverSerialize(Context context) {
         wineBottle = (WineBottle) Serializer.deSerialize(serializableFile, context);
     }
+
+     */
+
 
     // Getters de l'objet WineBottle pour SERIALISATION
     public String getCountry() {
@@ -125,6 +132,14 @@ public class Controle {
         }
     }
 
+    public Integer getApogee() {
+        if(wineBottle == null) {
+            return null;
+        } else {
+            return wineBottle.getApogee();
+        }
+    }
+
     public Integer getNumber() {
         if(wineBottle == null) {
             return null;
@@ -149,11 +164,19 @@ public class Controle {
         }
     }
 
-    public Integer getLike() {
+    public String getFavorite() {
         if(wineBottle == null) {
             return null;
         } else {
-            return wineBottle.getLike();
+            return wineBottle.getFavorite();
+        }
+    }
+
+    public String getRandom() {
+        if(wineBottle == null) {
+            return null;
+        } else {
+            return wineBottle.getRandom();
         }
     }
 

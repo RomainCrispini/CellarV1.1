@@ -34,15 +34,15 @@ public class AccesLocal {
      */
     public void add(WineBottle wineBottle) {
         bd = accesBD.getWritableDatabase();
-        String requete = "insert into bottle (dateaddnewbottle, country, region, winecolor, domain, appellation, year, number, estimate, image, like) values ";
-        requete += "(\""+ wineBottle.getDateAddNewBottle() +"\", \""+wineBottle.getCountry()+"\", \""+wineBottle.getRegion()+"\",  \""+wineBottle.getWineColor()+" \", \""+wineBottle.getDomain()+"\", \""+wineBottle.getAppellation()+"\", "+wineBottle.getYear()+", "+wineBottle.getNumber()+", "+wineBottle.getEstimate()+", \""+wineBottle.getImage()+"\", \""+wineBottle.getLike()+"\")";
+        String requete = "insert into bottle (dateaddnewbottle, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, random) values ";
+        requete += "(\""+ wineBottle.getDateAddNewBottle() +"\", \""+wineBottle.getCountry()+"\", \""+wineBottle.getRegion()+"\",  \""+wineBottle.getWineColor()+" \", \""+wineBottle.getDomain()+"\", \""+wineBottle.getAppellation()+"\", "+wineBottle.getYear()+", "+wineBottle.getApogee()+", "+wineBottle.getNumber()+", "+wineBottle.getEstimate()+", \""+wineBottle.getImage()+"\", \""+wineBottle.getFavorite()+"\", \""+wineBottle.getRandom()+"\")";
         bd.execSQL(requete);
         bd.close();
     }
 
     public void takeOutBottle(String value) {
         bd = accesBD.getWritableDatabase();
-        bd.delete("bottle", "dateaddnewbottle = ?", new String[] { String.valueOf(value) });
+        bd.delete("bottle", "random = ?", new String[] { value });
         bd.close();
     }
 
@@ -92,11 +92,13 @@ public class AccesLocal {
             String domain = cursor.getString(4);
             String appellation = cursor.getString(5);
             Integer year = cursor.getInt(6);
-            Integer number = cursor.getInt(7);
-            Integer estimate = cursor.getInt(8);
-            String image = cursor.getString(9);
-            Integer like = cursor.getInt(10);
-            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, number, estimate, image, like);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String random = cursor.getString(12);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
             wineBottleList.add(wineBottle);
             cursor.moveToNext();
         }
@@ -120,11 +122,13 @@ public class AccesLocal {
             String domain = cursor.getString(4);
             String appellation = cursor.getString(5);
             Integer year = cursor.getInt(6);
-            Integer number = cursor.getInt(7);
-            Integer estimate = cursor.getInt(8);
-            String image = cursor.getString(9);
-            Integer like = cursor.getInt(10);
-            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, number, estimate, image, like);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String random = cursor.getString(12);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
             wineBottleList.add(wineBottle);
             cursor.moveToNext();
         }
@@ -148,11 +152,13 @@ public class AccesLocal {
             String domain = cursor.getString(4);
             String appellation = cursor.getString(5);
             Integer year = cursor.getInt(6);
-            Integer number = cursor.getInt(7);
-            Integer estimate = cursor.getInt(8);
-            String image = cursor.getString(9);
-            Integer like = cursor.getInt(10);
-            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, number, estimate, image, like);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String random = cursor.getString(12);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
             wineBottleList.add(wineBottle);
             cursor.moveToNext();
         }
@@ -176,11 +182,13 @@ public class AccesLocal {
             String domain = cursor.getString(4);
             String appellation = cursor.getString(5);
             Integer year = cursor.getInt(6);
-            Integer number = cursor.getInt(7);
-            Integer estimate = cursor.getInt(8);
-            String image = cursor.getString(9);
-            Integer like = cursor.getInt(10);
-            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, number, estimate, image, like);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String random = cursor.getString(12);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
             wineBottleList.add(wineBottle);
             cursor.moveToNext();
         }
@@ -207,11 +215,13 @@ public class AccesLocal {
             String domain = cursor.getString(4);
             String appellation = cursor.getString(5);
             Integer year = cursor.getInt(6);
-            Integer number = cursor.getInt(7);
-            Integer estimate = cursor.getInt(8);
-            String image = cursor.getString(9);
-            Integer like = cursor.getInt(10);
-            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, number, estimate, image, like);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String random = cursor.getString(12);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
             wineBottleList.add(wineBottle);
             cursor.moveToNext();
         }
@@ -240,11 +250,13 @@ public class AccesLocal {
             String domain = cursor.getString(4);
             String appellation = cursor.getString(5);
             Integer year = cursor.getInt(6);
-            Integer number = cursor.getInt(7);
-            Integer estimate = cursor.getInt(8);
-            String image = cursor.getString(9);
-            Integer like = cursor.getInt(10);
-            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, number, estimate, image, like);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String random = cursor.getString(12);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
         }
         cursor.close();
         bd.close();

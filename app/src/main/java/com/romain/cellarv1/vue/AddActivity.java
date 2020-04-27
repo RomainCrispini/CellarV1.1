@@ -33,6 +33,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -49,6 +51,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 
 public class AddActivity extends AppCompatActivity {
@@ -361,12 +364,17 @@ public class AddActivity extends AppCompatActivity {
                 String appellation = "";
                 String wineColor = "";
                 int year = 0;
+                int apogee = 0;
                 int number = 0;
                 int estimate = 0;
                 String image = "";
-                int like = 0;
+                String favorite = "0";
+                String random = "";
 
                 Tools tool = new Tools();
+
+                Random randomize = new Random();
+                int essai;
                 // Récupération des données saisies
 
 
@@ -382,6 +390,8 @@ public class AddActivity extends AppCompatActivity {
                         wineColor = "Effervescent";
                     }
 
+
+                    random = String.valueOf(randomize.nextInt(10000));
 
                     country = txtCountry.getText().toString();
                     region = txtRegion.getText().toString();
@@ -401,7 +411,7 @@ public class AddActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                afficheResult(country, region, wineColor, domain, appellation, year, number, estimate, image, like);
+                afficheResult(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
 
 
 
@@ -422,18 +432,20 @@ public class AddActivity extends AppCompatActivity {
                 // On change la couleur du background de la Snackbar
                 snackbarView.setBackgroundColor(Color.parseColor("#2F3B40"));
                 snackbar.setDuration(3000).show();
+
             }
         });
 
     }
 
-    private void afficheResult(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer number, Integer estimate, String image, Integer like) {
-        this.controle.createWineBottle(country, region, wineColor, domain, appellation, year, number, estimate, image, like,  this);
+    private void afficheResult(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String random) {
+        this.controle.createWineBottle(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random,  this);
     }
 
     /**
      * Récupération de la wineBottle si elle a été SERIALISEE et si le champ pays n'est pas null
      */
+
     private void recoverWineBottle() {
         if(controle.getCountry() != null) {
             txtCountry.setText(controle.getCountry());
@@ -452,6 +464,8 @@ public class AddActivity extends AppCompatActivity {
             //((Button) findViewById(R.id.btnAdd)).performClick();
         }
     }
+
+
 
     /**
      * Chargement et récupération des infos du fichier JSon

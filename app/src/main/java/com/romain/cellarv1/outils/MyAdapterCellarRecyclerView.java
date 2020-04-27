@@ -87,6 +87,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
 
 
+
+
         //return new CellarViewHolder(v);
         return cellarViewHolder;
     }

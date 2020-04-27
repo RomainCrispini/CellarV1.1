@@ -144,7 +144,7 @@ public class CellarListFragment extends Fragment {
                             public void onClick(int pos) {
 
                                 AccesLocal accesLocal = new AccesLocal(getContext());
-                                accesLocal.addLikeToABottle();
+                                //accesLocal.addLikeToABottle();
 
                                 Toast.makeText(getContext(), "Ajouté dans Like", Toast.LENGTH_SHORT).show();
                             }

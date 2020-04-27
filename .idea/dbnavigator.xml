@@ -24,13 +24,13 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="2d3fb97a-5210-4615-bd73-9e8db94b8cb9">
-        <schema name="" object-types="table, view" />
+      <connection connection-id="1533899a-2621-4458-b93f-40c3d42fc692">
+        <schema name="" object-types="table, index, view, constraint, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="2d3fb97a-5210-4615-bd73-9e8db94b8cb9">
+    <connection id="1533899a-2621-4458-b93f-40c3d42fc692">
       <console name="Cellar" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
@@ -38,14 +38,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="2d3fb97a-5210-4615-bd73-9e8db94b8cb9" />
+    <connection id="1533899a-2621-4458-b93f-40c3d42fc692" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="2d3fb97a-5210-4615-bd73-9e8db94b8cb9" dataset=".bottle" active-filter-id="EMPTY_FILTER">
-      <filter id="335487a2-0f24-47a8-ae22-dcfcfa0afff5" name="Select All" temporary="false" custom-name="false" type="custom">
-        <condition />
-      </filter>
-    </filter-actions>
+    <filter-actions connection-id="1533899a-2621-4458-b93f-40c3d42fc692" dataset=".bottle" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -70,10 +66,10 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="2d3fb97a-5210-4615-bd73-9e8db94b8cb9" active="true">
+      <connection id="1533899a-2621-4458-b93f-40c3d42fc692" active="true">
         <database>
           <name value="Cellar" />
-          <description value="cellar" />
+          <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
           <database-version value="3.21" />

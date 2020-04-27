@@ -24,11 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.romain.cellarv1.R;
+import com.romain.cellarv1.controleur.Controle;
 import com.romain.cellarv1.modele.AccesLocal;
 import com.romain.cellarv1.modele.WineBottle;
 import com.romain.cellarv1.vue.CellarActivity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -89,6 +91,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
 
 
+
         //return new CellarViewHolder(v);
         return cellarViewHolder;
     }
@@ -96,20 +99,26 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
     @Override
     public void onBindViewHolder(@NonNull final CellarViewHolder holder, int position) {
 
-        final String value = "Rose ";
-        final AccesLocal accesLocal = new AccesLocal(mContext);
+        //final AccesLocal accesLocal = new AccesLocal(mContext);
+
+        final String value;
+        final WineBottle wineBottle = wineBottleArrayList.get(position);
+        value = wineBottle.getDateAddNewBottle().toString();
 
 
-        holder.itemView.setTag(position);
+        //holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accesLocal.takeOutBottle(value);
+                AccesLocal accesLocal = new AccesLocal(mContext);
+                //accesLocal.takeOutBottle(value);
+
+                //holder.itemView.getTag();
                 //holder.like.setImageResource(R.drawable.icon_like_cardview);
                 //holder.like.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
                 //int position = (int) v.getTag();
                 //Toast.makeText(v.getContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
-                Toast.makeText(v.getContext(), "GG", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), value, Toast.LENGTH_SHORT).show();
             }
         });
 

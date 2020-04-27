@@ -42,17 +42,17 @@ public class AccesLocal {
 
     public void takeOutBottle(String value) {
         bd = accesBD.getWritableDatabase();
-        bd.delete("bottle", "winecolor = ?", new String[] { String.valueOf(value) });
+        bd.delete("bottle", "dateaddnewbottle = ?", new String[] { String.valueOf(value) });
         bd.close();
     }
 
 
 
 
-
-    public void addLikeToABottle(String value) {
+/*
+    public void addLikeToABottle() {
         bd = accesBD.getWritableDatabase();
-        String requete = "insert into bottle (like) VALUES ('"+ value + "');";
+        String requete = "insert into bottle (like) values (1)";
         bd.execSQL(requete);
         bd.close();
 
@@ -68,6 +68,8 @@ public class AccesLocal {
         bd.close(); }
 
 
+
+ */
 
 
 

@@ -374,12 +374,9 @@ public class AddActivity extends AppCompatActivity {
                 Tools tool = new Tools();
 
                 Random randomize = new Random();
-                int essai;
+
                 // Récupération des données saisies
-
-
                 try {
-
                     if(btnRed.getAlpha() == 1f) {
                         wineColor = "Rouge";
                     } else if(btnRose.getAlpha() == 1f) {
@@ -390,8 +387,7 @@ public class AddActivity extends AppCompatActivity {
                         wineColor = "Effervescent";
                     }
 
-
-                    random = String.valueOf(randomize.nextInt(10000));
+                    random = String.valueOf(randomize.nextInt(1000000));
 
                     country = txtCountry.getText().toString();
                     region = txtRegion.getText().toString();
@@ -412,8 +408,6 @@ public class AddActivity extends AppCompatActivity {
                 }
 
                 afficheResult(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
-
-
 
 
                 Snackbar snackbar = Snackbar.make(mainLayout, "Bouteille enregistrée !", Snackbar.LENGTH_INDEFINITE);

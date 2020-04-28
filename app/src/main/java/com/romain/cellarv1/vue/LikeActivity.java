@@ -30,7 +30,8 @@ public class LikeActivity extends AppCompatActivity {
     private CellarPageAdapter cellarPageAdapter;
     private TabLayout cellarTabLayout;
     private ViewPager viewPager;
-    private CellarListFragment cellarListFragment;
+
+    private LikeListFragment likeListFragment;
     private LikeWishlistFragment likeWishlistFragment;
 
     // Initialisation du menu bis
@@ -70,16 +71,15 @@ public class LikeActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.likeViewPager);
         final TabLayout cellarTabLayout = (TabLayout) findViewById(R.id.likeTabLayout);
 
-        cellarListFragment = new CellarListFragment();
+        likeListFragment = new LikeListFragment();
         likeWishlistFragment = new LikeWishlistFragment();
-
 
         cellarTabLayout.setupWithViewPager(viewPager);
         CellarPageAdapter cellarPageAdapter = new CellarPageAdapter(getSupportFragmentManager(), 0);
 
         viewPager.setPageTransformer(true, new CellarTabsTransition());
 
-        cellarPageAdapter.addFragment(cellarListFragment, "List");
+        cellarPageAdapter.addFragment(likeListFragment, "List");
         cellarPageAdapter.addFragment(likeWishlistFragment, "Stats");
 
         viewPager.setAdapter(cellarPageAdapter);
@@ -89,7 +89,6 @@ public class LikeActivity extends AppCompatActivity {
 
         cellarTabLayout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
         cellarTabLayout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-
 
         cellarTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

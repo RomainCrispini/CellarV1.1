@@ -122,7 +122,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/green_very_dark"
-        android:src="@drawable/icon_navbar_scan"
+        android:src="@drawable/icon_navbar_add"
         android:tint="@color/green_dark"
         app:borderWidth="0.5dp"
         app:elevation="10dp"

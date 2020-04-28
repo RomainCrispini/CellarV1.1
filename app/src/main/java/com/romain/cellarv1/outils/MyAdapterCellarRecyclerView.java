@@ -21,10 +21,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 import com.romain.cellarv1.R;
 import com.romain.cellarv1.controleur.Controle;
 import com.romain.cellarv1.modele.AccesLocal;
@@ -41,7 +43,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
     ArrayList<WineBottle> wineBottleArrayList;
 
     Context mContext;
-    Cursor mCursor;
 
     // Constructeur
     public MyAdapterCellarRecyclerView(Context mContext, ArrayList<WineBottle> arrayList) {
@@ -61,7 +62,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         public CardView cardView;
         public CardView pastilleImageBottle;
 
-        public final ImageButton like;
+        public final ImageButton favorite;
+        public final ImageButton delete;
 
 
         public CellarViewHolder(@NonNull View itemView) {
@@ -77,8 +79,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
             pastilleImageBottle = itemView.findViewById(R.id.pastilleImageBottle);
 
-            like = itemView.findViewById(R.id.like);
-
+            favorite = itemView.findViewById(R.id.favorite);
+            delete = itemView.findViewById(R.id.delete);
         }
     }
 
@@ -99,30 +101,67 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
 
 
-        holder.itemView.setOnClickListener(new CardView.OnClickListener() {
+        holder.cardView.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Pour set 1 dans la propriété favorite d'une bottle
-                String value1;
-                value1 = wineBottle.getRandom();
-                AccesLocal accesLocal = new AccesLocal(mContext);
-                accesLocal.addLikeToABottle(value1);
-
-
-                // Pour Supprimer une bouteille de la bdd
-                //String value2;
-                //value2 = wineBottle.getRandom();
-                //AccesLocal accesLocal = new AccesLocal(mContext);
-                //accesLocal.takeOutBottle(value2);
-
-
-                Toast.makeText(v.getContext(), value1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), wineBottle.getFavorite() + " " + wineBottle.getRandom(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
+
+        holder.favorite.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Pour set 1 dans la propriété favorite d'une bottle si elle n'est pas déjà set
+                String valueRandom = wineBottle.getRandom();
+                AccesLocal accesLocal = new AccesLocal(mContext);
+
+                if(wineBottle.getFavorite().matches("0")) {
+                    accesLocal.addLikeToABottle(valueRandom);
+
+                } else if(wineBottle.getFavorite().matches("1")) {
+                    accesLocal.removeLikeToABottle(valueRandom);
+                }
+
+                //notifyDataSetChanged();
+                //Toast.makeText(v.getContext(), wineBottle.getFavorite(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.delete.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Snackbar snackbar = Snackbar.make(v, "Etes vous sûr de vouloir supprimer cette bouteille de votre cave ?", Snackbar.LENGTH_INDEFINITE);
+                snackbar.setAction("Oui", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO REMOVE THE LAST BOTTLE
+                        // Pour Supprimer une bouteille de la bdd
+                        String valueRandom = wineBottle.getRandom();
+                        AccesLocal accesLocal = new AccesLocal(mContext);
+                        accesLocal.takeOutBottle(valueRandom);
+                        //Toast.makeText(v.getContext(), valueRandom, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                        //.setActionTextColor(getResources().getColor(R.color.orange));
+                        //.setActionTextColor(Color.parseColor("#FFF"));
+
+                // On change la couleur du texte de la Snackbar
+                View snackbarView = snackbar.getView();
+                TextView tv = (TextView) snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+                tv.setTextColor(Color.parseColor("#67828f"));
+                // On change la couleur du background de la Snackbar
+                snackbarView.setBackgroundColor(Color.parseColor("#2F3B40"));
+                snackbar.setDuration(3000).show();
+
+
+
+            }
+        });
 
 
         // On applique l'animation sur la pastille de la bouteille
@@ -158,20 +197,18 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 break;
         }
 
-        // On set la CardView d'un coeur si la bouteille est favorite = 1
+        // On set la CardView d'un coeur coloré si la bouteille est favorite = 1, noir si favorite = 0
         switch(currentItem.getFavorite()) {
             case "0" :
-                holder.like.setImageResource(R.drawable.icon_like_cardview);
-                holder.like.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+                holder.favorite.setImageResource(R.drawable.icon_like_cardview);
+                //holder.favorite.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
                 break;
             case "1" :
-                holder.like.setImageResource(R.drawable.icon_like_cardview);
-                holder.like.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+                holder.favorite.setImageResource(R.drawable.icon_like_cardview);
+                //holder.favorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+                holder.favorite.setColorFilter(Color.parseColor("#D57400"));
                 break;
         }
-
-
-
 
 
     }

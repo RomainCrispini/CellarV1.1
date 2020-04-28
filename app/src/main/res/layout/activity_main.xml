@@ -39,31 +39,16 @@
                 android:text="Recherche" />
 
         </LinearLayout>
+
     </fragment>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="bottom|center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabWineMenu"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_black_24dp"
-            android:tint="@color/green_light"
-            android:backgroundTint="@color/green_very_dark"
-            android:elevation="0dp"
-            app:fabSize="normal"
-            app:elevation="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabRed"
@@ -108,10 +93,11 @@
             android:elevation="0dp"
             app:fabCustomSize="40dp"
             app:maxImageSize="35dp" />
-    </LinearLayout>
+
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/scan"
+        android:id="@+id/fabWineMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/curvedBottomNavigationView"

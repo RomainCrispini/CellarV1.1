@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mapRequestPermission();
 
+        /*
         fabScan = (FloatingActionButton) findViewById(R.id.scan);
         fabScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+         */
+
         init();
 
 
@@ -79,7 +82,26 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void init() {
-        // FABWineMenu
+
+        // Map Fragment
+        FragmentManager fragmentManager = getFragmentManager();
+        mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        initCurvedNavigationView();
+        initFabWineMenu();
+        getFabWineMenuValue();
+
+    }
+
+    //public void addBottle(View view) {
+
+    //Intent intent = new Intent(MainActivity.this, AddActivity.class);
+    //startActivity(intent);
+    //setContentView(R.layout.activity_add);
+    //
+
+    private void initFabWineMenu() {
         fabWineMenu = findViewById(R.id.fabWineMenu);
         fabRed = findViewById(R.id.fabRed);
         fabRose = findViewById(R.id.fabRose);
@@ -92,67 +114,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         fabWhite.setAlpha(0f);
         fabChamp.setAlpha(0f);
 
-        fabRed.setTranslationY(-190f);
-        fabRose.setTranslationY(-340f);
-        fabWhite.setTranslationY(-510f);
-        fabChamp.setTranslationY(-670f);
-
-        // Map Fragment
-        FragmentManager fragmentManager = getFragmentManager();
-        mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-
-        initCurvedNavigationView();
-        getFabWineMenuValue();
-
-    }
-
-    //public void addBottle(View view) {
-
-    //Intent intent = new Intent(MainActivity.this, AddActivity.class);
-    //startActivity(intent);
-    //setContentView(R.layout.activity_add);
-    //
-
-
-    private void initCurvedNavigationView() {
-
-
-        CurvedBottomNavigationView curvedBottomNavigationView = findViewById(R.id.curvedBottomNavigationView);
-        curvedBottomNavigationView.setOnNavigationItemSelectedListener(new CurvedBottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case R.id.user:
-                        //Toast.makeText(UserActivity.this, "USER", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.cellar:
-                        //Toast.makeText(UserActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.scan:
-                        //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.like:
-                        //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.search:
-                        //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        //overridePendingTransition(0, 0);
-                        return true;
-                }
-                return false;
-            }
-        });
+        fabRed.setTranslationX(0f);
+        fabRed.setTranslationY(0f);
+        fabRose.setTranslationX(0f);
+        fabRose.setTranslationY(0f);
+        fabWhite.setTranslationX(0f);
+        fabWhite.setTranslationY(0f);
+        fabChamp.setTranslationX(0f);
+        fabChamp.setTranslationY(0f);
     }
 
     private void getFabWineMenuValue() {
@@ -227,10 +196,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         fabWineMenu.animate().setInterpolator(interpolator).rotation(135f).setDuration(300).start();
 
-        fabRed.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
-        fabRose.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
-        fabWhite.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
-        fabChamp.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
+        fabRed.animate().translationX(-250f).translationY(-180f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
+        fabRose.animate().translationX(-90f).translationY(-240f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
+        fabWhite.animate().translationX(90f).translationY(-240f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
+        fabChamp.animate().translationX(250f).translationY(-180f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
     }
 
     private void closeFabWineMenu() {
@@ -238,13 +207,51 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         fabWineMenu.animate().setInterpolator(interpolator).rotation(0f).setDuration(300).start();
 
-        fabRed.animate().translationY(-190f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
-        fabRose.animate().translationY(-340f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
-        fabWhite.animate().translationY(-510f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
-        fabChamp.animate().translationY(-670f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
+        fabRed.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
+        fabRose.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
+        fabWhite.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
+        fabChamp.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
     }
 
+    private void initCurvedNavigationView() {
 
+
+        CurvedBottomNavigationView curvedBottomNavigationView = findViewById(R.id.curvedBottomNavigationView);
+        curvedBottomNavigationView.setOnNavigationItemSelectedListener(new CurvedBottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.user:
+                        //Toast.makeText(UserActivity.this, "USER", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        //overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.cellar:
+                        //Toast.makeText(UserActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        //overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.scan:
+                        //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        //overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.like:
+                        //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        //overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.search:
+                        //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        //overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
 
     private void mapRequestPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -272,7 +279,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.CAMERA}, MAP_REQUEST_PERMISSION);
         }
     }
-
 
     private void validationPermissions() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -311,22 +317,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
         validationPermissions();
         //mapRequestPermission();
     }
-
-
-
-
-
-
 
     // Méthode activée quand une demande d'activation des permissions est proposée
     @Override
@@ -337,15 +333,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             validationPermissions();
         }
     }
-
-
-
-
-
-
-
-
-
 
     @Override
     protected void onPause() {

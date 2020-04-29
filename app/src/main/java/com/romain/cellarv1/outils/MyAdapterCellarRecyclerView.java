@@ -104,14 +104,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
     }
 
-
-
-
-
-
-
-
-
     @Override
     public void onBindViewHolder(@NonNull final CellarViewHolder holder, int position) {
 
@@ -154,9 +146,44 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
                 Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
                 Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
+                ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
+                ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
+                TextView region = (TextView) popup.findViewById(R.id.region);
+                TextView domain = (TextView) popup.findViewById(R.id.domain);
+                TextView appellation = (TextView) popup.findViewById(R.id.appellation);
+                TextView millesime = (TextView) popup.findViewById(R.id.millesime);
+                TextView number = (TextView) popup.findViewById(R.id.number);
 
                 popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                Tools tools = new Tools();
+                imageBottle.setImageBitmap(tools.stringToBitmap(wineBottle.getImage()));
+                switch(wineBottle.getWineColor().trim()) {
+                    case "Rouge" :
+                        imageWineColor.setImageResource(R.drawable.red_wine_listview);
+                        break;
+                    case "Rose" :
+                        imageWineColor.setImageResource(R.drawable.rose_wine_listview);
+                        break;
+                    case "Blanc" :
+                        imageWineColor.setImageResource(R.drawable.white_wine_listview);
+                        break;
+                    case "Effervescent" :
+                        imageWineColor.setImageResource(R.drawable.champ_wine_listview);
+                        break;
+                }
+
+                // On retire 1 au nombre de bouteilles
+                String bottleNumber = String.valueOf(wineBottle.getNumber() - 1);
+                number.setText(bottleNumber);
+
+                region.setText(wineBottle.getRegion());
+                domain.setText(wineBottle.getDomain());
+                appellation.setText(wineBottle.getAppellation());
+                millesime.setText((wineBottle.getYear()).toString());
+
                 popup.show();
+
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {
                     @Override
@@ -164,7 +191,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                         String valueRandom = wineBottle.getRandom();
                         AccesLocal accesLocal = new AccesLocal(mContext);
                         accesLocal.takeOutBottle(valueRandom);
-                        Toast.makeText(v.getContext(), valueRandom, Toast.LENGTH_SHORT).show();
                         popup.dismiss();
                     }
                 });
@@ -212,7 +238,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 break;
         }
 
-        // On set la CardView d'un coeur coloré si la bouteille est favorite = 1, noir si favorite = 0
+        // On set la CardView d'un coeur blanc si la bouteille est favorite = 1, rien si favorite = 0
         switch(currentItem.getFavorite()) {
             case "0" :
                 holder.favorite.setImageResource(R.drawable.icon_like_cardview);
@@ -220,8 +246,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 break;
             case "1" :
                 holder.favorite.setImageResource(R.drawable.icon_like_cardview);
-                //holder.favorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                holder.favorite.setColorFilter(Color.parseColor("#D57400"));
+                //holder.favorite.setColorFilter(Color.parseColor("#D57400"));
+                holder.favorite.setColorFilter(Color.parseColor("#FFFFFF"));
                 break;
         }
 

@@ -33,8 +33,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -68,7 +66,7 @@ public class AddActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST_CODE = 103;
     private static final int GALLERY_REQUEST_CODE = 104;
     private ImageView scanImageView;
-    private FloatingActionButton scan;
+    private FloatingActionButton photo;
     private LinearLayout layapp;
 
     // Gallery
@@ -89,6 +87,8 @@ public class AddActivity extends AppCompatActivity {
     private EditText txtRegion, txtDomain, txtAppellation;
     private EditText nbYear, nbNumber, nbEstimate;
     private ImageButton btnRed, btnRose, btnWhite, btnChamp;
+
+    // Bouton add
     private FloatingActionButton btnAdd;
 
     // Déclaration du contrôleur
@@ -102,9 +102,11 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
         init();
 
-        FloatingActionButton scan = (FloatingActionButton) findViewById(R.id.scan);
 
-        scanImageView = (ImageView) findViewById(R.id.scanImageView);
+
+
+
+
 
 
 
@@ -134,10 +136,11 @@ public class AddActivity extends AppCompatActivity {
         nbNumber = (EditText) findViewById(R.id.nbNumber);
         nbEstimate = (EditText) findViewById(R.id.nbEstimate);
         btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
+        photo = (FloatingActionButton) findViewById(R.id.photo);
         this.controle = Controle.getInstance(this); // Création d'une instance de type Controle
 
         FloatingActionButton btnGallery = (FloatingActionButton) findViewById(R.id.btnGallery);
-        ImageView scanImageView = (ImageView) findViewById(R.id.scanImageView);
+        scanImageView = (ImageView) findViewById(R.id.scanImageView);
 
         mainLayout = findViewById(R.id.mainLayout);
 
@@ -356,8 +359,6 @@ public class AddActivity extends AppCompatActivity {
                     btnAdd.setBackgroundColor(Color.RED);
                 }
 
-
-
                 String country = "";
                 String region = "";
                 String domain = "";
@@ -532,7 +533,9 @@ public class AddActivity extends AppCompatActivity {
         PulsatorLayout pulsatorLayout = (PulsatorLayout) findViewById(R.id.pulsator);
         pulsatorLayout.start();
     }
+
      */
+
 
     public void wineColorSelector(View view) {
         ImageButton redWineButton = (ImageButton) findViewById(R.id.redWineButton);

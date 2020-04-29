@@ -10,7 +10,7 @@
     android:id="@+id/mainLayout">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/scan"
+        android:id="@+id/btnAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/curvedBottomNavigationView"
@@ -20,12 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
-
-
-        android:onClick="takePicture"
-
         android:backgroundTint="@color/green_very_dark"
-        android:src="@drawable/icon_navbar_scan"
+        android:src="@drawable/icon_navbar_add"
         android:tint="@color/green_light"
         app:borderWidth="0.5dp"
         app:elevation="10dp"
@@ -417,7 +413,7 @@
             app:fabSize="mini" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnAdd"
+            android:id="@+id/photo"
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -426,10 +422,14 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            app:maxImageSize="31dp"
+
+            android:onClick="takePicture"
+
             android:backgroundTint="@color/green_very_dark"
             android:elevation="0dp"
-            android:src="@drawable/ic_add_black_24dp"
-            android:tint="@color/orange"
+            android:src="@drawable/icon_navbar_scan"
+            android:tint="@color/green_light"
             app:fabSize="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

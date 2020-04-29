@@ -1,5 +1,6 @@
 package com.romain.cellarv1.outils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.ColorDrawable;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,13 +44,14 @@ import java.util.List;
 public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterCellarRecyclerView.CellarViewHolder> {
 
     ArrayList<WineBottle> wineBottleArrayList;
-
     Context mContext;
+    Dialog popup;
 
     // Constructeur
     public MyAdapterCellarRecyclerView(Context mContext, ArrayList<WineBottle> arrayList) {
         wineBottleArrayList = arrayList;
         this.mContext = mContext;
+        popup = new Dialog(mContext);
     }
 
     public static class CellarViewHolder extends RecyclerView.ViewHolder {
@@ -65,6 +69,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         public final ImageButton favorite;
         public final ImageButton delete;
 
+        public Dialog popup;
+
 
         public CellarViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,25 +87,35 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
             favorite = itemView.findViewById(R.id.favorite);
             delete = itemView.findViewById(R.id.delete);
+
         }
     }
 
     @NonNull
     @Override
     public CellarViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+
         View v = LayoutInflater.from(mContext).inflate(R.layout.activity_cellar_custom_list_view, viewGroup, false);
         CellarViewHolder cellarViewHolder = new CellarViewHolder(v);
 
-        //return new CellarViewHolder(v);
-        return cellarViewHolder;
+        popup.setContentView(R.layout.popup_take_out_bottle);
+
+        return new CellarViewHolder(v);
+
     }
+
+
+
+
+
+
+
+
 
     @Override
     public void onBindViewHolder(@NonNull final CellarViewHolder holder, int position) {
 
         final WineBottle wineBottle = wineBottleArrayList.get(position);
-
-
 
         holder.cardView.setOnClickListener(new CardView.OnClickListener() {
             @Override
@@ -127,42 +143,41 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 }
 
                 //notifyDataSetChanged();
-                //Toast.makeText(v.getContext(), wineBottle.getFavorite(), Toast.LENGTH_SHORT).show();
+
             }
         });
+
 
         holder.delete.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Snackbar snackbar = Snackbar.make(v, "Etes vous sûr de vouloir supprimer cette bouteille de votre cave ?", Snackbar.LENGTH_INDEFINITE);
-                snackbar.setAction("Oui", new View.OnClickListener() {
+                Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
+                Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
+
+                popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popup.show();
+
+                btnAccept.setOnClickListener(new Button.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //TODO REMOVE THE LAST BOTTLE
-                        // Pour Supprimer une bouteille de la bdd
                         String valueRandom = wineBottle.getRandom();
                         AccesLocal accesLocal = new AccesLocal(mContext);
                         accesLocal.takeOutBottle(valueRandom);
-                        //Toast.makeText(v.getContext(), valueRandom, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), valueRandom, Toast.LENGTH_SHORT).show();
+                        popup.dismiss();
                     }
                 });
-                        //.setActionTextColor(getResources().getColor(R.color.orange));
-                        //.setActionTextColor(Color.parseColor("#FFF"));
 
-                // On change la couleur du texte de la Snackbar
-                View snackbarView = snackbar.getView();
-                TextView tv = (TextView) snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
-                tv.setTextColor(Color.parseColor("#67828f"));
-                // On change la couleur du background de la Snackbar
-                snackbarView.setBackgroundColor(Color.parseColor("#2F3B40"));
-                snackbar.setDuration(3000).show();
-
-
+                btnDenie.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popup.dismiss();
+                    }
+                });
 
             }
         });
-
 
         // On applique l'animation sur la pastille de la bouteille
         holder.pastilleImageBottle.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_image_cardview));

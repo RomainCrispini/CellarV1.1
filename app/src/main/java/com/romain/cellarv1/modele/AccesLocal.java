@@ -40,9 +40,9 @@ public class AccesLocal {
         bd.close();
     }
 
-    public void takeOutBottle(String value) {
+    public void takeOutBottle(String random) {
         bd = accesBD.getWritableDatabase();
-        bd.delete("bottle", "random = ?", new String[] { value });
+        bd.delete("bottle", "random = ?", new String[] { random });
         bd.close();
     }
 
@@ -70,28 +70,23 @@ public class AccesLocal {
         bd.close();
     }
 
-    public void updateBottle(String random) {
+
+    public void updateBottle(String random, String country, String region, String domain, String appellation, int year, int apogee, int estimate) {
         bd = accesBD.getWritableDatabase();
         ContentValues args = new ContentValues();
-        args.put("country", "0");
-        args.put("", "");
-        args.put("", "");
-        args.put("", "");
-        args.put("", "");
-        args.put("", "");
-        args.put("", "");
+        args.put("country", country);
+        args.put("region", region);
+        args.put("domain", domain);
+        args.put("appellation", appellation);
+        args.put("year", year);
+        args.put("apogee", apogee);
+        args.put("estimate", estimate);
 
         String where = "random=?";
-        String[] whereArgs = new String[] {String.valueOf(random)};
-        bd.update("bottle", args, where, whereArgs);
-
-
-
-
-
-
+        bd.update("bottle", args, "random=" + random, null);
 
     }
+
 
     /**
      * Récupération de la liste des bouteilles enregistrées dans le cellier

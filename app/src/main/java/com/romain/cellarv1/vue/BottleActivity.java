@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -31,12 +32,28 @@ public class BottleActivity extends AppCompatActivity {
     private EditText countryBottle, regionBottle, domainBottle, appellationBottle, millesimeBottle, apogeeBottle, estimateBottle;
     private ImageView favoriteBottle, imageBottle, imageWineColor;
 
+    // Update Button
+    private Button btnUpdateBottle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottle);
         init();
+
+
+        btnUpdateBottle.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateWineBottle(random, country, region, domain, appellation, millesime, apogee, estimate);
+                Toast.makeText(getApplicationContext(), "hrhe", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
 
     }
 
@@ -100,12 +117,19 @@ public class BottleActivity extends AppCompatActivity {
         estimateBottle.setText(getIntent().getStringExtra("estimate"));
     }
 
-    public void updateWineBottle(View v) {
+    private void updateWineBottle(String random, String country, String region, String domain, String appellation, Integer millesime, Integer apogee, Integer estimate) {
 
-        String valueRandom = getIntent().getStringExtra("random");
+        String strRandom = getIntent().getStringExtra("random");
+        String strCountry = countryBottle.getText().toString();
+        String strRegion = regionBottle.getText().toString();
+        String strDomain = domainBottle.getText().toString();
+        String strAppellation = appellationBottle.getText().toString();
+        Integer intMillesime = Integer.parseInt(millesimeBottle.getText().toString());
+        Integer intApogee = Integer.parseInt(apogeeBottle.getText().toString());
+        Integer intEstimate = Integer.parseInt(estimateBottle.getText().toString());
         AccesLocal accesLocal = new AccesLocal(getApplicationContext());
-        accesLocal.updateBottle(valueRandom);
-        Toast.makeText(this, getIntent().getStringExtra("random"), Toast.LENGTH_LONG).show();
+        accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate);
+
     }
 
     private void initFabWineMenu() {

@@ -267,7 +267,7 @@
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:maxLines="1"
                     android:background="@android:color/transparent"
-                    android:inputType="textNoSuggestions"
+                    android:inputType="textNoSuggestions|number"
                     android:text="Millésime"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp" />
@@ -296,7 +296,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
-                    android:inputType="textNoSuggestions"
+                    android:inputType="textNoSuggestions|number"
                     android:maxLines="1"
                     android:background="@android:color/transparent"
                     android:text="Apogée"
@@ -327,7 +327,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
-                    android:inputType="textNoSuggestions"
+                    android:inputType="textNoSuggestions|number"
                     android:maxLines="1"
                     android:background="@android:color/transparent"
                     android:text="Estimation"
@@ -345,9 +345,6 @@
 
                 <Button
                     android:id="@+id/btnUpdateBottle"
-
-                    android:onClick="updateWineBottle"
-
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"

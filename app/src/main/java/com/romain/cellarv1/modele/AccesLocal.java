@@ -70,6 +70,29 @@ public class AccesLocal {
         bd.close();
     }
 
+    public void updateBottle(String random) {
+        bd = accesBD.getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put("country", "0");
+        args.put("", "");
+        args.put("", "");
+        args.put("", "");
+        args.put("", "");
+        args.put("", "");
+        args.put("", "");
+
+        String where = "random=?";
+        String[] whereArgs = new String[] {String.valueOf(random)};
+        bd.update("bottle", args, where, whereArgs);
+
+
+
+
+
+
+
+    }
+
     /**
      * Récupération de la liste des bouteilles enregistrées dans le cellier
      * @return Liste exhaustive des bouteilles de vin
@@ -78,7 +101,7 @@ public class AccesLocal {
         List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
         bd = accesBD.getReadableDatabase();
         WineBottle wineBottle;
-        String requete = "select * from bottle order by dateaddnewbottle desc";
+        String requete = "select * from bottle order by dateaddnewbottle asc";
         Cursor cursor = bd.rawQuery(requete, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {

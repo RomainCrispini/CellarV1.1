@@ -1,7 +1,11 @@
 package com.romain.cellarv1.outils;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,6 +14,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.text.Layout;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +39,15 @@ import com.romain.cellarv1.R;
 import com.romain.cellarv1.controleur.Controle;
 import com.romain.cellarv1.modele.AccesLocal;
 import com.romain.cellarv1.modele.WineBottle;
+import com.romain.cellarv1.vue.BottleActivity;
 import com.romain.cellarv1.vue.CellarActivity;
+import com.romain.cellarv1.vue.CellarListFragment;
+import com.romain.cellarv1.vue.UserActivity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +61,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
     // Constructeur
     public MyAdapterCellarRecyclerView(Context mContext, ArrayList<WineBottle> arrayList) {
+
         wineBottleArrayList = arrayList;
         this.mContext = mContext;
         popup = new Dialog(mContext);
@@ -65,6 +78,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
         public CardView cardView;
         public CardView pastilleImageBottle;
+
+        public ImageView imageBottle;
 
         public final ImageButton favorite;
         public final ImageButton delete;
@@ -84,6 +99,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             cardView = itemView.findViewById(R.id.cardView);
 
             pastilleImageBottle = itemView.findViewById(R.id.pastilleImageBottle);
+
+            imageBottle = itemView.findViewById(R.id.imageBottle);
 
             favorite = itemView.findViewById(R.id.favorite);
             delete = itemView.findViewById(R.id.delete);
@@ -105,14 +122,43 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CellarViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CellarViewHolder holder, final int position) {
 
         final WineBottle wineBottle = wineBottleArrayList.get(position);
-
+        
+        
         holder.cardView.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), wineBottle.getFavorite() + " " + wineBottle.getRandom(), Toast.LENGTH_SHORT).show();
+
+                // TODO PROBLEME DE DATE
+                Date date = wineBottle.getDateAddNewBottle();
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                String strDate = dateFormat.format(date);
+
+                Intent intent = new Intent(mContext, BottleActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("wineColor", wineBottle.getWineColor());
+                intent.putExtra("imageBottle", wineBottle.getImage());
+                intent.putExtra("country", wineBottle.getCountry());
+                intent.putExtra("region", wineBottle.getRegion());
+                intent.putExtra("domain", wineBottle.getDomain());
+                intent.putExtra("appellation", wineBottle.getAppellation());
+                intent.putExtra("millesime", wineBottle.getYear().toString());
+                intent.putExtra("apogee", wineBottle.getApogee().toString());
+                intent.putExtra("estimate", wineBottle.getEstimate().toString());
+                intent.putExtra("favorite", wineBottle.getFavorite());
+
+                intent.putExtra("random", wineBottle.getRandom());
+
+                /*
+                ImageView imageBottle = cellarViewHolder.imageBottle;
+                Pair[] pairs = new Pair[1];
+                pairs[0] = new Pair<View, String>(imageBottle, "imageTransition");
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) mContext, pairs);
+                mContext.startActivity(intent, options.toBundle());
+                 */
+
+                mContext.startActivity(intent);
             }
         });
 
@@ -247,7 +293,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             case "1" :
                 holder.favorite.setImageResource(R.drawable.icon_like_cardview);
                 //holder.favorite.setColorFilter(Color.parseColor("#D57400"));
-                holder.favorite.setColorFilter(Color.parseColor("#FFFFFF"));
+                holder.favorite.setColorFilter(Color.parseColor("#97C58D"));
                 break;
         }
 

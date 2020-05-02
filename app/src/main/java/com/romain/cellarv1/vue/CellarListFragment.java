@@ -103,9 +103,6 @@ public class CellarListFragment extends Fragment {
         //runLayoutFragmentAnimation();
 
 
-
-
-
         /*
 
         ArrayList<WineBottle> wineBottleArrayList;
@@ -161,16 +158,6 @@ public class CellarListFragment extends Fragment {
 
             }
         };
-
-
-
-
-
-
-
-
-
-
 
 
         return cellarListFragment;

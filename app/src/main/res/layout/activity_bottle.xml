@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/dark_gradient_background"
+    tools:context=".vue.BottleActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toTopOf="@id/curvedBottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cette bouteille est entrée dans le cave le : "
+                android:fontFamily="@font/yanone_kaffeesatz"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date"
+                android:fontFamily="@font/yanone_kaffeesatz"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pastilleImageBottle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/grey_light"
+                app:cardCornerRadius="125dp"
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/grey_light"
+                    app:cardCornerRadius="125dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/imageWineColor"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:layout_gravity="center"
+                        android:elevation="0dp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/green_dark"
+                    app:cardCornerRadius="122dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/imageBottle"
+                        android:transitionName="imageTransition"
+                        android:layout_width="244dp"
+                        android:layout_height="244dp"
+                        android:layout_gravity="center"
+                        android:elevation="0dp" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/favoriteBottle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="230dp"
+                android:layout_marginLeft="105dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_like_cardview"
+                android:tint="@color/green_apple" />
+
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pays : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/countryBottle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:inputType="textNoSuggestions"
+                    android:text="Pays"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Région : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/regionBottle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:inputType="textNoSuggestions"
+                    android:text="Région"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Domaine : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/domainBottle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent"
+                    android:text="Domaine"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Appellation : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/appellationBottle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent"
+                    android:text="Appellation"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Millésime : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/millesimeBottle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent"
+                    android:inputType="textNoSuggestions"
+                    android:text="Millésime"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Apogée : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/apogeeBottle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent"
+                    android:text="Apogée"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Estimation : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/estimateBottle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent"
+                    android:text="Estimation"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnUpdateBottle"
+
+                    android:onClick="updateWineBottle"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_popup_bottle_out_round"
+                    android:text="Mettre à jour"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:elevation="0dp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="bottom|center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabRed"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/red_wine"
+            android:backgroundTint="@color/green_very_dark"
+            android:elevation="0dp"
+            app:fabCustomSize="40dp"
+            app:maxImageSize="35dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabRose"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rose_wine"
+            android:backgroundTint="@color/green_very_dark"
+            android:elevation="0dp"
+            app:fabCustomSize="40dp"
+            app:maxImageSize="35dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabWhite"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/white_wine"
+            android:backgroundTint="@color/green_very_dark"
+            android:elevation="0dp"
+            app:fabCustomSize="40dp"
+            app:maxImageSize="35dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabChamp"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/champ_wine"
+            android:backgroundTint="@color/green_very_dark"
+            android:elevation="0dp"
+            app:fabCustomSize="40dp"
+            app:maxImageSize="35dp" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabWineMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/curvedBottomNavigationView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:maxImageSize="31dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/green_very_dark"
+        android:src="@drawable/icon_navbar_add"
+        android:tint="@color/green_dark"
+        app:borderWidth="0.5dp"
+        app:elevation="10dp"
+        app:fabSize="normal" />
+
+    <com.romain.cellarv1.outils.CurvedBottomNavigationView
+        android:id="@+id/curvedBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        app:itemIconSize="31dp"
+        android:paddingTop="20dp"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:itemIconTint="@drawable/selector_curved_bottom_nav_view"
+        app:menu="@menu/bottom_nav_menu">
+    </com.romain.cellarv1.outils.CurvedBottomNavigationView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

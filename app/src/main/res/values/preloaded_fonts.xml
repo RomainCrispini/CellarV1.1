@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/archivo_narrow</item>
         <item>@font/pragati_narrow</item>
+        <item>@font/questrial</item>
         <item>@font/roboto</item>
         <item>@font/yanone_kaffeesatz</item>
     </array>

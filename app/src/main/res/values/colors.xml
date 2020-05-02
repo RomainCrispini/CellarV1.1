@@ -16,10 +16,13 @@
     <color name="grey_very_light">#ECECEC</color>
     <color name="grey_light">#CDCDCD</color>
     <color name="green_very_dark">#2F3B40</color>
+    <color name="green_middle_dark">#38474E</color>
     <color name="green_dark">#43545c</color>
     <color name="green_middle_light">#4F656F</color>
-    <color name="green_middle_dark">#38474E</color>
+    <color name="green_third_light">#576F7A</color>
     <color name="green_light">#67828f</color>
+    <color name="green_very_light">#8DB3C5</color>
+    <color name="green_apple">#97C58D</color>
     <color name="grey_dark">#4C4C4C</color>
     <color name="green">#35B1C4</color>
     <color name="blue_light">#22C2DD</color>

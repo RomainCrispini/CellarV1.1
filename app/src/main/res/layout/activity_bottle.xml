@@ -100,8 +100,8 @@
 
             <ImageView
                 android:id="@+id/favoriteBottle"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="230dp"
                 android:layout_marginLeft="105dp"
                 android:adjustViewBounds="true"
@@ -337,7 +337,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
@@ -349,7 +349,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_popup_bottle_out_round"
-                    android:text="Mettre à jour"
+                    android:text="Modifier"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:elevation="0dp"
                     android:textColor="@color/white" />

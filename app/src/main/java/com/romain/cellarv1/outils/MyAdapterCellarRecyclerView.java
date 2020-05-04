@@ -1,5 +1,6 @@
 package com.romain.cellarv1.outils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.Dialog;
@@ -26,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -81,12 +83,13 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
         public ImageView imageBottle;
 
-        public final ImageButton favorite;
+        public final ToggleButton favorite;
         public final ImageButton delete;
 
         public Dialog popup;
 
 
+        @SuppressLint("ResourceType")
         public CellarViewHolder(@NonNull View itemView) {
             super(itemView);
             imageWineColor = itemView.findViewById(R.id.imageWineColorListView);
@@ -122,7 +125,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CellarViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final CellarViewHolder holder, final int position) {
 
         final WineBottle wineBottle = wineBottleArrayList.get(position);
         
@@ -137,6 +140,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 String strDate = dateFormat.format(date);
 
                 Intent intent = new Intent(mContext, BottleActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+
                 intent.putExtra("wineColor", wineBottle.getWineColor());
                 intent.putExtra("imageBottle", wineBottle.getImage());
                 intent.putExtra("country", wineBottle.getCountry());
@@ -150,7 +155,10 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
                 intent.putExtra("random", wineBottle.getRandom());
 
+
+
                 /*
+                // Tente de faire une transition visuelle vers BottleActivity (fiche vin)
                 ImageView imageBottle = cellarViewHolder.imageBottle;
                 Pair[] pairs = new Pair[1];
                 pairs[0] = new Pair<View, String>(imageBottle, "imageTransition");
@@ -162,25 +170,54 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             }
         });
 
-
-
-
-        holder.favorite.setOnClickListener(new ImageButton.OnClickListener() {
+        holder.favorite.setText(null);
+        holder.favorite.setTextOn(null);
+        holder.favorite.setTextOff(null);
+        holder.favorite.setOnClickListener(new ToggleButton.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
 
                 // Pour set 1 dans la propriété favorite d'une bottle si elle n'est pas déjà set
                 String valueRandom = wineBottle.getRandom();
                 AccesLocal accesLocal = new AccesLocal(mContext);
 
-                if(wineBottle.getFavorite().matches("0")) {
+                if (wineBottle.getFavorite().matches("0")) {
                     accesLocal.addLikeToABottle(valueRandom);
 
+                    //MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(mContext, wineBottleArrayList);
+                    //myAdapterCellarRecyclerView.notifyDataSetChanged();
+
+                //} else if(wineBottle.getFavorite().matches("1") && holder.favorite.getDrawable().getColorFilter().equals(Color.parseColor("#97C58D"))) {
                 } else if(wineBottle.getFavorite().matches("1")) {
                     accesLocal.removeLikeToABottle(valueRandom);
                 }
 
-                //notifyDataSetChanged();
+
+
+                /*
+                ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleList();
+                MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(mContext, wineBottleArrayList);
+                myAdapterCellarRecyclerView.notifyDataSetChanged();
+
+
+                mRecyclerView.setHasFixedSize(true);
+
+
+                //mLayoutManager = new LinearLayoutManager(getContext());
+                //mRecyclerView.setLayoutManager(mLayoutManager);
+
+                mAdapter = new MyAdapterCellarRecyclerView(getContext(), wineBottleArrayList);
+
+                mRecyclerView.setAdapter(mAdapter);
+
+                 */
+
+
+
+
 
             }
         });
@@ -284,19 +321,18 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 break;
         }
 
-        // On set la CardView d'un coeur blanc si la bouteille est favorite = 1, rien si favorite = 0
+
+
+
+        // On set la CardView d'un coeur coloré si la bouteille est favorite = 1, rien si favorite = 0
         switch(currentItem.getFavorite()) {
             case "0" :
-                holder.favorite.setImageResource(R.drawable.icon_like_cardview);
-                //holder.favorite.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+                holder.favorite.setChecked(false);
                 break;
             case "1" :
-                holder.favorite.setImageResource(R.drawable.icon_like_cardview);
-                //holder.favorite.setColorFilter(Color.parseColor("#D57400"));
-                holder.favorite.setColorFilter(Color.parseColor("#97C58D"));
+                holder.favorite.setChecked(true);
                 break;
         }
-
 
     }
 

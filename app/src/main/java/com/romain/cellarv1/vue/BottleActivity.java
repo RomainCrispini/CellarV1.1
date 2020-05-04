@@ -43,13 +43,30 @@ public class BottleActivity extends AppCompatActivity {
         init();
 
 
+
+
         btnUpdateBottle.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateWineBottle(random, country, region, domain, appellation, millesime, apogee, estimate);
-                Toast.makeText(getApplicationContext(), "hrhe", Toast.LENGTH_LONG).show();
+
+                String strRandom = getIntent().getStringExtra("random");
+                String strCountry = countryBottle.getText().toString();
+                String strRegion = regionBottle.getText().toString();
+                String strDomain = domainBottle.getText().toString();
+                String strAppellation = appellationBottle.getText().toString();
+                Integer intMillesime = Integer.parseInt(millesimeBottle.getText().toString());
+                Integer intApogee = Integer.parseInt(apogeeBottle.getText().toString());
+                Integer intEstimate = Integer.parseInt(estimateBottle.getText().toString());
+                AccesLocal accesLocal = new AccesLocal(getApplicationContext());
+                accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate);
+
+
+
+                Toast.makeText(getApplicationContext(), strRandom + "\n" + strRegion + "\n" + intMillesime, Toast.LENGTH_LONG).show();
             }
         });
+
+
 
 
 
@@ -63,6 +80,7 @@ public class BottleActivity extends AppCompatActivity {
         initFabWineMenu();
         getFabWineMenuValue();
         initWineBottle();
+        btnUpdateBottle = (Button) findViewById(R.id.btnUpdateBottle);
 
     }
 
@@ -119,16 +137,7 @@ public class BottleActivity extends AppCompatActivity {
 
     private void updateWineBottle(String random, String country, String region, String domain, String appellation, Integer millesime, Integer apogee, Integer estimate) {
 
-        String strRandom = getIntent().getStringExtra("random");
-        String strCountry = countryBottle.getText().toString();
-        String strRegion = regionBottle.getText().toString();
-        String strDomain = domainBottle.getText().toString();
-        String strAppellation = appellationBottle.getText().toString();
-        Integer intMillesime = Integer.parseInt(millesimeBottle.getText().toString());
-        Integer intApogee = Integer.parseInt(apogeeBottle.getText().toString());
-        Integer intEstimate = Integer.parseInt(estimateBottle.getText().toString());
-        AccesLocal accesLocal = new AccesLocal(getApplicationContext());
-        accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate);
+
 
     }
 

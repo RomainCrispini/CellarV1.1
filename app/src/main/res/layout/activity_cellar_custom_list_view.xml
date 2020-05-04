@@ -107,15 +107,14 @@
                     app:cardBackgroundColor="@color/green_third_light"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp">
-                <ImageButton
+
+                <ToggleButton
                     android:id="@+id/favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/transparent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/icon_like_cardview"
-                    android:tint="@color/green_light" />
+                    android:background="@drawable/button_like_cardview" />
+
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -126,10 +125,11 @@
                     app:cardBackgroundColor="@color/green_third_light"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp">
+
                 <ImageButton
                     android:id="@+id/delete"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/transparent"
                     android:scaleType="centerCrop"

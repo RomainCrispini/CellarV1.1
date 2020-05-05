@@ -47,7 +47,6 @@
         app:menu="@menu/bottom_nav_menu">
     </com.romain.cellarv1.outils.CurvedBottomNavigationView>
 
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
@@ -58,7 +57,7 @@
         app:layout_constraintBottom_toTopOf="@+id/layoutCountryRegion"
         android:indeterminate="false"
         android:layout_marginBottom="10dp"
-        android:progressTint="@color/orange"
+        android:progressTint="@color/green_apple"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal" >
     </ProgressBar>
 
@@ -98,9 +97,10 @@
                 android:backgroundTint="@color/transparent"
                 android:gravity="center"
                 android:hint="Pays"
-                android:fontFamily="@font/roboto"
+                android:maxLines="1"
+                android:fontFamily="@font/yanone_kaffeesatz"
                 android:inputType="text"
-                android:textColor="@color/orange"
+                android:textColor="@color/green_apple"
                 android:textCursorDrawable="@color/green_light"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -133,9 +133,10 @@
                 android:backgroundTint="@color/transparent"
                 android:gravity="center"
                 android:hint="Région"
-                android:fontFamily="@font/roboto"
+                android:maxLines="1"
+                android:fontFamily="@font/yanone_kaffeesatz"
                 android:inputType="text"
-                android:textColor="@color/orange"
+                android:textColor="@color/green_apple"
                 android:textCursorDrawable="@color/green_light"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -220,10 +221,11 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/transparent"
             android:gravity="center"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/orange"
+            android:fontFamily="@font/yanone_kaffeesatz"
+            android:textColor="@color/green_apple"
             android:textCursorDrawable="@color/green_light"
             android:textSize="14dp"
+            android:maxLines="1"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -253,10 +255,11 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/transparent"
             android:gravity="center"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/orange"
+            android:fontFamily="@font/yanone_kaffeesatz"
+            android:textColor="@color/green_apple"
             android:textCursorDrawable="@color/green_light"
             android:textSize="14dp"
+            android:maxLines="1"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -264,10 +267,12 @@
 
 
     <LinearLayout
-        android:id="@+id/layoutYearNumberEstimate"
+        android:id="@+id/layoutYearApogee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -275,10 +280,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutYear"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@drawable/fond_textinput"
@@ -292,15 +296,16 @@
 
             <EditText
                 android:id="@+id/nbYear"
-                android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@null"
                 android:backgroundTint="@color/transparent"
+                android:fontFamily="@font/yanone_kaffeesatz"
                 android:gravity="center"
                 android:hint="Millésime"
-                android:fontFamily="@font/roboto"
                 android:inputType="number"
-                android:textColor="@color/orange"
+                android:maxLines="1"
+                android:textColor="@color/green_apple"
                 android:textCursorDrawable="@color/green_light"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -308,11 +313,61 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutApogee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/fond_textinput"
+            android:backgroundTint="@color/green_dark"
+            android:orientation="horizontal"
+            android:textColorHint="@color/green_light"
+            app:helperText=""
+            app:hintTextColor="@color/green_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/nbApogee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:backgroundTint="@color/transparent"
+                android:drawableTint="@color/green_light"
+                android:ems="10"
+                android:fontFamily="@font/yanone_kaffeesatz"
+                android:gravity="center"
+                android:hint="Apogée"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/green_apple"
+                android:textCursorDrawable="@color/green_light"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutNumberEstimate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutYearApogee">
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutNumber"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@drawable/fond_textinput"
             android:backgroundTint="@color/green_dark"
@@ -331,11 +386,12 @@
                 android:backgroundTint="@color/transparent"
                 android:drawableTint="@color/green_light"
                 android:gravity="center"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/yanone_kaffeesatz"
                 android:ems="10"
                 android:hint="Quantité"
+                android:maxLines="1"
                 android:inputType="number"
-                android:textColor="@color/orange"
+                android:textColor="@color/green_apple"
                 android:textCursorDrawable="@color/green_light"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -347,7 +403,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@drawable/fond_textinput"
@@ -368,10 +423,11 @@
                 android:drawableTint="@color/green_light"
                 android:ems="10"
                 android:gravity="center"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/yanone_kaffeesatz"
                 android:hint="Estimation"
+                android:maxLines="1"
                 android:inputType="number"
-                android:textColor="@color/orange"
+                android:textColor="@color/green_apple"
                 android:textCursorDrawable="@color/green_light"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -380,15 +436,26 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/scanImageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:scaleType="center"
+    <androidx.cardview.widget.CardView
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintBottom_toTopOf="@id/layoutBtnAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutYearNumberEstimate" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutNumberEstimate"
+        android:elevation="0dp"
+        android:outlineProvider="none"
+        app:cardBackgroundColor="@color/green_middle_light"
+        app:cardCornerRadius="30dp">
+
+        <ImageView
+            android:id="@+id/scanImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center" />
+
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:id="@+id/layoutBtnAdd"

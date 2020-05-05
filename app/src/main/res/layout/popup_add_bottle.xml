@@ -40,7 +40,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/yanone_kaffeesatz"
-                android:text="Cette bouteille va se joindre à votre cave !"
+                android:text="Cette bouteille va rejoindre votre cave !"
                 android:textAlignment="center"
                 android:textColor="@color/green_apple"
                 android:textSize="18dp" />
@@ -143,6 +143,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Région"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />
@@ -154,6 +155,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Domaine"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />
@@ -165,6 +167,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Appellation"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />
@@ -176,6 +179,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Millésime"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />

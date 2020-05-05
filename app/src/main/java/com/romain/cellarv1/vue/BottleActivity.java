@@ -61,10 +61,10 @@ public class BottleActivity extends AppCompatActivity {
 
                 ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
                 ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
-                TextView country = (TextView) popup.findViewById(R.id.country);
                 TextView region = (TextView) popup.findViewById(R.id.region);
                 TextView domain = (TextView) popup.findViewById(R.id.domain);
                 TextView appellation = (TextView) popup.findViewById(R.id.appellation);
+                TextView millesime = (TextView) popup.findViewById(R.id.millesime);
 
                 switch(getIntent().getStringExtra("wineColor").trim()) {
                     case "Rouge" :
@@ -94,10 +94,10 @@ public class BottleActivity extends AppCompatActivity {
                         break;
                 }
 
-                country.setText(countryBottle.getText());
                 region.setText(regionBottle.getText());
                 domain.setText(domainBottle.getText());
                 appellation.setText(appellationBottle.getText());
+                millesime.setText(millesimeBottle.getText());
 
                 popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 popup.show();

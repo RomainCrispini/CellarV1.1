@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import android.Manifest;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -14,6 +15,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -38,6 +41,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.romain.cellarv1.R;
 import com.romain.cellarv1.controleur.Controle;
+import com.romain.cellarv1.modele.AccesLocal;
 import com.romain.cellarv1.outils.CurvedBottomNavigationView;
 import com.romain.cellarv1.outils.Tools;
 import org.json.JSONException;
@@ -65,6 +69,7 @@ public class AddActivity extends AppCompatActivity {
     // private static final int GALLERY_WRITE_REQUEST_PERMISSION = 102;
     private static final int CAMERA_REQUEST_CODE = 103;
     private static final int GALLERY_REQUEST_CODE = 104;
+
     private ImageView scanImageView;
     private FloatingActionButton photo;
     private LinearLayout layapp;
@@ -85,7 +90,7 @@ public class AddActivity extends AppCompatActivity {
     // Champs texte
     private AutoCompleteTextView txtCountry;
     private EditText txtRegion, txtDomain, txtAppellation;
-    private EditText nbYear, nbNumber, nbEstimate;
+    private EditText nbYear, nbApogee, nbNumber, nbEstimate;
     private ImageButton btnRed, btnRose, btnWhite, btnChamp;
 
     // Bouton add
@@ -94,6 +99,9 @@ public class AddActivity extends AppCompatActivity {
     // Déclaration du contrôleur
     private Controle controle;
 
+    // Déclaration de la popup
+    private Dialog popup;
+
 
 
     @Override
@@ -101,18 +109,6 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         init();
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
@@ -133,6 +129,7 @@ public class AddActivity extends AppCompatActivity {
         txtDomain = (EditText) findViewById(R.id.textDomain);
         txtAppellation = (EditText) findViewById(R.id.textAppellation);
         nbYear = (EditText) findViewById(R.id.nbYear);
+        nbApogee = (EditText) findViewById(R.id.nbApogee);
         nbNumber = (EditText) findViewById(R.id.nbNumber);
         nbEstimate = (EditText) findViewById(R.id.nbEstimate);
         btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
@@ -143,6 +140,10 @@ public class AddActivity extends AppCompatActivity {
         scanImageView = (ImageView) findViewById(R.id.scanImageView);
 
         mainLayout = findViewById(R.id.mainLayout);
+
+        popup = new Dialog(this);
+        popup.setContentView(R.layout.popup_add_bottle);
+        popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         addWineBottle();
         recoverWineBottle();
@@ -245,7 +246,7 @@ public class AddActivity extends AppCompatActivity {
                 // Récupération de l'image
                 Bitmap imageGallery = BitmapFactory.decodeFile(imgPath);
                 // Redimentionner l'image
-                imageGallery = changeSizeBitmap(imageGallery, 0.5f);
+                imageGallery = changeSizeBitmap(imageGallery, 0.8f);
                 // Affichage de l'image
                 scanImageView.setImageBitmap(imageGallery);
                 break;
@@ -345,88 +346,121 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(txtCountry.getText().toString().equals("")) {
-                    //btnAdd.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.green_light));
+                Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
+                Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
+                TextView number = (TextView) popup.findViewById(R.id.number);
+                ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
+                ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
+                TextView region = (TextView) popup.findViewById(R.id.region);
+                TextView domain = (TextView) popup.findViewById(R.id.domain);
+                TextView appellation = (TextView) popup.findViewById(R.id.appellation);
+                TextView millesime = (TextView) popup.findViewById(R.id.millesime);
 
-
-                    txtRegion.setError("tt");
-                    Drawable warning = getResources().getDrawable(R.drawable.ic_add_black_24dp);
-                    //add an error icon to yur drawable files
-                    warning.setBounds(0, 0, warning.getIntrinsicWidth(), warning.getIntrinsicHeight());
-
-                    txtRegion.setCompoundDrawables(null,null, warning,null);
-                    //txtRegion.setErrorColor(Color.BLUE);
-                    btnAdd.setBackgroundColor(Color.RED);
+                if(scanImageView.getDrawable() != null) {
+                    Bitmap bitmapEtiquette = ((BitmapDrawable) scanImageView.getDrawable()).getBitmap();
+                    imageBottle.setImageBitmap(bitmapEtiquette);
+                } else {
+                    imageBottle.setImageResource(R.drawable.none_listview);
                 }
 
-                String country = "";
-                String region = "";
-                String domain = "";
-                String appellation = "";
-                String wineColor = "";
-                int year = 0;
-                int apogee = 0;
-                int number = 0;
-                int estimate = 0;
-                String image = "";
-                String favorite = "0";
-                String random = "";
 
-                Tools tool = new Tools();
-
-                Random randomize = new Random();
-
-                // Récupération des données saisies
-                try {
-                    if(btnRed.getAlpha() == 1f) {
-                        wineColor = "Rouge";
-                    } else if(btnRose.getAlpha() == 1f) {
-                        wineColor = "Rose";
-                    } else if(btnWhite.getAlpha() == 1f) {
-                        wineColor = "Blanc";
-                    } else if(btnChamp.getAlpha() == 1f) {
-                        wineColor = "Effervescent";
-                    }
-
-                    random = String.valueOf(randomize.nextInt(1000000));
-
-                    country = txtCountry.getText().toString();
-                    region = txtRegion.getText().toString();
-                    domain = txtDomain.getText().toString();
-                    appellation = txtAppellation.getText().toString();
-                    year = Integer.parseInt(nbYear.getText().toString());
-                    number = Integer.parseInt(nbNumber.getText().toString());
-                    estimate = Integer.parseInt(nbEstimate.getText().toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if(btnRed.getAlpha() == 1f) {
+                    imageWineColor.setImageResource(R.drawable.red_wine_listview);
+                } else if(btnRose.getAlpha() == 1f) {
+                    imageWineColor.setImageResource(R.drawable.rose_wine_listview);
+                } else if(btnWhite.getAlpha() == 1f) {
+                    imageWineColor.setImageResource(R.drawable.white_wine_listview);
+                } else if(btnChamp.getAlpha() == 1f) {
+                    imageWineColor.setImageResource(R.drawable.champ_wine_listview);
                 }
 
-                try {
-                    Bitmap bitmap = ((BitmapDrawable) scanImageView.getDrawable()).getBitmap();
-                    image = (tool.bitmapToString(bitmap));
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
+                number.setText(nbNumber.getText());
 
-                afficheResult(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
+                region.setText(txtRegion.getText());
+                domain.setText(txtDomain.getText());
+                appellation.setText(txtAppellation.getText());
+                millesime.setText(nbYear.getText());
+
+                popup.show();
 
 
-                Snackbar snackbar = Snackbar.make(mainLayout, "Bouteille enregistrée !", Snackbar.LENGTH_INDEFINITE);
-                snackbar.setAction("Annuler", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                //TODO REMOVE THE LAST BOTTLE
+                btnAccept.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(txtCountry.getText().toString().equals("")) {
+                            txtRegion.setError("tt");
+                            Drawable warning = getResources().getDrawable(R.drawable.ic_add_black_24dp);
+                            //add an error icon to yur drawable files
+                            warning.setBounds(0, 0, warning.getIntrinsicWidth(), warning.getIntrinsicHeight());
+
+                            txtRegion.setCompoundDrawables(null,null, warning,null);
+                            //txtRegion.setErrorColor(Color.BLUE);
+                            btnAdd.setBackgroundColor(Color.RED);
+                        }
+
+                        String country = "";
+                        String region = "";
+                        String domain = "";
+                        String appellation = "";
+                        String wineColor = "";
+                        int year = 0;
+                        int apogee = 0;
+                        int number = 0;
+                        int estimate = 0;
+                        String image = "";
+                        String favorite = "0";
+                        String random = "";
+
+                        Tools tool = new Tools();
+
+                        Random randomize = new Random();
+
+                        // Récupération des données saisies
+                        try {
+                            if(btnRed.getAlpha() == 1f) {
+                                wineColor = "Rouge";
+                            } else if(btnRose.getAlpha() == 1f) {
+                                wineColor = "Rose";
+                            } else if(btnWhite.getAlpha() == 1f) {
+                                wineColor = "Blanc";
+                            } else if(btnChamp.getAlpha() == 1f) {
+                                wineColor = "Effervescent";
                             }
-                        })
-                        .setActionTextColor(getResources().getColor(R.color.orange));
 
-                // On change la couleur du texte de la Snackbar
-                View snackbarView = snackbar.getView();
-                TextView tv = (TextView) snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
-                tv.setTextColor(Color.parseColor("#97C58D"));
-                // On change la couleur du background de la Snackbar
-                snackbarView.setBackgroundColor(Color.parseColor("#2F3B40"));
-                snackbar.setDuration(3000).show();
+                            random = String.valueOf(randomize.nextInt(10000000));
+
+                            country = txtCountry.getText().toString();
+                            region = txtRegion.getText().toString();
+                            domain = txtDomain.getText().toString();
+                            appellation = txtAppellation.getText().toString();
+                            year = Integer.parseInt(nbYear.getText().toString());
+                            apogee = Integer.parseInt(nbApogee.getText().toString());
+                            number = Integer.parseInt(nbNumber.getText().toString());
+                            estimate = Integer.parseInt(nbEstimate.getText().toString());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            Bitmap bitmap = ((BitmapDrawable) scanImageView.getDrawable()).getBitmap();
+                            image = (tool.bitmapToString(bitmap));
+                        } catch(Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        afficheResult(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
+
+                        popup.dismiss();
+                    }
+                });
+
+                btnDenie.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popup.dismiss();
+                    }
+                });
 
             }
         });
@@ -448,6 +482,7 @@ public class AddActivity extends AppCompatActivity {
             txtDomain.setText(controle.getDomain());
             txtAppellation.setText(controle.getAppellation());
             nbYear.setText(controle.getYear().toString());
+            nbApogee.setText(controle.getApogee().toString());
             nbNumber.setText(controle.getNumber().toString());
             nbEstimate.setText(controle.getEstimate().toString());
 

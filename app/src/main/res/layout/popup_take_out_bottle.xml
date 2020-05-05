@@ -142,6 +142,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Région"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />
@@ -153,6 +154,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Domaine"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />
@@ -164,6 +166,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Appellation"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />
@@ -175,6 +178,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Millésime"
+                    android:maxLines="1"
                     android:textColor="@color/green_very_light"
                     android:textAlignment="center"
                     android:textSize="15dp" />

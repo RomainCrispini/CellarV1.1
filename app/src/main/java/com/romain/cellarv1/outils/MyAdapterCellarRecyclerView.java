@@ -57,9 +57,9 @@ import java.util.List;
 
 public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterCellarRecyclerView.CellarViewHolder> {
 
-    ArrayList<WineBottle> wineBottleArrayList;
-    Context mContext;
-    Dialog popup;
+    private ArrayList<WineBottle> wineBottleArrayList;
+    private Context mContext;
+    private Dialog popup;
 
     // Constructeur
     public MyAdapterCellarRecyclerView(Context mContext, ArrayList<WineBottle> arrayList) {
@@ -154,7 +154,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 intent.putExtra("favorite", wineBottle.getFavorite());
 
                 intent.putExtra("random", wineBottle.getRandom());
-
 
 
                 /*

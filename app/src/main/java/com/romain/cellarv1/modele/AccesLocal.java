@@ -70,7 +70,6 @@ public class AccesLocal {
         bd.close();
     }
 
-
     public void updateBottle(String random, String country, String region, String domain, String appellation, int year, int apogee, int estimate) {
         bd = accesBD.getWritableDatabase();
         ContentValues args = new ContentValues();
@@ -86,7 +85,6 @@ public class AccesLocal {
         bd.update("bottle", args, "random=" + random, null);
 
     }
-
 
     /**
      * Récupération de la liste des bouteilles enregistrées dans le cellier

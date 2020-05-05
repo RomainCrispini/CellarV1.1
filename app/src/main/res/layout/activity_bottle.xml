@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toTopOf="@id/curvedBottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cette bouteille est entrée dans le cave le : "
+                android:text="Cette bouteille a rejoint la cave le : "
                 android:fontFamily="@font/yanone_kaffeesatz"
                 android:textColor="@color/green_very_light"
                 android:textSize="18dp" />
@@ -50,7 +50,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_gravity="center">
 
             <androidx.cardview.widget.CardView
@@ -68,13 +68,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:cardBackgroundColor="@color/grey_light"
-                    app:cardCornerRadius="125dp"
+                    app:cardCornerRadius="115dp"
                     app:cardElevation="0dp">
 
                     <ImageView
                         android:id="@+id/imageWineColor"
-                        android:layout_width="250dp"
-                        android:layout_height="250dp"
+                        android:layout_width="230dp"
+                        android:layout_height="230dp"
                         android:layout_gravity="center"
                         android:elevation="0dp" />
                 </androidx.cardview.widget.CardView>
@@ -84,14 +84,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:cardBackgroundColor="@color/green_dark"
-                    app:cardCornerRadius="122dp"
+                    app:cardCornerRadius="113dp"
                     app:cardElevation="0dp">
 
                     <ImageView
                         android:id="@+id/imageBottle"
                         android:transitionName="imageTransition"
-                        android:layout_width="244dp"
-                        android:layout_height="244dp"
+                        android:layout_width="226dp"
+                        android:layout_height="226dp"
                         android:layout_gravity="center"
                         android:elevation="0dp" />
                 </androidx.cardview.widget.CardView>
@@ -102,16 +102,14 @@
                 android:id="@+id/favoriteBottle"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="230dp"
-                android:layout_marginLeft="110dp"
+                android:layout_marginTop="210dp"
+                android:layout_marginLeft="100dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_like_cardview"
                 android:tint="@color/green_apple" />
 
         </RelativeLayout>
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -337,8 +335,81 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/green_third_light"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <ToggleButton
+                        android:id="@+id/favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_like_cardview" />
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btnMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:drawableEnd="@drawable/heart_green_apple"
+
+                    android:background="@drawable/button_popup_bottle_out_round"
+                    android:outlineProvider="none"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="15dp"
+                    android:elevation="0dp"
+                    android:textColor="@color/green_very_light" />
+
+                <Button
+                    android:id="@+id/btnLike"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_popup_bottle_out_round"
+                    android:text="Like"
+                    android:outlineProvider="none"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="15dp"
+                    android:elevation="0dp"
+                    android:textColor="@color/green_very_light" />
+
+                <Button
+                    android:id="@+id/btnWishlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_popup_bottle_out_round"
+                    android:text="Wishlist"
+                    android:outlineProvider="none"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:textSize="15dp"
+                    android:elevation="0dp"
+                    android:textColor="@color/green_very_light" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="80dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -350,6 +421,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_popup_bottle_out_round"
                     android:text="Modifier"
+                    android:outlineProvider="none"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="15dp"
                     android:elevation="0dp"

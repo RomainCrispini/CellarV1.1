@@ -171,6 +171,7 @@
                         android:textSize="15dp"
                         android:background="@drawable/button_popup_bottle_out_round"
                         android:text="Oui"
+                        android:outlineProvider="none"
                         android:fontFamily="@font/yanone_kaffeesatz"
                         android:elevation="0dp"
                         android:textColor="@color/green_very_light" />
@@ -186,6 +187,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/button_popup_bottle_out_round"
                         android:text="Non"
+                        android:outlineProvider="none"
                         android:fontFamily="@font/yanone_kaffeesatz"
                         android:elevation="0dp"
                         android:textColor="@color/green_very_light" />

@@ -177,9 +177,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             @Override
             public void onClick(View v) {
 
-
-
-
                 // Pour set 1 dans la propriété favorite d'une bottle si elle n'est pas déjà set
                 String valueRandom = wineBottle.getRandom();
                 AccesLocal accesLocal = new AccesLocal(mContext);

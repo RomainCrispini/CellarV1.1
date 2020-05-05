@@ -423,7 +423,7 @@ public class AddActivity extends AppCompatActivity {
                 // On change la couleur du texte de la Snackbar
                 View snackbarView = snackbar.getView();
                 TextView tv = (TextView) snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
-                tv.setTextColor(Color.parseColor("#67828f"));
+                tv.setTextColor(Color.parseColor("#97C58D"));
                 // On change la couleur du background de la Snackbar
                 snackbarView.setBackgroundColor(Color.parseColor("#2F3B40"));
                 snackbar.setDuration(3000).show();

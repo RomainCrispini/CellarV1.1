@@ -29,6 +29,7 @@
                 android:layout_height="70dp"
                 android:layout_marginBottom="5dp"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:tint="@color/green_apple"
                 android:src="@drawable/popup_add_bottle" />
 
             <TextView
@@ -38,12 +39,11 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:fontFamily="@font/roboto"
-                android:text="Cette bouteille va être ajouté à votre cave !"
+                android:fontFamily="@font/yanone_kaffeesatz"
+                android:text="Cette bouteille va se joindre à votre cave !"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+                android:textColor="@color/green_apple"
+                android:textSize="18dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,21 +56,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Il en restera : "
-                    android:textColor="@color/white"
+                    android:text="Il y en aura : "
+                    android:textColor="@color/green_very_light"
                     android:fontFamily="@font/yanone_kaffeesatz"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="nb"
-                    android:textColor="@color/white"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/green_very_light"
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -81,7 +80,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_height="2dp" />
+                android:layout_height="1dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pastilleImageBottle"
@@ -142,48 +141,44 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Région"
-                    android:textColor="@color/white"
+                    android:textColor="@color/green_very_light"
                     android:textAlignment="center"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/domain"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Domaine"
-                    android:textColor="@color/white"
+                    android:textColor="@color/green_very_light"
                     android:textAlignment="center"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/appellation"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Appellation"
-                    android:textColor="@color/white"
+                    android:textColor="@color/green_very_light"
                     android:textAlignment="center"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/millesime"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Millésime"
-                    android:textColor="@color/white"
+                    android:textColor="@color/green_very_light"
                     android:textAlignment="center"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -192,29 +187,33 @@
 
                     <Button
                         android:id="@+id/btnAccept"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="15dp"
+                        android:fontFamily="@font/yanone_kaffeesatz"
                         android:layout_weight="1"
                         android:background="@drawable/button_popup_bottle_out_round"
                         android:text="Oui"
+                        android:textSize="15dp"
                         android:elevation="0dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/green_very_light" />
 
                     <Button
                         android:id="@+id/btnDenie"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="30dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/yanone_kaffeesatz"
                         android:background="@drawable/button_popup_bottle_out_round"
                         android:text="Non"
+                        android:textSize="15dp"
                         android:elevation="0dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/green_very_light" />
 
                 </LinearLayout>
 

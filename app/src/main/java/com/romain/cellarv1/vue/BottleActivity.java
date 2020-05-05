@@ -1,6 +1,9 @@
 package com.romain.cellarv1.vue;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +39,9 @@ public class BottleActivity extends AppCompatActivity {
     // Update Button
     private Button btnUpdateBottle;
 
+    // Initialisation du Popup
+    public Dialog popup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,27 +56,78 @@ public class BottleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String strRandom = getIntent().getStringExtra("random");
-                String strCountry = countryBottle.getText().toString();
-                String strRegion = regionBottle.getText().toString();
-                String strDomain = domainBottle.getText().toString();
-                String strAppellation = appellationBottle.getText().toString();
-                Integer intMillesime = Integer.parseInt(millesimeBottle.getText().toString());
-                Integer intApogee = Integer.parseInt(apogeeBottle.getText().toString());
-                Integer intEstimate = Integer.parseInt(estimateBottle.getText().toString());
-                AccesLocal accesLocal = new AccesLocal(getApplicationContext());
-                accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate);
+                Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
+                Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
 
+                ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
+                ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
+                TextView country = (TextView) popup.findViewById(R.id.country);
+                TextView region = (TextView) popup.findViewById(R.id.region);
+                TextView domain = (TextView) popup.findViewById(R.id.domain);
+                TextView appellation = (TextView) popup.findViewById(R.id.appellation);
 
+                switch(getIntent().getStringExtra("wineColor").trim()) {
+                    case "Rouge" :
+                        imageWineColor.setImageResource(R.drawable.red_wine_listview);
+                        break;
+                    case "Rose" :
+                        imageWineColor.setImageResource(R.drawable.rose_wine_listview);
+                        break;
+                    case "Blanc" :
+                        imageWineColor.setImageResource(R.drawable.white_wine_listview);
+                        break;
+                    case "Effervescent" :
+                        imageWineColor.setImageResource(R.drawable.champ_wine_listview);
+                        break;
+                }
 
-                Toast.makeText(getApplicationContext(), strRandom + "\n" + strRegion + "\n" + intMillesime, Toast.LENGTH_LONG).show();
+                String image = getIntent().getStringExtra("imageBottle");
+                Tools tools = new Tools();
+                imageBottle.setImageBitmap(tools.stringToBitmap(image));
+
+                switch(getIntent().getStringExtra("favorite")) {
+                    case "0" :
+                        favoriteBottle.setVisibility(View.INVISIBLE);
+                        break;
+                    case "1" :
+                        favoriteBottle.setVisibility(View.VISIBLE);
+                        break;
+                }
+
+                country.setText(countryBottle.getText());
+                region.setText(regionBottle.getText());
+                domain.setText(domainBottle.getText());
+                appellation.setText(appellationBottle.getText());
+
+                popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popup.show();
+
+                btnAccept.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String strRandom = getIntent().getStringExtra("random");
+                        String strCountry = countryBottle.getText().toString();
+                        String strRegion = regionBottle.getText().toString();
+                        String strDomain = domainBottle.getText().toString();
+                        String strAppellation = appellationBottle.getText().toString();
+                        Integer intMillesime = Integer.parseInt(millesimeBottle.getText().toString());
+                        Integer intApogee = Integer.parseInt(apogeeBottle.getText().toString());
+                        Integer intEstimate = Integer.parseInt(estimateBottle.getText().toString());
+                        AccesLocal accesLocal = new AccesLocal(getApplicationContext());
+                        accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate);
+                        popup.dismiss();
+                    }
+                });
+
+                btnDenie.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popup.dismiss();
+                    }
+                });
             }
         });
-
-
-
-
-
 
 
     }
@@ -81,6 +139,12 @@ public class BottleActivity extends AppCompatActivity {
         getFabWineMenuValue();
         initWineBottle();
         btnUpdateBottle = (Button) findViewById(R.id.btnUpdateBottle);
+
+        popup = new Dialog(this);
+        popup.setContentView(R.layout.popup_update_bottle);
+
+
+
 
     }
 
@@ -133,12 +197,6 @@ public class BottleActivity extends AppCompatActivity {
         millesimeBottle.setText(getIntent().getStringExtra("millesime"));
         apogeeBottle.setText(getIntent().getStringExtra("apogee"));
         estimateBottle.setText(getIntent().getStringExtra("estimate"));
-    }
-
-    private void updateWineBottle(String random, String country, String region, String domain, String appellation, Integer millesime, Integer apogee, Integer estimate) {
-
-
-
     }
 
     private void initFabWineMenu() {

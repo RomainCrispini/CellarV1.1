@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +41,8 @@ public class BottleActivity extends AppCompatActivity {
     private Button btnUpdateBottle;
 
     // Initialisation du Popup
-    public Dialog popup;
+    private Dialog popup;
+
 
 
     @Override
@@ -139,6 +141,10 @@ public class BottleActivity extends AppCompatActivity {
         getFabWineMenuValue();
         initWineBottle();
         btnUpdateBottle = (Button) findViewById(R.id.btnUpdateBottle);
+
+        FrameLayout menuBis = (FrameLayout) findViewById(R.id.menuBis);
+        menuBis.setTranslationY(300f);
+        menuBis.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
 
         popup = new Dialog(this);
         popup.setContentView(R.layout.popup_update_bottle);

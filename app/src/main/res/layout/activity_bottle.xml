@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@drawable/dark_gradient_background"
+    android:orientation="vertical"
     tools:context=".vue.BottleActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="80dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/curvedBottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +31,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cette bouteille a rejoint la cave le : "
                 android:fontFamily="@font/yanone_kaffeesatz"
+                android:text="Cette bouteille a rejoint la cave le : "
                 android:textColor="@color/green_very_light"
                 android:textSize="18dp" />
 
@@ -40,8 +40,8 @@
                 android:id="@+id/number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="date"
                 android:fontFamily="@font/yanone_kaffeesatz"
+                android:text="date"
                 android:textColor="@color/green_very_light"
                 android:textSize="15dp" />
 
@@ -50,8 +50,8 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pastilleImageBottle"
@@ -89,11 +89,11 @@
 
                     <ImageView
                         android:id="@+id/imageBottle"
-                        android:transitionName="imageTransition"
                         android:layout_width="226dp"
                         android:layout_height="226dp"
                         android:layout_gravity="center"
-                        android:elevation="0dp" />
+                        android:elevation="0dp"
+                        android:transitionName="imageTransition" />
                 </androidx.cardview.widget.CardView>
 
             </androidx.cardview.widget.CardView>
@@ -102,8 +102,8 @@
                 android:id="@+id/favoriteBottle"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="210dp"
                 android:layout_marginLeft="100dp"
+                android:layout_marginTop="210dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_like_cardview"
@@ -120,28 +120,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:layout_marginBottom="5dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Pays : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
-                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/countryBottle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:inputType="textNoSuggestions"
-                    android:text="Pays"
                     android:maxLines="1"
-                    android:background="@android:color/transparent"
+                    android:text="Pays"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -151,28 +151,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:layout_marginBottom="5dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Région : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
-                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/regionBottle"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:inputType="textNoSuggestions"
-                    android:text="Région"
                     android:maxLines="1"
-                    android:background="@android:color/transparent"
+                    android:text="Région"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -182,17 +182,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:layout_marginBottom="5dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Domaine : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
-                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="16dp" />
 
                 <EditText
@@ -200,10 +200,10 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:inputType="textNoSuggestions"
                     android:maxLines="1"
-                    android:background="@android:color/transparent"
                     android:text="Domaine"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp" />
@@ -213,17 +213,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:layout_marginBottom="5dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Appellation : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
-                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="16dp" />
 
                 <EditText
@@ -231,10 +231,10 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:inputType="textNoSuggestions"
                     android:maxLines="1"
-                    android:background="@android:color/transparent"
                     android:text="Appellation"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp" />
@@ -244,17 +244,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:layout_marginBottom="5dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Millésime : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
-                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="16dp" />
 
                 <EditText
@@ -262,10 +262,10 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/yanone_kaffeesatz"
-                    android:maxLines="1"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:inputType="textNoSuggestions|number"
+                    android:maxLines="1"
                     android:text="Millésime"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp" />
@@ -275,17 +275,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:layout_marginBottom="5dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Apogée : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
-                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="16dp" />
 
                 <EditText
@@ -293,10 +293,10 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:inputType="textNoSuggestions|number"
                     android:maxLines="1"
-                    android:background="@android:color/transparent"
                     android:text="Apogée"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp" />
@@ -306,17 +306,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
                 android:layout_marginBottom="5dp"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Estimation : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
-                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:textSize="16dp" />
 
                 <EditText
@@ -324,10 +324,10 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/yanone_kaffeesatz"
                     android:inputType="textNoSuggestions|number"
                     android:maxLines="1"
-                    android:background="@android:color/transparent"
                     android:text="Estimation"
                     android:textColor="@color/green_very_light"
                     android:textSize="18dp" />
@@ -335,83 +335,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:layout_gravity="center"
-                    app:cardBackgroundColor="@color/green_third_light"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="0dp">
-
-                    <ToggleButton
-                        android:id="@+id/favorite"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/button_like_cardview" />
-
-                </androidx.cardview.widget.CardView>
-
-                <Button
-                    android:id="@+id/btnMap"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:drawableEnd="@drawable/heart_green_apple"
-
-                    android:background="@drawable/button_popup_bottle_out_round"
-                    android:outlineProvider="none"
-                    android:fontFamily="@font/yanone_kaffeesatz"
-                    android:textSize="15dp"
-                    android:elevation="0dp"
-                    android:textColor="@color/green_very_light" />
-
-                <Button
-                    android:id="@+id/btnLike"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_popup_bottle_out_round"
-                    android:text="Like"
-                    android:outlineProvider="none"
-                    android:fontFamily="@font/yanone_kaffeesatz"
-                    android:textSize="15dp"
-                    android:elevation="0dp"
-                    android:textColor="@color/green_very_light" />
-
-                <Button
-                    android:id="@+id/btnWishlist"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_popup_bottle_out_round"
-                    android:text="Wishlist"
-                    android:outlineProvider="none"
-                    android:fontFamily="@font/yanone_kaffeesatz"
-                    android:textSize="15dp"
-                    android:elevation="0dp"
-                    android:textColor="@color/green_very_light" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:layout_width="80dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -420,12 +347,12 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_popup_bottle_out_round"
-                    android:text="Modifier"
-                    android:outlineProvider="none"
-                    android:fontFamily="@font/yanone_kaffeesatz"
-                    android:textSize="15dp"
                     android:elevation="0dp"
-                    android:textColor="@color/green_very_light" />
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:outlineProvider="none"
+                    android:text="Modifier"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -433,55 +360,139 @@
 
     </LinearLayout>
 
+    <FrameLayout
+        android:id="@+id/menuBis"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@color/green_middle_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    app:cardBackgroundColor="@color/transparent"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/yanone_kaffeesatz"
+                        android:text="Retour\nAccueil"
+                        android:textColor="@color/green_middle_light"
+                        android:textSize="13dp" />
+
+                    <ImageButton
+                        android:id="@+id/sortColor"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="end"
+                        android:backgroundTint="@color/transparent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icone_menubis_map"
+                        android:tint="@color/green_middle_light" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                    <ToggleButton
+                        android:id="@+id/btnFavorite"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_gravity="top"
+                        android:background="@drawable/button_like_activity_bottle" />
+
+                    <ToggleButton
+                        android:id="@+id/btnWishlist"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_gravity="top"
+                        android:background="@drawable/button_wish_activity_bottle" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:gravity="bottom|center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabRed"
-            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/red_wine"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/green_very_dark"
             android:elevation="0dp"
+            android:src="@drawable/red_wine"
             app:fabCustomSize="40dp"
             app:maxImageSize="35dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabRose"
-            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/rose_wine"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/green_very_dark"
             android:elevation="0dp"
+            android:src="@drawable/rose_wine"
             app:fabCustomSize="40dp"
             app:maxImageSize="35dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabWhite"
-            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/white_wine"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/green_very_dark"
             android:elevation="0dp"
+            android:src="@drawable/white_wine"
             app:fabCustomSize="40dp"
             app:maxImageSize="35dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabChamp"
-            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/champ_wine"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/green_very_dark"
             android:elevation="0dp"
+            android:src="@drawable/champ_wine"
             app:fabCustomSize="40dp"
             app:maxImageSize="35dp" />
 
@@ -489,11 +500,6 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabWineMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/curvedBottomNavigationView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:maxImageSize="31dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -503,7 +509,12 @@
         android:tint="@color/green_dark"
         app:borderWidth="0.5dp"
         app:elevation="10dp"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/curvedBottomNavigationView"
+        app:maxImageSize="31dp" />
 
     <com.romain.cellarv1.outils.CurvedBottomNavigationView
         android:id="@+id/curvedBottomNavigationView"
@@ -512,8 +523,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="false"
         android:layout_centerHorizontal="true"
-        app:itemIconSize="31dp"
         android:paddingTop="20dp"
+        app:itemIconSize="31dp"
+        app:itemIconTint="@drawable/selector_curved_bottom_nav_view"
         app:labelVisibilityMode="unlabeled"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -521,11 +533,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1"
-        app:itemIconTint="@drawable/selector_curved_bottom_nav_view"
-        app:menu="@menu/bottom_nav_menu">
-    </com.romain.cellarv1.outils.CurvedBottomNavigationView>
-
-
-
+        app:menu="@menu/bottom_nav_menu"></com.romain.cellarv1.outils.CurvedBottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

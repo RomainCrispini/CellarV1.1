@@ -27,15 +27,19 @@ import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -102,6 +106,13 @@ public class AddActivity extends AppCompatActivity {
     // Déclaration de la popup
     private Dialog popup;
 
+    // Buttons MenuBis + Interpolator
+    private OvershootInterpolator interpolator = new OvershootInterpolator();
+    private ToggleButton btnFavorite;
+    private ToggleButton btnWishlist;
+    private ImageView btnBackMap1;
+    private ImageView btnBackMap2;
+
 
 
     @Override
@@ -144,6 +155,15 @@ public class AddActivity extends AppCompatActivity {
         popup = new Dialog(this);
         popup.setContentView(R.layout.popup_add_bottle);
         popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        // Je n'ai pas trouvé d'autres moyens pour rendre toute la surface clickable
+        btnBackMap1 = (ImageView) findViewById(R.id.btnBackMap1);
+        btnBackMap2 = (ImageView) findViewById(R.id.btnBackMap2);
+
+        // Instanciation du menuBis coulissant
+        FrameLayout menuBis = (FrameLayout) findViewById(R.id.menuBis);
+        menuBis.setTranslationY(300f);
+        menuBis.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
 
         addWineBottle();
         recoverWineBottle();

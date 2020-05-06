@@ -77,6 +77,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         public TextView appellation;
         public TextView domain;
         public TextView year;
+        public TextView apogee;
 
         public CardView cardView;
         public CardView pastilleImageBottle;
@@ -98,6 +99,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             appellation = itemView.findViewById(R.id.appellationListView);
             domain = itemView.findViewById(R.id.domainListView);
             year = itemView.findViewById(R.id.yearListView);
+            apogee = itemView.findViewById(R.id.apogeeListView);
 
             cardView = itemView.findViewById(R.id.cardView);
 
@@ -135,9 +137,12 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             public void onClick(View v) {
 
                 // TODO PROBLEME DE DATE
+                /*
                 Date date = wineBottle.getDateAddNewBottle();
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
                 String strDate = dateFormat.format(date);
+
+                 */
 
                 Intent intent = new Intent(mContext, BottleActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
@@ -151,6 +156,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 intent.putExtra("millesime", wineBottle.getYear().toString());
                 intent.putExtra("apogee", wineBottle.getApogee().toString());
                 intent.putExtra("estimate", wineBottle.getEstimate().toString());
+                intent.putExtra("number", wineBottle.getNumber().toString());
                 intent.putExtra("favorite", wineBottle.getFavorite());
                 intent.putExtra("wish", wineBottle.getWish());
 
@@ -301,6 +307,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         holder.appellation.setText(currentItem.getAppellation());
         holder.domain.setText(currentItem.getDomain());
         holder.year.setText(currentItem.getYear().toString());
+        holder.apogee.setText(currentItem.getApogee().toString());
 
         // On set la couleur du vin sous la pastille de l'image de l'étiquette
         switch(currentItem.getWineColor().trim()) {

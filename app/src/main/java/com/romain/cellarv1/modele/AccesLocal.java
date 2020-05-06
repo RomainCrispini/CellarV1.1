@@ -70,7 +70,7 @@ public class AccesLocal {
         bd.close();
     }
 
-    public void updateBottle(String random, String country, String region, String domain, String appellation, int year, int apogee, int estimate, String favorite, String wish) {
+    public void updateBottle(String random, String country, String region, String domain, String appellation, int year, int apogee, int number, int estimate, String favorite, String wish) {
         bd = accesBD.getWritableDatabase();
         ContentValues args = new ContentValues();
         args.put("country", country);
@@ -79,6 +79,7 @@ public class AccesLocal {
         args.put("appellation", appellation);
         args.put("year", year);
         args.put("apogee", apogee);
+        args.put("number", number);
         args.put("estimate", estimate);
         args.put("favorite", favorite);
         args.put("wish", wish);

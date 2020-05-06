@@ -1,5 +1,6 @@
 package com.romain.cellarv1.vue;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -20,6 +22,7 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.romain.cellarv1.R;
@@ -36,16 +39,22 @@ public class BottleActivity extends AppCompatActivity {
     private Boolean isFABWineMenuOpen = false;
 
     // Initialisation des champs texte et des ImageView
-    private EditText countryBottle, regionBottle, domainBottle, appellationBottle, millesimeBottle, apogeeBottle, estimateBottle;
+    private EditText countryBottle, regionBottle, domainBottle, appellationBottle;
+    private EditText millesimeBottle, apogeeBottle, estimateBottle, numberBottle;
     private ImageView imageBottle, imageWineColor;
 
-    // Buttons
+    // Button Update
     private Button btnUpdateBottle;
+
+    // Buttons MenuBis
     private ToggleButton btnFavorite;
     private ToggleButton btnWishlist;
+    private ImageView btnBackMap1;
+    private ImageView btnBackMap2;
 
     // Initialisation du Popup
     private Dialog popup;
+
 
 
     @Override
@@ -55,6 +64,18 @@ public class BottleActivity extends AppCompatActivity {
         init();
 
 
+        btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+        btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
 
 
         btnUpdateBottle.setOnClickListener(new Button.OnClickListener() {
@@ -124,6 +145,7 @@ public class BottleActivity extends AppCompatActivity {
                         String strAppellation = appellationBottle.getText().toString();
                         Integer intMillesime = Integer.parseInt(millesimeBottle.getText().toString());
                         Integer intApogee = Integer.parseInt(apogeeBottle.getText().toString());
+                        Integer intNumber = Integer.parseInt(numberBottle.getText().toString());
                         Integer intEstimate = Integer.parseInt(estimateBottle.getText().toString());
 
                         String strFavorite;
@@ -141,7 +163,7 @@ public class BottleActivity extends AppCompatActivity {
                         }
 
                         AccesLocal accesLocal = new AccesLocal(getApplicationContext());
-                        accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate, strFavorite, strWish);
+                        accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intNumber, intEstimate, strFavorite, strWish);
                         popup.dismiss();
                     }
                 });
@@ -165,6 +187,10 @@ public class BottleActivity extends AppCompatActivity {
         getFabWineMenuValue();
         initWineBottle();
         btnUpdateBottle = (Button) findViewById(R.id.btnUpdateBottle);
+
+        // Je n'ai pas trouvé d'autres moyens pour rendre toute la surface clickable
+        btnBackMap1 = (ImageView) findViewById(R.id.btnBackMap1);
+        btnBackMap2 = (ImageView) findViewById(R.id.btnBackMap2);
 
         FrameLayout menuBis = (FrameLayout) findViewById(R.id.menuBis);
         menuBis.setTranslationY(300f);
@@ -192,7 +218,7 @@ public class BottleActivity extends AppCompatActivity {
         millesimeBottle = (EditText) findViewById(R.id.millesimeBottle);
         apogeeBottle = (EditText) findViewById(R.id.apogeeBottle);
         estimateBottle = (EditText) findViewById(R.id.estimateBottle);
-
+        numberBottle = (EditText) findViewById(R.id.numberBottle);
 
         switch(getIntent().getStringExtra("wineColor").trim()) {
             case "Rouge" :
@@ -228,7 +254,6 @@ public class BottleActivity extends AppCompatActivity {
         btnWishlist.setText(null);
         btnWishlist.setTextOn(null);
         btnWishlist.setTextOff(null);
-
         switch(getIntent().getStringExtra("wish")) {
             case "0" :
                 btnWishlist.setChecked(false);
@@ -245,6 +270,7 @@ public class BottleActivity extends AppCompatActivity {
         millesimeBottle.setText(getIntent().getStringExtra("millesime"));
         apogeeBottle.setText(getIntent().getStringExtra("apogee"));
         estimateBottle.setText(getIntent().getStringExtra("estimate"));
+        numberBottle.setText(getIntent().getStringExtra("number"));
     }
 
     private void initFabWineMenu() {

@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="10dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pastilleImageBottle"
@@ -303,6 +303,37 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/yanone_kaffeesatz"
+                    android:text="Quantité : "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/green_light"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/numberBottle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/yanone_kaffeesatz"
+                    android:inputType="textNoSuggestions|number"
+                    android:maxLines="1"
+                    android:text="Quantité"
+                    android:textColor="@color/green_very_light"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yanone_kaffeesatz"
                     android:text="Estimation : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
@@ -327,7 +358,6 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -352,7 +382,7 @@
     <FrameLayout
         android:id="@+id/menuBis"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="108dp"
         android:background="@color/green_middle_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -374,30 +404,34 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    app:cardBackgroundColor="@color/transparent"
-                    app:cardCornerRadius="15dp"
+
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="30dp"
+                    app:cardBackgroundColor="@color/green_very_dark"
+                    app:cardCornerRadius="20dp"
                     app:cardElevation="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@font/yanone_kaffeesatz"
-                        android:text="Retour\nAccueil"
-                        android:textColor="@color/green_middle_light"
-                        android:textSize="13dp" />
+                    <ImageButton
+                        android:id="@+id/btnBackMap1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:backgroundTint="@color/transparent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icone_menubis_back"
+                        android:tint="@color/green_third_light" />
 
                     <ImageButton
-                        android:id="@+id/sortColor"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_gravity="end"
+                        android:id="@+id/btnBackMap2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end|center_vertical"
                         android:backgroundTint="@color/transparent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/icone_menubis_map"
-                        android:tint="@color/green_middle_light" />
+                        android:tint="@color/green_third_light" />
 
                 </androidx.cardview.widget.CardView>
 

@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="20dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pastilleImageBottle"
@@ -98,17 +98,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:id="@+id/favoriteBottle"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="210dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/icon_like_cardview"
-                android:tint="@color/green_apple" />
-
         </RelativeLayout>
 
         <LinearLayout
@@ -135,7 +124,7 @@
 
                 <EditText
                     android:id="@+id/countryBottle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/yanone_kaffeesatz"
@@ -374,7 +363,7 @@
             android:layout_height="55dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="center_vertical"
+            android:gravity="top|center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -418,6 +407,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 

@@ -152,6 +152,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 intent.putExtra("apogee", wineBottle.getApogee().toString());
                 intent.putExtra("estimate", wineBottle.getEstimate().toString());
                 intent.putExtra("favorite", wineBottle.getFavorite());
+                intent.putExtra("wish", wineBottle.getWish());
 
                 intent.putExtra("random", wineBottle.getRandom());
 

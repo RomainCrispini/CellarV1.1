@@ -21,6 +21,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
             + "estimate INTEGER,"
             + "image TEXT,"
             + "favorite TEXT,"
+            + "wish TEXT,"
             + "random TEXT);";
 
 

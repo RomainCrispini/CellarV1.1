@@ -19,10 +19,11 @@ public class WineBottle implements Serializable {
     private Integer estimate;
     private String image;
     private String favorite;
+    private String wish;
     private String random;
 
     // Constructeur
-    public WineBottle(Date dateAddNewBottle, String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String random) {
+    public WineBottle(Date dateAddNewBottle, String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String wish, String random) {
         this.dateAddNewBottle = dateAddNewBottle;
         this.country = country;
         this.region = region;
@@ -35,6 +36,7 @@ public class WineBottle implements Serializable {
         this.estimate = estimate;
         this.image = image;
         this.favorite = favorite;
+        this.wish = wish;
         this.random = random;
     }
 
@@ -133,6 +135,14 @@ public class WineBottle implements Serializable {
 
     public void setFavorite(String favorite) {
         this.favorite = favorite;
+    }
+
+    public String getWish() {
+        return wish;
+    }
+
+    public void setWish(String wish) {
+        this.wish = wish;
     }
 
     public String getRandom() {

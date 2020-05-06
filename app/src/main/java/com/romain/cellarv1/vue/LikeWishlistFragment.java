@@ -3,12 +3,20 @@ package com.romain.cellarv1.vue;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 
 import com.romain.cellarv1.R;
+import com.romain.cellarv1.modele.AccesLocal;
+import com.romain.cellarv1.modele.WineBottle;
+import com.romain.cellarv1.outils.MyAdapterCellarRecyclerView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,16 @@ import com.romain.cellarv1.R;
  * create an instance of this fragment.
  */
 public class LikeWishlistFragment extends Fragment {
+
+    private AccesLocal accesLocal;
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    private OvershootInterpolator interpolator = new OvershootInterpolator();
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,7 +77,27 @@ public class LikeWishlistFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_like_wishlist, container, false);
+
+        View likeWishlistFragment = inflater.inflate(R.layout.fragment_like_wishlist, container, false);
+        mRecyclerView = (RecyclerView) likeWishlistFragment.findViewById(R.id.wishlistRecyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
+
+        loadWishWineBottleInRecycleView();
+
+        return likeWishlistFragment;
+    }
+
+    private void loadWishWineBottleInRecycleView() {
+
+        accesLocal = new AccesLocal(getContext());
+        ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleWishlist();
+
+        mRecyclerView.setHasFixedSize(true);
+
+        mAdapter = new MyAdapterCellarRecyclerView(getContext(), wineBottleArrayList);
+
+        mRecyclerView.setAdapter(mAdapter);
+
+
     }
 }

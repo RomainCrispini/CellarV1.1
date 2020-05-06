@@ -11,9 +11,11 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,14 +37,15 @@ public class BottleActivity extends AppCompatActivity {
 
     // Initialisation des champs texte et des ImageView
     private EditText countryBottle, regionBottle, domainBottle, appellationBottle, millesimeBottle, apogeeBottle, estimateBottle;
-    private ImageView favoriteBottle, imageBottle, imageWineColor;
+    private ImageView imageBottle, imageWineColor;
 
-    // Update Button
+    // Buttons
     private Button btnUpdateBottle;
+    private ToggleButton btnFavorite;
+    private ToggleButton btnWishlist;
 
     // Initialisation du Popup
     private Dialog popup;
-
 
 
     @Override
@@ -60,6 +63,9 @@ public class BottleActivity extends AppCompatActivity {
 
                 Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
                 Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
+
+                ImageView imageFavorite = (ImageView) popup.findViewById(R.id.imageFavorite);
+                ImageView imageWish = (ImageView) popup.findViewById(R.id.imageWish);
 
                 ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
                 ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
@@ -87,13 +93,16 @@ public class BottleActivity extends AppCompatActivity {
                 Tools tools = new Tools();
                 imageBottle.setImageBitmap(tools.stringToBitmap(image));
 
-                switch(getIntent().getStringExtra("favorite")) {
-                    case "0" :
-                        favoriteBottle.setVisibility(View.INVISIBLE);
-                        break;
-                    case "1" :
-                        favoriteBottle.setVisibility(View.VISIBLE);
-                        break;
+                if(btnFavorite.isChecked()) {
+                    imageFavorite.setVisibility(View.VISIBLE);
+                } else {
+                    imageFavorite.setVisibility(View.INVISIBLE);
+                }
+
+                if(btnWishlist.isChecked()) {
+                    imageWish.setVisibility(View.VISIBLE);
+                } else {
+                    imageWish.setVisibility(View.INVISIBLE);
                 }
 
                 region.setText(regionBottle.getText());
@@ -116,8 +125,23 @@ public class BottleActivity extends AppCompatActivity {
                         Integer intMillesime = Integer.parseInt(millesimeBottle.getText().toString());
                         Integer intApogee = Integer.parseInt(apogeeBottle.getText().toString());
                         Integer intEstimate = Integer.parseInt(estimateBottle.getText().toString());
+
+                        String strFavorite;
+                        if(btnFavorite.isChecked()) {
+                            strFavorite = "1";
+                        } else {
+                            strFavorite = "0";
+                        }
+
+                        String strWish;
+                        if(btnWishlist.isChecked()) {
+                            strWish = "1";
+                        } else {
+                            strWish = "0";
+                        }
+
                         AccesLocal accesLocal = new AccesLocal(getApplicationContext());
-                        accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate);
+                        accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intEstimate, strFavorite, strWish);
                         popup.dismiss();
                     }
                 });
@@ -155,7 +179,9 @@ public class BottleActivity extends AppCompatActivity {
     }
 
     private void initWineBottle() {
-        favoriteBottle = (ImageView) findViewById(R.id.favoriteBottle);
+        btnFavorite = (ToggleButton) findViewById(R.id.btnFavorite);
+        btnWishlist = (ToggleButton) findViewById(R.id.btnWishlist);
+
         imageBottle = (ImageView) findViewById(R.id.imageBottle);
         imageWineColor = (ImageView) findViewById(R.id.imageWineColor);
 
@@ -187,12 +213,28 @@ public class BottleActivity extends AppCompatActivity {
         Tools tools = new Tools();
         imageBottle.setImageBitmap(tools.stringToBitmap(image));
 
+        btnFavorite.setText(null);
+        btnFavorite.setTextOn(null);
+        btnFavorite.setTextOff(null);
         switch(getIntent().getStringExtra("favorite")) {
             case "0" :
-                favoriteBottle.setVisibility(View.INVISIBLE);
+                btnFavorite.setChecked(false);
                 break;
             case "1" :
-                favoriteBottle.setVisibility(View.VISIBLE);
+                btnFavorite.setChecked(true);
+                break;
+        }
+
+        btnWishlist.setText(null);
+        btnWishlist.setTextOn(null);
+        btnWishlist.setTextOff(null);
+
+        switch(getIntent().getStringExtra("wish")) {
+            case "0" :
+                btnWishlist.setChecked(false);
+                break;
+            case "1" :
+                btnWishlist.setChecked(true);
                 break;
         }
 

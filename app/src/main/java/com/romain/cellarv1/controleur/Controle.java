@@ -55,10 +55,11 @@ public class Controle {
      * @param estimate
      * @param image
      * @param favorite
+     * @param wish
      * @param random
      */
-    public void createWineBottle(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String random, Context context) {
-        wineBottle = new WineBottle(new Date(), country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
+    public void createWineBottle(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String wish, String random, Context context) {
+        wineBottle = new WineBottle(new Date(), country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
         //Serializer.serialize(serializableFile, wineBottle, context);
         accesLocal.add(wineBottle);
     }
@@ -161,6 +162,14 @@ public class Controle {
             return null;
         } else {
             return wineBottle.getFavorite();
+        }
+    }
+
+    public String getWish() {
+        if(wineBottle == null) {
+            return null;
+        } else {
+            return wineBottle.getWish();
         }
     }
 

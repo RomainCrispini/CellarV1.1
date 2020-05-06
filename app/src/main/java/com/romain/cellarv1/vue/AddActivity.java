@@ -410,6 +410,7 @@ public class AddActivity extends AppCompatActivity {
                         int estimate = 0;
                         String image = "";
                         String favorite = "0";
+                        String wish = "0";
                         String random = "";
 
                         Tools tool = new Tools();
@@ -449,7 +450,7 @@ public class AddActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        afficheResult(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random);
+                        afficheResult(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
 
                         popup.dismiss();
                     }
@@ -467,8 +468,8 @@ public class AddActivity extends AppCompatActivity {
 
     }
 
-    private void afficheResult(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String random) {
-        this.controle.createWineBottle(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, random,  this);
+    private void afficheResult(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String wish, String random) {
+        this.controle.createWineBottle(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random,  this);
     }
 
     /**

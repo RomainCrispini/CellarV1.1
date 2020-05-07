@@ -89,6 +89,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
         public Dialog popup;
 
+        public CurvedBottomNavigationView curvedBottomNavigationView;
+
 
         @SuppressLint("ResourceType")
         public CellarViewHolder(@NonNull View itemView) {
@@ -110,6 +112,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             favorite = itemView.findViewById(R.id.favorite);
             delete = itemView.findViewById(R.id.delete);
 
+            CurvedBottomNavigationView curvedBottomNavigationView = itemView.findViewById(R.id.curvedBottomNavigationView);
+
         }
     }
 
@@ -130,8 +134,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
     public void onBindViewHolder(@NonNull final CellarViewHolder holder, final int position) {
 
         final WineBottle wineBottle = wineBottleArrayList.get(position);
-        
-        
+
+
         holder.cardView.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,6 +180,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             }
         });
 
+
         holder.favorite.setText(null);
         holder.favorite.setTextOn(null);
         holder.favorite.setTextOff(null);
@@ -187,8 +192,18 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 String valueRandom = wineBottle.getRandom();
                 AccesLocal accesLocal = new AccesLocal(mContext);
 
+
+
+
                 if (wineBottle.getFavorite().matches("0")) {
                     accesLocal.addLikeToABottle(valueRandom);
+
+                    CellarActivity cellarActivity = new CellarActivity();
+
+                    CurvedBottomNavigationView curvedBottomNavigationView = new CurvedBottomNavigationView(cellarActivity);
+
+                    curvedBottomNavigationView.getOrCreateBadge(R.id.like).setBackgroundColor(Color.RED);
+
 
                     //MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(mContext, wineBottleArrayList);
                     //myAdapterCellarRecyclerView.notifyDataSetChanged();
@@ -196,6 +211,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 //} else if(wineBottle.getFavorite().matches("1") && holder.favorite.getDrawable().getColorFilter().equals(Color.parseColor("#97C58D"))) {
                 } else if(wineBottle.getFavorite().matches("1")) {
                     accesLocal.removeLikeToABottle(valueRandom);
+
                 }
 
 

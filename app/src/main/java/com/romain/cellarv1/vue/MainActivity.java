@@ -215,8 +215,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void initCurvedNavigationView() {
 
         CurvedBottomNavigationView curvedBottomNavigationView = findViewById(R.id.curvedBottomNavigationView);
-        //curvedBottomNavigationView.getOrCreateBadge(R.id.like).setBackgroundColor(Color.BLUE);
-        curvedBottomNavigationView.getOrCreateBadge(R.id.like).setBackgroundColor(Color.RED);
         curvedBottomNavigationView.setOnNavigationItemSelectedListener(new CurvedBottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

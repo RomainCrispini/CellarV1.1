@@ -12,7 +12,7 @@
       <quote-all-values value="false" />
       <value-separator value="" />
       <file-name value="bottle.xls" />
-      <file-location value="$PROJECT_DIR$/../.." />
+      <file-location value="$USER_HOME$" />
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="d13f2c07-255f-4319-ba87-09e735fb4e26">
-        <schema name="" object-types="table, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d13f2c07-255f-4319-ba87-09e735fb4e26">
@@ -82,7 +78,7 @@
           <database value="database" />
           <files>
             <file path="sqlite.db" schema="main" />
-            <file path="$PROJECT_DIR$/../../cellar.sqlite" schema="" />
+            <file path="$USER_HOME$/cellar.sqlite" schema="" />
           </files>
           <type value="NONE" />
           <user value="" />

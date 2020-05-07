@@ -90,7 +90,7 @@ public class LikeWishlistFragment extends Fragment {
     private void loadWishWineBottleInRecycleView() {
 
         accesLocal = new AccesLocal(getContext());
-        ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleWishlist();
+        ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWishWineBottleList();
 
         mRecyclerView.setHasFixedSize(true);
 

@@ -159,7 +159,7 @@ public class AccesLocal {
         return wineBottleList;
     }
 
-    public List<WineBottle> recoverWineBottleWishlist() {
+    public List<WineBottle> recoverWishWineBottleList() {
         List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
         bd = accesBD.getReadableDatabase();
         WineBottle wineBottle;
@@ -283,14 +283,259 @@ public class AccesLocal {
         return wineBottleList;
     }
 
-    /**
-     * TODO SORT APOGEE WINEBOTTLELIST
-     */
     public List<WineBottle> sortApogeeWineBottleList() {
         List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
         bd = accesBD.getReadableDatabase();
         WineBottle wineBottle;
-        String requete = "select * from bottle order by country desc";
+        String requete = "select * from bottle order by apogee desc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortMapLikeBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where favorite = '1' order by region asc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortColorLikeBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where favorite = '1' order by winecolor desc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortYearLikeBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where favorite = '1' order by year asc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortApogeeLikeBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where favorite = '1' order by apogee desc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortMapWishBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where wish = '1' order by region asc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortColorWishBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where wish = '1' order by winecolor desc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortYearWishBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where wish = '1' order by year asc";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
+    public List<WineBottle> sortApogeeWishBottleList() {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where wish = '1' order by apogee desc";
         Cursor cursor = bd.rawQuery(requete, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {

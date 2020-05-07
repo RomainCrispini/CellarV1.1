@@ -2,6 +2,7 @@ package com.romain.cellarv1.vue;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,14 +14,19 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.romain.cellarv1.R;
 import com.romain.cellarv1.modele.AccesLocal;
+import com.romain.cellarv1.modele.WineBottle;
 import com.romain.cellarv1.outils.CellarPageAdapter;
 import com.romain.cellarv1.outils.CellarTabsTransition;
 import com.romain.cellarv1.outils.CurvedBottomNavigationView;
+import com.romain.cellarv1.outils.MyAdapterCellarRecyclerView;
+
+import java.util.ArrayList;
 
 
 public class LikeActivity extends AppCompatActivity {
@@ -233,15 +239,16 @@ public class LikeActivity extends AppCompatActivity {
 
         final ImageButton sortMap = (ImageButton) findViewById(R.id.sortMap);
         final ImageButton sortColor = (ImageButton) findViewById(R.id.sortColor);
+        final ImageView sortRecover = (ImageView) findViewById(R.id.sortRecover);
         final ImageButton sortYear = (ImageButton) findViewById(R.id.sortYear);
         final ImageButton sortApogee = (ImageButton) findViewById(R.id.sortApogee);
-        final ImageView sortRecover = (ImageView) findViewById(R.id.sortRecover);
 
 
         sortMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadSortMapWineBottleInListView();
+                loadSortMapLikeBottleInListView();
+                loadSortMapWishBottleInListView();
                 sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
                 sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
@@ -253,7 +260,8 @@ public class LikeActivity extends AppCompatActivity {
         sortColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadSortColorWineBottleInListView();
+                loadSortColorLikeBottleInListView();
+                loadSortColorWishBottleInListView();
                 sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
                 sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
@@ -265,7 +273,8 @@ public class LikeActivity extends AppCompatActivity {
         sortRecover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadRecoverWineBottleInListView();
+                loadLikeBottleInListView();
+                loadWishBottleInListView();
                 sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
@@ -277,7 +286,8 @@ public class LikeActivity extends AppCompatActivity {
         sortYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadSortYearWineBottleInListView();
+                loadSortYearLikeBottleInListView();
+                loadSortYearWishBottleInListView();
                 sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
@@ -289,7 +299,8 @@ public class LikeActivity extends AppCompatActivity {
         sortApogee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadSortApogeeWineBottleInListView();
+                loadSortApogeeLikeBottleInListView();
+                loadSortApogeeWishBottleInListView();
                 sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
                 sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
@@ -297,6 +308,116 @@ public class LikeActivity extends AppCompatActivity {
                 sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
             }
         });
+    }
+
+    private void loadSortMapLikeBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortMapLikeBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadSortColorLikeBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortColorLikeBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadLikeBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.recoverLikeWineBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadSortYearLikeBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortYearLikeBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadSortApogeeLikeBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortApogeeLikeBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadSortMapWishBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortMapWishBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadSortColorWishBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortColorWishBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadWishBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.recoverWishWineBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadSortYearWishBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortYearWishBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
+    }
+
+    private void loadSortApogeeWishBottleInListView() {
+
+        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortApogeeWishBottleList();
+
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
+        myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
 
     private void initCurvedNavigationView() {

@@ -14,8 +14,6 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.romain.cellarv1.R;
@@ -317,12 +315,11 @@ public class CellarActivity extends AppCompatActivity {
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
 
-    ///////////////////////////////////////////////////////////////////////TODO
     private void loadSortApogeeWineBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.cellarRecyclerView);
         accesLocal = new AccesLocal(getApplicationContext());
-        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortMapWineBottleList();
+        ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortApogeeWineBottleList();
 
         MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);

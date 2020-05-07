@@ -334,7 +334,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/yanone_kaffeesatz"
-                    android:text="Estimation : "
+                    android:text="Estimation (€) : "
                     android:textAlignment="textEnd"
                     android:textColor="@color/green_light"
                     android:textSize="16dp" />

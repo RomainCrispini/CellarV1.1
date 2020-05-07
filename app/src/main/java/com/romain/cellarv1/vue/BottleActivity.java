@@ -64,20 +64,6 @@ public class BottleActivity extends AppCompatActivity {
         init();
 
 
-        btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-            }
-        });
-        btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-            }
-        });
-
-
         btnUpdateBottle.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,6 +177,18 @@ public class BottleActivity extends AppCompatActivity {
         // Je n'ai pas trouvé d'autres moyens pour rendre toute la surface clickable
         btnBackMap1 = (ImageView) findViewById(R.id.btnBackMap1);
         btnBackMap2 = (ImageView) findViewById(R.id.btnBackMap2);
+        btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+        btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
 
         FrameLayout menuBis = (FrameLayout) findViewById(R.id.menuBis);
         menuBis.setTranslationY(300f);

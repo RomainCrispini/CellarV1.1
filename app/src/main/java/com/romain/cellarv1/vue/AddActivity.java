@@ -14,6 +14,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -122,6 +123,7 @@ public class AddActivity extends AppCompatActivity {
         init();
 
 
+
     }
 
 
@@ -156,9 +158,31 @@ public class AddActivity extends AppCompatActivity {
         popup.setContentView(R.layout.popup_add_bottle);
         popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+        // Toggle Buttons
+        btnFavorite = (ToggleButton) findViewById(R.id.btnFavorite);
+        btnFavorite.setText(null);
+        btnFavorite.setTextOn(null);
+        btnFavorite.setTextOff(null);
+        btnWishlist = (ToggleButton) findViewById(R.id.btnWishlist);
+        btnWishlist.setText(null);
+        btnWishlist.setTextOn(null);
+        btnWishlist.setTextOff(null);
+
         // Je n'ai pas trouvé d'autres moyens pour rendre toute la surface clickable
         btnBackMap1 = (ImageView) findViewById(R.id.btnBackMap1);
         btnBackMap2 = (ImageView) findViewById(R.id.btnBackMap2);
+        btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+        btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
 
         // Instanciation du menuBis coulissant
         FrameLayout menuBis = (FrameLayout) findViewById(R.id.menuBis);
@@ -358,6 +382,8 @@ public class AddActivity extends AppCompatActivity {
     }
      */
 
+
+
     /**
      * Ajout d'une nouvelle bouteille
      */
@@ -447,6 +473,18 @@ public class AddActivity extends AppCompatActivity {
                                 wineColor = "Blanc";
                             } else if(btnChamp.getAlpha() == 1f) {
                                 wineColor = "Effervescent";
+                            }
+
+                            if(btnFavorite.isChecked()) {
+                                favorite = "1";
+                            } else {
+                                favorite = "0";
+                            }
+
+                            if(btnWishlist.isChecked()) {
+                                wish = "1";
+                            } else {
+                                wish = "0";
                             }
 
                             random = String.valueOf(randomize.nextInt(10000000));

@@ -55,21 +55,25 @@ public class UserActivity extends AppCompatActivity {
                     case R.id.cellar:
                         //Toast.makeText(UserActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.scan:
                         //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.like:
                         //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
                         //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                 }
@@ -150,6 +154,7 @@ public class UserActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("redWine", "redWine");
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 closeFabWineMenu();
                 //Toast.makeText(getApplicationContext(), "FAB ROUGE",Toast.LENGTH_SHORT).show();
             }
@@ -163,6 +168,7 @@ public class UserActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("roseWine", "roseWine");
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 closeFabWineMenu();
                 //Toast.makeText(getApplicationContext(), "FAB ROSE",Toast.LENGTH_SHORT).show();
             }
@@ -176,6 +182,7 @@ public class UserActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("whiteWine", "whiteWine");
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 closeFabWineMenu();
                 //Toast.makeText(getApplicationContext(), "FAB BLANC",Toast.LENGTH_SHORT).show();
             }
@@ -189,6 +196,7 @@ public class UserActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("champWine", "champWine");
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 closeFabWineMenu();
                 //Toast.makeText(getApplicationContext(), "FAB CHAMP",Toast.LENGTH_SHORT).show();
             }

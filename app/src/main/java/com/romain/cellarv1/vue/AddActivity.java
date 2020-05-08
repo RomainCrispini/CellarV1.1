@@ -89,9 +89,6 @@ public class AddActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     //private Handler handler = new Handler();
 
-    // Snackbar
-    private ConstraintLayout mainLayout;
-
     // Champs texte
     private AutoCompleteTextView txtCountry;
     private EditText txtRegion, txtDomain, txtAppellation;
@@ -126,8 +123,6 @@ public class AddActivity extends AppCompatActivity {
     }
 
 
-
-
     /**
      * Méthode qui initialise les liens avec les objets graphiques, et appelle toutes les méthodes
      */
@@ -152,8 +147,6 @@ public class AddActivity extends AppCompatActivity {
 
         FloatingActionButton btnGallery = (FloatingActionButton) findViewById(R.id.btnGallery);
         scanImageView = (ImageView) findViewById(R.id.scanImageView);
-
-        mainLayout = findViewById(R.id.mainLayout);
 
         popup = new Dialog(this);
         popup.setContentView(R.layout.popup_add_bottle);
@@ -923,11 +916,13 @@ public class AddActivity extends AppCompatActivity {
                         case R.id.user:
                             //Toast.makeText(AddActivity.this, "USER", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             //overridePendingTransition(0, 0);
                             return true;
                         case R.id.cellar:
                             //Toast.makeText(AddActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             //overridePendingTransition(0, 0);
                             return true;
                         case R.id.scan:
@@ -938,11 +933,13 @@ public class AddActivity extends AppCompatActivity {
                         case R.id.like:
                             //Toast.makeText(AddActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             //overridePendingTransition(0, 0);
                             return true;
                         case R.id.search:
                             //Toast.makeText(AddActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             //overridePendingTransition(0, 0);
                             return true;
                     }

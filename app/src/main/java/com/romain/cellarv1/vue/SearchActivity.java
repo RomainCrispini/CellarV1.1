@@ -2,6 +2,8 @@ package com.romain.cellarv1.vue;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -16,7 +19,12 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.romain.cellarv1.R;
+import com.romain.cellarv1.modele.AccesLocal;
+import com.romain.cellarv1.modele.WineBottle;
 import com.romain.cellarv1.outils.CurvedBottomNavigationView;
+import com.romain.cellarv1.outils.MyAdapterCellarRecyclerView;
+
+import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -24,6 +32,16 @@ public class SearchActivity extends AppCompatActivity {
     private FloatingActionButton fabWineMenu, fabRed, fabRose, fabWhite, fabChamp;
     private OvershootInterpolator interpolator = new OvershootInterpolator();
     private Boolean isFABWineMenuOpen = false;
+
+    // Search
+    private ImageButton btnSearch;
+    private EditText txtSearch;
+
+    // Initialisation du RecyclerView
+    private AccesLocal accesLocal;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     // Initialisation du menu bis
     private FrameLayout sortMenu;
@@ -40,10 +58,49 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         init();
 
+        mRecyclerView = (RecyclerView) findViewById(R.id.searchRecyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
+
+        txtSearch = (EditText) findViewById(R.id.txtSearch);
+        btnSearch = (ImageButton) findViewById(R.id.btnSearch);
+        btnSearch.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadSearchBottleInRecycleView();
+            }
+        });
+
+
+
+    }
+
+    private void loadSearchBottleInRecycleView() {
+
+        //Context context = mRecyclerView.getContext();
+
+        String search = txtSearch.getText().toString();
+
+        accesLocal = new AccesLocal(getApplicationContext());
+        ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverSearchWineBottleList(search);
+
+        mRecyclerView.setHasFixedSize(true);
+
+        //mLayoutManager = new LinearLayoutManager(getContext());
+        //mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleArrayList);
+
+        mRecyclerView.setAdapter(mAdapter);
+
+
+        //mRecyclerView.setAlpha(0f);
+        //mRecyclerView.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(2500).start();
 
     }
 
     private void init() {
+
+        btnSearch = (ImageButton) findViewById(R.id.btnSearch);
 
         initCurvedNavigationView();
         initFabWineMenu();
@@ -165,76 +222,6 @@ public class SearchActivity extends AppCompatActivity {
         fabRose.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
         fabWhite.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
         fabChamp.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
-    }
-
-    private void menuBisSelectedItems() {
-
-        final ImageButton sortMap = (ImageButton) findViewById(R.id.sortMap);
-        final ImageButton sortColor = (ImageButton) findViewById(R.id.sortColor);
-        final ImageButton sortYear = (ImageButton) findViewById(R.id.sortYear);
-        final ImageButton sortApogee = (ImageButton) findViewById(R.id.sortApogee);
-        final ImageView sortRecover = (ImageView) findViewById(R.id.sortRecover);
-
-
-        sortMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //loadSortMapWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-            }
-        });
-
-        sortColor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //loadSortColorWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-            }
-        });
-
-        sortRecover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //loadRecoverWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-            }
-        });
-
-        sortYear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //loadSortYearWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-            }
-        });
-
-        sortApogee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //loadSortApogeeWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-            }
-        });
     }
 
     private void initCurvedNavigationView() {

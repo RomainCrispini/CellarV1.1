@@ -9,43 +9,6 @@
     android:orientation="vertical"
     tools:context=".vue.AddActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/green_very_dark"
-        android:src="@drawable/icon_navbar_add"
-        android:tint="@color/green_light"
-        app:borderWidth="0.5dp"
-        app:elevation="10dp"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/curvedBottomNavigationView"
-        app:maxImageSize="31dp" />
-
-    <com.romain.cellarv1.outils.CurvedBottomNavigationView
-        android:id="@+id/curvedBottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="20dp"
-        app:itemIconSize="31dp"
-        app:itemIconTint="@color/green_dark"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1"
-        app:menu="@menu/bottom_nav_menu"></com.romain.cellarv1.outils.CurvedBottomNavigationView>
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -383,7 +346,6 @@
                 android:background="@null"
                 android:backgroundTint="@color/transparent"
                 android:drawableTint="@color/green_light"
-                android:ems="10"
                 android:fontFamily="@font/yanone_kaffeesatz"
                 android:gravity="center"
                 android:hint="Quantité"
@@ -609,5 +571,42 @@ app:pulse_duration="1500"
 app:pulse_interpolator="Linear"
 app:pulse_repeat="0"
 app:pulse_startFromScratch="false" /> -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/green_very_dark"
+        android:src="@drawable/icon_navbar_add"
+        android:tint="@color/green_light"
+        app:borderWidth="0.5dp"
+        app:elevation="10dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/curvedBottomNavigationView"
+        app:maxImageSize="31dp" />
+
+    <com.romain.cellarv1.outils.CurvedBottomNavigationView
+        android:id="@+id/curvedBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        app:itemIconSize="31dp"
+        app:itemIconTint="@color/green_dark"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:menu="@menu/bottom_nav_menu"></com.romain.cellarv1.outils.CurvedBottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

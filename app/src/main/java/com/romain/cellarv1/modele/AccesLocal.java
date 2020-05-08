@@ -191,6 +191,37 @@ public class AccesLocal {
         return wineBottleList;
     }
 
+    public List<WineBottle> recoverSearchWineBottleList(String searchWord) {
+        List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
+        bd = accesBD.getReadableDatabase();
+        WineBottle wineBottle;
+        String requete = "select * from bottle where (country like '%" + searchWord + "%') or (region like '%" + searchWord + "%') or (domain like '%" + searchWord + "%') or (appellation like '%" + searchWord + "%') or (year like '%" + searchWord + "%') or (apogee like '%" + searchWord + "%')";
+        Cursor cursor = bd.rawQuery(requete, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Date date = new Date();
+            String country = cursor.getString(1);
+            String region = cursor.getString(2);
+            String winecolor = cursor.getString(3);
+            String domain = cursor.getString(4);
+            String appellation = cursor.getString(5);
+            Integer year = cursor.getInt(6);
+            Integer apogee = cursor.getInt(7);
+            Integer number = cursor.getInt(8);
+            Integer estimate = cursor.getInt(9);
+            String image = cursor.getString(10);
+            String favorite = cursor.getString(11);
+            String wish = cursor.getString(12);
+            String random = cursor.getString(13);
+            wineBottle = new WineBottle(date, country, region, winecolor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
+            wineBottleList.add(wineBottle);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        bd.close();
+        return wineBottleList;
+    }
+
     public List<WineBottle> sortMapWineBottleList() {
         List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
         bd = accesBD.getReadableDatabase();

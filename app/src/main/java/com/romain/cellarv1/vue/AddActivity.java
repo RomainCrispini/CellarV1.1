@@ -123,8 +123,9 @@ public class AddActivity extends AppCompatActivity {
         init();
 
 
-
     }
+
+
 
 
     /**
@@ -688,6 +689,11 @@ public class AddActivity extends AppCompatActivity {
                     if(check) {
                         progressBar.incrementProgressBy(1);
                         //progressBar.setProgress(progressBar.getProgress() + 1);
+                        if(progressBar.getProgress() == 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#97C58D"));
+                        } else if(progressBar.getProgress() < 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#67828f"));
+                        }
                         check = false;
                     }
                 }
@@ -716,6 +722,11 @@ public class AddActivity extends AppCompatActivity {
                 if(s.length() > 0) {
                     if(check) {
                         progressBar.incrementProgressBy(1);
+                        if(progressBar.getProgress() == 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#97C58D"));
+                        } else if(progressBar.getProgress() < 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#67828f"));
+                        }
                         check = false;
                     }
                 }
@@ -742,6 +753,11 @@ public class AddActivity extends AppCompatActivity {
                 if(s.length() > 0) {
                     if(check) {
                         progressBar.setProgress(progressBar.getProgress() + 1);
+                        if(progressBar.getProgress() == 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#97C58D"));
+                        } else if(progressBar.getProgress() < 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#67828f"));
+                        }
                         check = false;
                     }
                 }
@@ -768,6 +784,11 @@ public class AddActivity extends AppCompatActivity {
                 if(s.length() > 0) {
                     if(check) {
                         progressBar.setProgress(progressBar.getProgress() + 1);
+                        if(progressBar.getProgress() == 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#97C58D"));
+                        } else if(progressBar.getProgress() < 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#67828f"));
+                        }
                         check = false;
                     }
                 }
@@ -794,6 +815,11 @@ public class AddActivity extends AppCompatActivity {
                 if(s.length() > 0) {
                     if(check) {
                         progressBar.setProgress(progressBar.getProgress() + 1);
+                        if(progressBar.getProgress() == 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#97C58D"));
+                        } else if(progressBar.getProgress() < 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#67828f"));
+                        }
                         check = false;
                     }
                 }
@@ -820,6 +846,11 @@ public class AddActivity extends AppCompatActivity {
                 if(s.length() > 0) {
                     if(check) {
                         progressBar.setProgress(progressBar.getProgress() + 1);
+                        if(progressBar.getProgress() == 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#97C58D"));
+                        } else if(progressBar.getProgress() < 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#67828f"));
+                        }
                         check = false;
                     }
                 }
@@ -846,6 +877,11 @@ public class AddActivity extends AppCompatActivity {
                 if(s.length() > 0) {
                     if(check) {
                         progressBar.setProgress(progressBar.getProgress() + 1);
+                        if(progressBar.getProgress() == 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#97C58D"));
+                        } else if(progressBar.getProgress() < 7) {
+                            btnAdd.setColorFilter(Color.parseColor("#67828f"));
+                        }
                         check = false;
                     }
                 }

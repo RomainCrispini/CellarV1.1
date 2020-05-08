@@ -198,17 +198,14 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 if (wineBottle.getFavorite().matches("0")) {
                     accesLocal.addLikeToABottle(valueRandom);
 
+                    /*
+                    // COMMENT INSTANCIER BOTTOM NAV VIEW DANS LE RECYCLER VIEW ???????????????????????????????????????????????
                     CellarActivity cellarActivity = new CellarActivity();
-
                     CurvedBottomNavigationView curvedBottomNavigationView = new CurvedBottomNavigationView(cellarActivity);
-
                     curvedBottomNavigationView.getOrCreateBadge(R.id.like).setBackgroundColor(Color.RED);
 
+                     */
 
-                    //MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(mContext, wineBottleArrayList);
-                    //myAdapterCellarRecyclerView.notifyDataSetChanged();
-
-                //} else if(wineBottle.getFavorite().matches("1") && holder.favorite.getDrawable().getColorFilter().equals(Color.parseColor("#97C58D"))) {
                 } else if(wineBottle.getFavorite().matches("1")) {
                     accesLocal.removeLikeToABottle(valueRandom);
 

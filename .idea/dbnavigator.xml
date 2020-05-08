@@ -24,13 +24,14 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="d13f2c07-255f-4319-ba87-09e735fb4e26">
-        <schema name="" object-types="table, view" />
+      <connection connection-id="953d7f2f-2b27-479c-83f2-8bef15adf351">
+        <schema name="" object-types="view, constraint, column, dataset trigger, index, table" />
+        <schema name="main" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="d13f2c07-255f-4319-ba87-09e735fb4e26">
+    <connection id="953d7f2f-2b27-479c-83f2-8bef15adf351">
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
@@ -38,10 +39,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="d13f2c07-255f-4319-ba87-09e735fb4e26" />
+    <connection id="953d7f2f-2b27-479c-83f2-8bef15adf351" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="d13f2c07-255f-4319-ba87-09e735fb4e26" dataset=".bottle" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="953d7f2f-2b27-479c-83f2-8bef15adf351" dataset=".bottle" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -66,7 +67,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="d13f2c07-255f-4319-ba87-09e735fb4e26" active="true">
+      <connection id="953d7f2f-2b27-479c-83f2-8bef15adf351" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -82,7 +83,7 @@
           <database value="database" />
           <files>
             <file path="sqlite.db" schema="main" />
-            <file path="$USER_HOME$/cellar.sqlite" schema="" />
+            <file path="$PROJECT_DIR$/../../cellar.sqlite" schema="" />
           </files>
           <type value="NONE" />
           <user value="" />

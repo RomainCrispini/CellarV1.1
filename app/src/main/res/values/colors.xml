@@ -22,11 +22,13 @@
     <color name="green_third_light">#576F7A</color>
     <color name="green_light">#67828f</color>
     <color name="green_very_light">#8DB3C5</color>
+    <color name="green_apple_dark">#B3C58D</color>
     <color name="green_apple">#97C58D</color>
     <color name="grey_dark">#4C4C4C</color>
     <color name="green">#35B1C4</color>
     <color name="blue_light">#22C2DD</color>
     <color name="orange">#D57400</color>
+    <color name="red">#BF0000</color>
     <color name="pink">#D0005B</color>
 
     <!-- CUSTOM COLORS NAVBAR LIGHT MODE -->

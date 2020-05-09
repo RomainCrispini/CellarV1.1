@@ -92,7 +92,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            app:cardBackgroundColor="@color/green_dark"
+                            app:cardBackgroundColor="@color/green_very_dark"
                             app:cardCornerRadius="33dp"
                             app:cardElevation="0dp">
 

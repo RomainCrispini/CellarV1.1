@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
@@ -51,6 +55,9 @@ public class SearchActivity extends AppCompatActivity {
     private ImageButton sortApogee;
     private ImageView sortRecover;
 
+    // Initialisation des PopupUpdate et PopupDelete
+    private Dialog popupSearch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +74,22 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadSearchBottleInRecycleView();
+                if(mAdapter.getItemCount() == 0) {
+                    popupSearch.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    popupSearch.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                    popupSearch.show();
+                    // Permet de faire aparaitre le panneau 2 secondes sans interventions
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (popupSearch.isShowing()){
+                                popupSearch.dismiss();
+                            }
+                        }
+                    }, 2000);
+                }
             }
         });
-
-
-
     }
 
     private void loadSearchBottleInRecycleView() {
@@ -101,6 +119,9 @@ public class SearchActivity extends AppCompatActivity {
     private void init() {
 
         btnSearch = (ImageButton) findViewById(R.id.btnSearch);
+
+        popupSearch = new Dialog(this);
+        popupSearch.setContentView(R.layout.popup_search_bottle);
 
         initCurvedNavigationView();
         initFabWineMenu();

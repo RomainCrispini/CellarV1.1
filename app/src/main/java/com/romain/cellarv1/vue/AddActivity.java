@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -102,7 +103,7 @@ public class AddActivity extends AppCompatActivity {
     private Controle controle;
 
     // Déclaration de la popup
-    private Dialog popup;
+    private Dialog popupAdd, popupSuccess;
 
     // Buttons MenuBis + Interpolator
     private OvershootInterpolator interpolator = new OvershootInterpolator();
@@ -148,10 +149,16 @@ public class AddActivity extends AppCompatActivity {
         FloatingActionButton btnGallery = (FloatingActionButton) findViewById(R.id.btnGallery);
         scanImageView = (ImageView) findViewById(R.id.scanImageView);
 
-        popup = new Dialog(this);
-        popup.setContentView(R.layout.popup_add_bottle);
-        popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        popup.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        // Popup
+        popupAdd = new Dialog(this);
+        popupAdd.setContentView(R.layout.popup_add_bottle);
+        popupAdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupAdd.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        popupSuccess = new Dialog(this);
+        popupSuccess.setContentView(R.layout.popup_success_add_bottle);
+        popupSuccess.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupSuccess.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
         // Toggle Buttons
         btnFavorite = (ToggleButton) findViewById(R.id.btnFavorite);
@@ -387,15 +394,15 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
-                Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
-                TextView number = (TextView) popup.findViewById(R.id.number);
-                ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
-                ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
-                TextView region = (TextView) popup.findViewById(R.id.region);
-                TextView domain = (TextView) popup.findViewById(R.id.domain);
-                TextView appellation = (TextView) popup.findViewById(R.id.appellation);
-                TextView millesime = (TextView) popup.findViewById(R.id.millesime);
+                Button btnAccept = (Button) popupAdd.findViewById(R.id.btnAccept);
+                Button btnDenie = (Button) popupAdd.findViewById(R.id.btnDenie);
+                TextView number = (TextView) popupAdd.findViewById(R.id.number);
+                ImageView imageWineColor = (ImageView) popupAdd.findViewById(R.id.imageWineColor);
+                ImageView imageBottle = (ImageView) popupAdd.findViewById(R.id.imageBottle);
+                TextView region = (TextView) popupAdd.findViewById(R.id.region);
+                TextView domain = (TextView) popupAdd.findViewById(R.id.domain);
+                TextView appellation = (TextView) popupAdd.findViewById(R.id.appellation);
+                TextView millesime = (TextView) popupAdd.findViewById(R.id.millesime);
 
                 if(scanImageView.getDrawable() != null) {
                     Bitmap bitmapEtiquette = ((BitmapDrawable) scanImageView.getDrawable()).getBitmap();
@@ -422,7 +429,7 @@ public class AddActivity extends AppCompatActivity {
                 appellation.setText(txtAppellation.getText());
                 millesime.setText(nbYear.getText());
 
-                popup.show();
+                popupAdd.show();
 
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {
@@ -505,14 +512,25 @@ public class AddActivity extends AppCompatActivity {
 
                         afficheResult(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random);
 
-                        popup.dismiss();
+                        popupAdd.dismiss();
+
+                        popupSuccess.show();
+                        // Permet de faire aparaitre le panneau 2 secondes sans interventions
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (popupSuccess.isShowing()) {
+                                    popupSuccess.dismiss();
+                                }
+                            }
+                        }, 1000);
                     }
                 });
 
                 btnDenie.setOnClickListener(new Button.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        popup.dismiss();
+                        popupAdd.dismiss();
                     }
                 });
 

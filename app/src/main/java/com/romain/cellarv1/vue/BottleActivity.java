@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
@@ -56,8 +57,7 @@ public class BottleActivity extends AppCompatActivity {
     private ImageView btnBackMap2;
 
     // Initialisation des PopupUpdate et PopupDelete
-    private Dialog popupUpdate;
-    private Dialog popupDelete;
+    private Dialog popupUpdate, popupDelete, popupSuccess;
 
 
     @Override
@@ -102,8 +102,18 @@ public class BottleActivity extends AppCompatActivity {
 
         popupUpdate = new Dialog(this);
         popupUpdate.setContentView(R.layout.popup_update_bottle);
+        popupUpdate.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupUpdate.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         popupDelete = new Dialog(this);
         popupDelete.setContentView(R.layout.popup_take_out_bottle);
+        popupDelete.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupDelete.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        popupSuccess = new Dialog(this);
+        popupSuccess.setContentView(R.layout.popup_success_update_bottle);
+        popupSuccess.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupSuccess.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
     }
 
@@ -161,8 +171,6 @@ public class BottleActivity extends AppCompatActivity {
                 appellation.setText(appellationBottle.getText());
                 millesime.setText(millesimeBottle.getText());
 
-                popupUpdate.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                popupUpdate.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
                 popupUpdate.show();
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {
@@ -196,6 +204,18 @@ public class BottleActivity extends AppCompatActivity {
                         AccesLocal accesLocal = new AccesLocal(getApplicationContext());
                         accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intNumber, intEstimate, strFavorite, strWish);
                         popupUpdate.dismiss();
+
+                        popupSuccess.show();
+                        // Permet de faire aparaitre le panneau 2 secondes sans interventions
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (popupSuccess.isShowing()) {
+                                    popupSuccess.dismiss();
+                                }
+                            }
+                        }, 1000);
+
                     }
                 });
 
@@ -226,6 +246,7 @@ public class BottleActivity extends AppCompatActivity {
                 TextView domain = (TextView) popupDelete.findViewById(R.id.domain);
                 TextView appellation = (TextView) popupDelete.findViewById(R.id.appellation);
                 TextView millesime = (TextView) popupDelete.findViewById(R.id.millesime);
+                TextView number = (TextView) popupDelete.findViewById(R.id.number);
 
                 switch(getIntent().getStringExtra("wineColor").trim()) {
                     case "Rouge" :
@@ -263,8 +284,10 @@ public class BottleActivity extends AppCompatActivity {
                 appellation.setText(appellationBottle.getText());
                 millesime.setText(millesimeBottle.getText());
 
-                popupDelete.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                popupDelete.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                // Affichage du décompte du nombre de bouteilles restantes
+                Integer intNumber = Integer.parseInt(numberBottle.getText().toString()) - 1;
+                number.setText(intNumber.toString());
+
                 popupDelete.show();
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {
@@ -276,6 +299,17 @@ public class BottleActivity extends AppCompatActivity {
                         AccesLocal accesLocal = new AccesLocal(getApplicationContext());
                         accesLocal.takeOutBottle(strRandom);
                         popupDelete.dismiss();
+
+                        popupSuccess.show();
+                        // Permet de faire aparaitre le panneau 2 secondes sans interventions
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (popupSuccess.isShowing()) {
+                                    popupSuccess.dismiss();
+                                }
+                            }
+                        }, 1000);
                     }
                 });
 

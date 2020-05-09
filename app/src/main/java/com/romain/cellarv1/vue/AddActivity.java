@@ -151,6 +151,7 @@ public class AddActivity extends AppCompatActivity {
         popup = new Dialog(this);
         popup.setContentView(R.layout.popup_add_bottle);
         popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popup.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
         // Toggle Buttons
         btnFavorite = (ToggleButton) findViewById(R.id.btnFavorite);

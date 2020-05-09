@@ -118,6 +118,7 @@ public class BottleActivity extends AppCompatActivity {
                 millesime.setText(millesimeBottle.getText());
 
                 popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popup.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
                 popup.show();
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {

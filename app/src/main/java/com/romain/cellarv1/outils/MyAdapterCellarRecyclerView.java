@@ -1,58 +1,31 @@
 package com.romain.cellarv1.outils;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
-import android.text.Layout;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
-import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.google.android.material.snackbar.Snackbar;
 import com.romain.cellarv1.R;
-import com.romain.cellarv1.controleur.Controle;
 import com.romain.cellarv1.modele.AccesLocal;
 import com.romain.cellarv1.modele.WineBottle;
 import com.romain.cellarv1.vue.BottleActivity;
-import com.romain.cellarv1.vue.CellarActivity;
-import com.romain.cellarv1.vue.CellarListFragment;
-import com.romain.cellarv1.vue.UserActivity;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterCellarRecyclerView.CellarViewHolder> {
@@ -254,6 +227,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 TextView number = (TextView) popup.findViewById(R.id.number);
 
                 popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popup.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
                 Tools tools = new Tools();
                 imageBottle.setImageBitmap(tools.stringToBitmap(wineBottle.getImage()));
@@ -282,6 +256,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 millesime.setText((wineBottle.getYear()).toString());
 
                 popup.show();
+
+
 
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {

@@ -53,8 +53,6 @@
                 android:layout_marginBottom="20dp"
                 android:background="@color/green_light" />
 
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

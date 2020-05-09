@@ -46,15 +46,18 @@ public class BottleActivity extends AppCompatActivity {
     // Button Update
     private Button btnUpdateBottle;
 
+    // Button Delete
+    private Button btnDeleteBottle;
+
     // Buttons MenuBis
     private ToggleButton btnFavorite;
     private ToggleButton btnWishlist;
     private ImageView btnBackMap1;
     private ImageView btnBackMap2;
 
-    // Initialisation du Popup
-    private Dialog popup;
-
+    // Initialisation des PopupUpdate et PopupDelete
+    private Dialog popupUpdate;
+    private Dialog popupDelete;
 
 
     @Override
@@ -62,24 +65,65 @@ public class BottleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottle);
         init();
+        btnUpdateBottle();
+        btnDeleteBottle();
 
 
+    }
+
+    private void init() {
+
+        initCurvedNavigationView();
+        initFabWineMenu();
+        getFabWineMenuValue();
+        initWineBottle();
+        btnUpdateBottle = (Button) findViewById(R.id.btnUpdateBottle);
+        btnDeleteBottle = (Button) findViewById(R.id.btnDeleteBottle);
+
+        // Je n'ai pas trouvé d'autres moyens pour rendre toute la surface clickable
+        btnBackMap1 = (ImageView) findViewById(R.id.btnBackMap1);
+        btnBackMap2 = (ImageView) findViewById(R.id.btnBackMap2);
+        btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+        btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+
+        FrameLayout menuBis = (FrameLayout) findViewById(R.id.menuBis);
+        menuBis.setTranslationY(300f);
+        menuBis.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
+
+        popupUpdate = new Dialog(this);
+        popupUpdate.setContentView(R.layout.popup_update_bottle);
+        popupDelete = new Dialog(this);
+        popupDelete.setContentView(R.layout.popup_take_out_bottle);
+
+    }
+
+    private void btnUpdateBottle() {
         btnUpdateBottle.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
-                Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
+                Button btnAccept = (Button) popupUpdate.findViewById(R.id.btnAccept);
+                Button btnDenie = (Button) popupUpdate.findViewById(R.id.btnDenie);
 
-                ImageView imageFavorite = (ImageView) popup.findViewById(R.id.imageFavorite);
-                ImageView imageWish = (ImageView) popup.findViewById(R.id.imageWish);
+                ImageView imageFavorite = (ImageView) popupUpdate.findViewById(R.id.imageFavorite);
+                ImageView imageWish = (ImageView) popupUpdate.findViewById(R.id.imageWish);
 
-                ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
-                ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
-                TextView region = (TextView) popup.findViewById(R.id.region);
-                TextView domain = (TextView) popup.findViewById(R.id.domain);
-                TextView appellation = (TextView) popup.findViewById(R.id.appellation);
-                TextView millesime = (TextView) popup.findViewById(R.id.millesime);
+                ImageView imageWineColor = (ImageView) popupUpdate.findViewById(R.id.imageWineColor);
+                ImageView imageBottle = (ImageView) popupUpdate.findViewById(R.id.imageBottle);
+                TextView region = (TextView) popupUpdate.findViewById(R.id.region);
+                TextView domain = (TextView) popupUpdate.findViewById(R.id.domain);
+                TextView appellation = (TextView) popupUpdate.findViewById(R.id.appellation);
+                TextView millesime = (TextView) popupUpdate.findViewById(R.id.millesime);
 
                 switch(getIntent().getStringExtra("wineColor").trim()) {
                     case "Rouge" :
@@ -117,9 +161,9 @@ public class BottleActivity extends AppCompatActivity {
                 appellation.setText(appellationBottle.getText());
                 millesime.setText(millesimeBottle.getText());
 
-                popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                popup.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-                popup.show();
+                popupUpdate.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popupUpdate.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                popupUpdate.show();
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {
                     @Override
@@ -151,56 +195,98 @@ public class BottleActivity extends AppCompatActivity {
 
                         AccesLocal accesLocal = new AccesLocal(getApplicationContext());
                         accesLocal.updateBottle(strRandom, strCountry, strRegion, strDomain, strAppellation, intMillesime, intApogee, intNumber, intEstimate, strFavorite, strWish);
-                        popup.dismiss();
+                        popupUpdate.dismiss();
                     }
                 });
 
                 btnDenie.setOnClickListener(new Button.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        popup.dismiss();
+                        popupUpdate.dismiss();
                     }
                 });
             }
         });
-
-
     }
 
-    private void init() {
-
-        initCurvedNavigationView();
-        initFabWineMenu();
-        getFabWineMenuValue();
-        initWineBottle();
-        btnUpdateBottle = (Button) findViewById(R.id.btnUpdateBottle);
-
-        // Je n'ai pas trouvé d'autres moyens pour rendre toute la surface clickable
-        btnBackMap1 = (ImageView) findViewById(R.id.btnBackMap1);
-        btnBackMap2 = (ImageView) findViewById(R.id.btnBackMap2);
-        btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
+    private void btnDeleteBottle() {
+        btnDeleteBottle.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+
+                Button btnAccept = (Button) popupDelete.findViewById(R.id.btnAccept);
+                Button btnDenie = (Button) popupDelete.findViewById(R.id.btnDenie);
+
+                ImageView imageFavorite = (ImageView) popupDelete.findViewById(R.id.imageFavorite);
+                ImageView imageWish = (ImageView) popupDelete.findViewById(R.id.imageWish);
+
+                ImageView imageWineColor = (ImageView) popupDelete.findViewById(R.id.imageWineColor);
+                ImageView imageBottle = (ImageView) popupDelete.findViewById(R.id.imageBottle);
+                TextView region = (TextView) popupDelete.findViewById(R.id.region);
+                TextView domain = (TextView) popupDelete.findViewById(R.id.domain);
+                TextView appellation = (TextView) popupDelete.findViewById(R.id.appellation);
+                TextView millesime = (TextView) popupDelete.findViewById(R.id.millesime);
+
+                switch(getIntent().getStringExtra("wineColor").trim()) {
+                    case "Rouge" :
+                        imageWineColor.setImageResource(R.drawable.red_wine_listview);
+                        break;
+                    case "Rose" :
+                        imageWineColor.setImageResource(R.drawable.rose_wine_listview);
+                        break;
+                    case "Blanc" :
+                        imageWineColor.setImageResource(R.drawable.white_wine_listview);
+                        break;
+                    case "Effervescent" :
+                        imageWineColor.setImageResource(R.drawable.champ_wine_listview);
+                        break;
+                }
+
+                String image = getIntent().getStringExtra("imageBottle");
+                Tools tools = new Tools();
+                imageBottle.setImageBitmap(tools.stringToBitmap(image));
+
+                if(btnFavorite.isChecked()) {
+                    imageFavorite.setVisibility(View.VISIBLE);
+                } else {
+                    imageFavorite.setVisibility(View.INVISIBLE);
+                }
+
+                if(btnWishlist.isChecked()) {
+                    imageWish.setVisibility(View.VISIBLE);
+                } else {
+                    imageWish.setVisibility(View.INVISIBLE);
+                }
+
+                region.setText(regionBottle.getText());
+                domain.setText(domainBottle.getText());
+                appellation.setText(appellationBottle.getText());
+                millesime.setText(millesimeBottle.getText());
+
+                popupDelete.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popupDelete.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                popupDelete.show();
+
+                btnAccept.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String strRandom = getIntent().getStringExtra("random");
+
+                        AccesLocal accesLocal = new AccesLocal(getApplicationContext());
+                        accesLocal.takeOutBottle(strRandom);
+                        popupDelete.dismiss();
+                    }
+                });
+
+                btnDenie.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupDelete.dismiss();
+                    }
+                });
             }
         });
-        btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-            }
-        });
-
-        FrameLayout menuBis = (FrameLayout) findViewById(R.id.menuBis);
-        menuBis.setTranslationY(300f);
-        menuBis.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
-
-        popup = new Dialog(this);
-        popup.setContentView(R.layout.popup_update_bottle);
-
-
-
-
     }
 
     private void initWineBottle() {

@@ -79,6 +79,7 @@ public class CellarActivity extends AppCompatActivity {
         cellarTabLayout.setTranslationY(-200f);
         cellarTabLayout.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
 
+
         FrameLayout sortMenu = (FrameLayout) findViewById(R.id.sortMenu);
         sortMenu.setTranslationY(200f);
         sortMenu.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();

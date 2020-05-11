@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -114,8 +115,9 @@ public class CellarStatsFragment extends Fragment {
         pieChart.setDragDecelerationFrictionCoef(0.95f);
 
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(Color.WHITE);
-        pieChart.setTransparentCircleRadius(61f);
+        pieChart.setHoleColor(Color.TRANSPARENT);
+        pieChart.setTransparentCircleRadius(0f);
+        pieChart.getLegend().setEnabled(false);
 
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
@@ -126,10 +128,16 @@ public class CellarStatsFragment extends Fragment {
         yValues.add(new PieEntry(40f, "Bordeaux"));
         yValues.add(new PieEntry(23f, "StEtienne"));
 
+
         PieDataSet dataSet = new PieDataSet(yValues, "City");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
         dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+
+        pieChart.animateXY(0, 2000);
+
+
+
 
         PieData data = new PieData(dataSet);
         data.setValueTextSize(10f);

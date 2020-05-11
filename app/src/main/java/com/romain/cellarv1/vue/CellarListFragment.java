@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.view.animation.OvershootInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -154,6 +155,13 @@ public class CellarListFragment extends Fragment {
 
             }
         };
+
+        /*
+        FrameLayout sortMenu = (FrameLayout) cellarListFragment.findViewById(R.id.sortMenu);
+        sortMenu.setTranslationY(200f);
+        sortMenu.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
+
+         */
 
         return cellarListFragment;
 

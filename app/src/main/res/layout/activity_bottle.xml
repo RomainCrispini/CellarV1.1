@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/yanone_kaffeesatz"
-                android:text="Cette bouteille a rejoint la cave le : "
+                android:text="Cette bouteille a rejoint votre cave le : "
                 android:textColor="@color/green_very_light"
                 android:textSize="18dp" />
 

@@ -125,14 +125,10 @@ public class CellarListFragment extends Fragment {
                             @Override
                             public void onClick(int pos) {
 
-
                                 int position = viewHolder.getAdapterPosition();
                                 ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleList();
                                 wineBottleArrayList.remove(position);
                                 mAdapter.notifyItemRemoved(position);
-
-
-
 
                                 //Toast.makeText(getContext(), Integer.toString(position), Toast.LENGTH_LONG).show();
                             }
@@ -158,7 +154,6 @@ public class CellarListFragment extends Fragment {
 
             }
         };
-
 
         return cellarListFragment;
 

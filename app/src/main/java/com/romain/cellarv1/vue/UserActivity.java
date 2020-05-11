@@ -1,12 +1,18 @@
 package com.romain.cellarv1.vue;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.CompoundButton;
 import androidx.appcompat.widget.SwitchCompat;
+
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +31,9 @@ public class UserActivity extends AppCompatActivity {
     // Initialisation du switchDarkMode
     private SwitchCompat switchDarkMode = null;
 
+    // Initialisation du menu bis
+    private ImageButton btnBackMap1, btnBackMap2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,47 +48,29 @@ public class UserActivity extends AppCompatActivity {
         initCurvedNavigationView();
         initFabWineMenu();
         getFabWineMenuValue();
-        initFabMapBack();
         switchDarkMode();
 
-    }
-
-    private void initCurvedNavigationView() {
-        CurvedBottomNavigationView curvedBottomNavigationView = findViewById(R.id.curvedBottomNavigationView);
-        curvedBottomNavigationView.setSelectedItemId(R.id.user);
-        curvedBottomNavigationView.setOnNavigationItemSelectedListener(new CurvedBottomNavigationView.OnNavigationItemSelectedListener() {
+        // Je n'ai pas trouvé d'autres moyens pour rendre toute la surface clickable
+        btnBackMap1 = (ImageButton) findViewById(R.id.btnBackMap1);
+        btnBackMap2 = (ImageButton) findViewById(R.id.btnBackMap2);
+        btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case R.id.cellar:
-                        //Toast.makeText(UserActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.scan:
-                        //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.like:
-                        //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.search:
-                        //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        //overridePendingTransition(0, 0);
-                        return true;
-                }
-                return false;
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
+        btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+        FrameLayout sortMenu = (FrameLayout) findViewById(R.id.menuBis);
+        sortMenu.setTranslationY(200f);
+        sortMenu.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
+
     }
 
     private void switchDarkMode() {
@@ -94,17 +85,6 @@ public class UserActivity extends AppCompatActivity {
                     Toast.makeText(UserActivity.this, "Switch LIGHT",Toast.LENGTH_SHORT).show();
                     setTheme(R.style.AppTheme);
                 }
-            }
-        });
-    }
-
-    private void initFabMapBack() {
-        FloatingActionButton fabMapBack = (FloatingActionButton) findViewById(R.id.fabMapBack);
-        fabMapBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
             }
         });
     }
@@ -223,6 +203,44 @@ public class UserActivity extends AppCompatActivity {
         fabRose.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
         fabWhite.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
         fabChamp.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
+    }
+
+    private void initCurvedNavigationView() {
+        CurvedBottomNavigationView curvedBottomNavigationView = findViewById(R.id.curvedBottomNavigationView);
+        curvedBottomNavigationView.setSelectedItemId(R.id.user);
+        curvedBottomNavigationView.setOnNavigationItemSelectedListener(new CurvedBottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.cellar:
+                        //Toast.makeText(UserActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        //overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.scan:
+                        //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        //overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.like:
+                        //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        //overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.search:
+                        //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        //overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
 

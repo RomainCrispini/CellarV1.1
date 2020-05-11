@@ -443,23 +443,21 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginTop="5dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/photo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                    <ImageButton
+                        android:id="@+id/btnPhoto"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:layout_gravity="start"
-                        android:backgroundTint="@color/green_very_dark"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="@color/transparent"
 
                         android:onClick="takePicture"
 
                         android:src="@drawable/icon_navbar_scan"
-                        android:tint="@color/green_light"
-                        app:elevation="0dp"
-                        app:fabSize="normal"
+                        android:tint="@color/green_middle_light"
                         app:maxImageSize="33dp" />
                 </LinearLayout>
 
@@ -467,23 +465,21 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginTop="5dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    <ImageButton
                         android:id="@+id/btnGallery"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="@color/green_very_dark"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="@color/transparent"
                         android:gravity="end"
 
                         android:onClick="accesGallery"
 
                         android:src="@drawable/scan_gallery"
-                        android:tint="@color/green_light"
-                        app:elevation="0dp"
-                        app:fabSize="normal"
+                        android:tint="@color/green_middle_light"
                         app:maxImageSize="33dp" />
 
                 </LinearLayout>

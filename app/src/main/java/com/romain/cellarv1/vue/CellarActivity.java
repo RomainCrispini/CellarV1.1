@@ -213,6 +213,8 @@ public class CellarActivity extends AppCompatActivity {
         final ImageButton sortApogee = (ImageButton) findViewById(R.id.sortApogee);
         final ImageView sortRecover = (ImageView) findViewById(R.id.sortRecover);
 
+        // On sélectionne par défaut l'item du centre
+        sortRecover.setColorFilter(Color.parseColor("#67828f"));
 
         sortMap.setOnClickListener(new View.OnClickListener() {
             @Override

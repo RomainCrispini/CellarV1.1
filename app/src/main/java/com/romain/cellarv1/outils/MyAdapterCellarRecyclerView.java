@@ -46,11 +46,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
         public ImageView imageWineColor;
         public ImageView image;
-        public TextView region;
-        public TextView appellation;
-        public TextView domain;
-        public TextView year;
-        public TextView apogee;
+        public TextView region, appellation, domain, year, apogee, number;
 
         public CardView cardView;
         public CardView pastilleImageBottle;
@@ -75,6 +71,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             domain = itemView.findViewById(R.id.domainListView);
             year = itemView.findViewById(R.id.yearListView);
             apogee = itemView.findViewById(R.id.apogeeListView);
+            number = itemView.findViewById(R.id.numberListView);
 
             cardView = itemView.findViewById(R.id.cardView);
 
@@ -297,6 +294,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         holder.domain.setText(currentItem.getDomain());
         holder.year.setText(currentItem.getYear().toString());
         holder.apogee.setText(currentItem.getApogee().toString());
+        holder.number.setText(currentItem.getNumber().toString());
 
         // On set la couleur du vin sous la pastille de l'image de l'étiquette
         switch(currentItem.getWineColor().trim()) {

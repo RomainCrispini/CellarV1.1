@@ -77,11 +77,11 @@ public class AddActivity extends AppCompatActivity {
     private static final int GALLERY_REQUEST_CODE = 104;
 
     private ImageView scanImageView;
-    private FloatingActionButton photo;
+    private ImageButton btnPhoto;
     private LinearLayout layapp;
 
     // Gallery
-    private FloatingActionButton btnGallery;
+    private ImageButton btnGallery;
 
     // Liste pays
     private ArrayList<String> countrylist = new ArrayList<>();
@@ -143,10 +143,10 @@ public class AddActivity extends AppCompatActivity {
         nbNumber = (EditText) findViewById(R.id.nbNumber);
         nbEstimate = (EditText) findViewById(R.id.nbEstimate);
         btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
-        photo = (FloatingActionButton) findViewById(R.id.photo);
+        btnPhoto = (ImageButton) findViewById(R.id.btnPhoto);
         this.controle = Controle.getInstance(this); // Création d'une instance de type Controle
 
-        FloatingActionButton btnGallery = (FloatingActionButton) findViewById(R.id.btnGallery);
+        btnGallery = (ImageButton) findViewById(R.id.btnGallery);
         scanImageView = (ImageView) findViewById(R.id.scanImageView);
 
         // Popup

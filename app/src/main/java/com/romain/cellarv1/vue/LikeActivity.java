@@ -247,6 +247,8 @@ public class LikeActivity extends AppCompatActivity {
         final ImageButton sortYear = (ImageButton) findViewById(R.id.sortYear);
         final ImageButton sortApogee = (ImageButton) findViewById(R.id.sortApogee);
 
+        // On sélectionne par défaut l'item du centre
+        sortRecover.setColorFilter(Color.parseColor("#67828f"));
 
         sortMap.setOnClickListener(new View.OnClickListener() {
             @Override

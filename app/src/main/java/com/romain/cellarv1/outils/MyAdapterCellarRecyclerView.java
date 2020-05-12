@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +33,15 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
     private ArrayList<WineBottle> wineBottleArrayList;
     private Context mContext;
-    private Dialog popup;
+    private Dialog popupDelete, popupSuccess;
 
     // Constructeur
     public MyAdapterCellarRecyclerView(Context mContext, ArrayList<WineBottle> arrayList) {
 
         wineBottleArrayList = arrayList;
         this.mContext = mContext;
-        popup = new Dialog(mContext);
+        popupDelete = new Dialog(mContext);
+        popupSuccess = new Dialog(mContext);
     }
 
     public static class CellarViewHolder extends RecyclerView.ViewHolder {
@@ -55,8 +57,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
         public final ToggleButton favorite;
         public final ImageButton delete;
-
-        public Dialog popup;
 
         public CurvedBottomNavigationView curvedBottomNavigationView;
 
@@ -94,7 +94,8 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
         View v = LayoutInflater.from(mContext).inflate(R.layout.activity_cellar_custom_list_view, viewGroup, false);
         CellarViewHolder cellarViewHolder = new CellarViewHolder(v);
 
-        popup.setContentView(R.layout.popup_take_out_bottle);
+        popupDelete.setContentView(R.layout.popup_take_out_bottle);
+        popupSuccess.setContentView(R.layout.popup_success_update_bottle);
 
         return new CellarViewHolder(v);
 
@@ -213,18 +214,20 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             @Override
             public void onClick(View v) {
 
-                Button btnAccept = (Button) popup.findViewById(R.id.btnAccept);
-                Button btnDenie = (Button) popup.findViewById(R.id.btnDenie);
-                ImageView imageWineColor = (ImageView) popup.findViewById(R.id.imageWineColor);
-                ImageView imageBottle = (ImageView) popup.findViewById(R.id.imageBottle);
-                TextView region = (TextView) popup.findViewById(R.id.region);
-                TextView domain = (TextView) popup.findViewById(R.id.domain);
-                TextView appellation = (TextView) popup.findViewById(R.id.appellation);
-                TextView millesime = (TextView) popup.findViewById(R.id.millesime);
-                TextView number = (TextView) popup.findViewById(R.id.number);
+                Button btnAccept = (Button) popupDelete.findViewById(R.id.btnAccept);
+                Button btnDenie = (Button) popupDelete.findViewById(R.id.btnDenie);
+                ImageView imageWineColor = (ImageView) popupDelete.findViewById(R.id.imageWineColor);
+                ImageView imageBottle = (ImageView) popupDelete.findViewById(R.id.imageBottle);
+                TextView region = (TextView) popupDelete.findViewById(R.id.region);
+                TextView domain = (TextView) popupDelete.findViewById(R.id.domain);
+                TextView appellation = (TextView) popupDelete.findViewById(R.id.appellation);
+                TextView millesime = (TextView) popupDelete.findViewById(R.id.millesime);
+                TextView number = (TextView) popupDelete.findViewById(R.id.number);
 
-                popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                popup.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                popupDelete.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popupDelete.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                popupSuccess.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                popupSuccess.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
                 Tools tools = new Tools();
                 imageBottle.setImageBitmap(tools.stringToBitmap(wineBottle.getImage()));
@@ -252,7 +255,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 appellation.setText(wineBottle.getAppellation());
                 millesime.setText((wineBottle.getYear()).toString());
 
-                popup.show();
+                popupDelete.show();
 
 
 
@@ -263,14 +266,26 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                         String valueRandom = wineBottle.getRandom();
                         AccesLocal accesLocal = new AccesLocal(mContext);
                         accesLocal.takeOutBottle(valueRandom);
-                        popup.dismiss();
+                        popupDelete.dismiss();
+
+                        popupSuccess.show();
+                        // Permet de faire aparaitre le panneau 2 secondes sans interventions
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (popupSuccess.isShowing()) {
+                                    popupSuccess.dismiss();
+                                }
+                            }
+                        }, 1000);
+
                     }
                 });
 
                 btnDenie.setOnClickListener(new Button.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        popup.dismiss();
+                        popupDelete.dismiss();
                     }
                 });
 

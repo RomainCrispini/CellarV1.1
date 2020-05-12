@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.romain.cellarv1.outils.MySQLiteOpenHelper;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -40,6 +41,61 @@ public class AccesLocal {
         bd.execSQL(requete);
         bd.close();
     }
+
+
+
+
+
+
+
+    public int nbRed() {
+        int nbRed;
+        bd = accesBD.getReadableDatabase();
+        String requete = "select * from bottle where winecolor = 'Rouge '";
+        Cursor cursor = bd.rawQuery(requete, null);
+        nbRed = cursor.getCount();
+        cursor.close();
+        bd.close();
+        return nbRed;
+    }
+
+    public int nbRose() {
+        int nbRose;
+        bd = accesBD.getReadableDatabase();
+        String requete = "select * from bottle where winecolor = 'Rose '";
+        Cursor cursor = bd.rawQuery(requete, null);
+        nbRose = cursor.getCount();
+        cursor.close();
+        bd.close();
+        return nbRose;
+    }
+
+    public int nbWhite() {
+        int nbWhite;
+        bd = accesBD.getReadableDatabase();
+        String requete = "select * from bottle where winecolor = 'Blanc '";
+        Cursor cursor = bd.rawQuery(requete, null);
+        nbWhite = cursor.getCount();
+        cursor.close();
+        bd.close();
+        return nbWhite;
+    }
+
+    public int nbChamp() {
+        int nbChamp;
+        bd = accesBD.getReadableDatabase();
+        String requete = "select * from bottle where winecolor = 'Effervescent '";
+        Cursor cursor = bd.rawQuery(requete, null);
+        nbChamp = cursor.getCount();
+        cursor.close();
+        bd.close();
+        return nbChamp;
+    }
+
+
+
+
+
 
     public void takeOutBottle(String random) {
         bd = accesBD.getWritableDatabase();

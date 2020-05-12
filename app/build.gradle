@@ -65,7 +65,7 @@ dependencies {
     // MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    // Résoud un bug avec le téléphone de Nathalie
+    // Résoud un bug avec le téléphone de Nathalie ?????????????????????????
     //implementation 'com.google.android.gms:play-services-maps:16.1.0'
 
 

@@ -15,6 +15,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -98,13 +99,13 @@ public class CellarStatsFragment extends Fragment {
         View cellarStatsFragment = inflater.inflate(R.layout.fragment_cellar_stats, container, false);
         pieChart = (PieChart) cellarStatsFragment.findViewById(R.id.pieChart);
 
-        loadPieChart();
+        loadWineColorPieChart();
 
         return cellarStatsFragment;
 
     }
 
-    private void loadPieChart() {
+    private void loadWineColorPieChart() {
 
 
 
@@ -119,20 +120,31 @@ public class CellarStatsFragment extends Fragment {
         pieChart.setTransparentCircleRadius(0f);
         pieChart.getLegend().setEnabled(false);
 
-        ArrayList<PieEntry> yValues = new ArrayList<>();
-
-        yValues.add(new PieEntry(34f, "Paris"));
-        yValues.add(new PieEntry(23f, "Remiremont"));
-        yValues.add(new PieEntry(14f, "Nancy"));
-        yValues.add(new PieEntry(35f, "Lyon"));
-        yValues.add(new PieEntry(40f, "Bordeaux"));
-        yValues.add(new PieEntry(23f, "StEtienne"));
+        accesLocal = new AccesLocal(getContext());
+        //ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleList();
 
 
-        PieDataSet dataSet = new PieDataSet(yValues, "City");
+
+
+
+        Integer nbRed = accesLocal.nbRed();
+        Integer nbRose = accesLocal.nbRose();
+        Integer nbWhite = accesLocal.nbWhite();
+        Integer nbChamp = accesLocal.nbChamp();
+
+        ArrayList<PieEntry> values = new ArrayList<>();
+        values.add(new PieEntry(nbRed, "Rouge"));
+        values.add(new PieEntry(nbRose, "Rosé"));
+        values.add(new PieEntry(nbWhite, "Blanc"));
+        values.add(new PieEntry(nbChamp, "Effervescent"));
+
+
+
+        PieDataSet dataSet = new PieDataSet(values, "Bottles");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
         dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+
 
         pieChart.animateXY(0, 2000);
 
@@ -140,10 +152,15 @@ public class CellarStatsFragment extends Fragment {
 
 
         PieData data = new PieData(dataSet);
-        data.setValueTextSize(10f);
-        data.setValueTextColor(Color.YELLOW);
+        data.setValueTextSize(15f);
+        data.setValueTextColor(Color.parseColor("#2F3B40"));
+
 
         pieChart.setData(data);
+
+        String gg = nbWhite.toString();
+
+        Toast.makeText(getContext(), gg, Toast.LENGTH_SHORT).show();
     }
 
 }

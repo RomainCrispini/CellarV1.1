@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
         init();
         mapRequestPermission();
+        loadMap();
 
         /*
         fabScan = (FloatingActionButton) findViewById(R.id.scan);
@@ -346,20 +347,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    //private void loadMap() {
+    private void loadMap() {
 
-    //    mapFragment.getMapAsync(new OnMapReadyCallback() {
-    //@Override
-    //        public void onMapReady(GoogleMap googleMap) {
-    //            MainActivity.this.googleMap = googleMap;
-    //            googleMap.moveCamera(CameraUpdateFactory.zoomBy(9));
-    //            googleMap.setMyLocationEnabled(true);
-    //            googleMap.addMarker(new MarkerOptions().position(new LatLng(48.6833, 6.2))
-    //                                                   .title("C'est bien ici !!!"));
-    //        }
-    //    });
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                MainActivity.this.googleMap = googleMap;
+                googleMap.moveCamera(CameraUpdateFactory.zoomBy(9));
+                googleMap.setMyLocationEnabled(true);
+                googleMap.addMarker(new MarkerOptions().position(new LatLng(48.6833, 6.2))
+                        .title("C'est bien ici !!!"));
+            }
+        });
 
-    //}
+    }
 
 
 
@@ -412,7 +413,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         MainActivity.this.googleMap = googleMap;
         googleMap.moveCamera(CameraUpdateFactory.zoomBy(10));
-        googleMap.setMyLocationEnabled(true);
+//        googleMap.setMyLocationEnabled(true);
         googleMap.addMarker(new MarkerOptions().position(new LatLng(48.6833, 6.2))
                 .title("C'est bien ici !!!"));
     }

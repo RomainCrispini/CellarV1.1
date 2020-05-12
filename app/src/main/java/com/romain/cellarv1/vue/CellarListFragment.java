@@ -101,6 +101,7 @@ public class CellarListFragment extends Fragment {
 
         loadWineBottleInRecycleView();
 
+
         //runLayoutFragmentAnimation();
 
 
@@ -114,6 +115,7 @@ public class CellarListFragment extends Fragment {
          */
 
 
+        /*
         MySwipeHelper swipeHelper = new MySwipeHelper(getContext(), mRecyclerView, 200) {
             @Override
             public void instanciateMyButton(final RecyclerView.ViewHolder viewHolder, List<MyButton> buffer) {
@@ -156,11 +158,6 @@ public class CellarListFragment extends Fragment {
             }
         };
 
-        /*
-        FrameLayout sortMenu = (FrameLayout) cellarListFragment.findViewById(R.id.sortMenu);
-        sortMenu.setTranslationY(200f);
-        sortMenu.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
-
          */
 
         return cellarListFragment;
@@ -185,12 +182,12 @@ public class CellarListFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
 
-        //mRecyclerView.setAlpha(0f);
-        //mRecyclerView.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(2500).start();
+        mRecyclerView.setAlpha(0f);
+        mRecyclerView.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(2000).start();
 
     }
 
-    /*
+
     public void runLayoutFragmentAnimation() {
 
         Context context = mRecyclerView.getContext();
@@ -202,7 +199,7 @@ public class CellarListFragment extends Fragment {
 
     }
 
-     */
+
 
 
 

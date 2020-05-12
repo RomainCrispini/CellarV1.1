@@ -2,6 +2,7 @@ package com.romain.cellarv1.vue;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
@@ -40,6 +41,8 @@ public class CellarActivity extends AppCompatActivity {
     // Initialisation accesLocal
     private AccesLocal accesLocal;
 
+    private RecyclerView.Adapter mAdapter;
+
     // Initialisation des Tabs
     private CellarPageAdapter cellarPageAdapter;
     private TabLayout cellarTabLayout;
@@ -74,19 +77,20 @@ public class CellarActivity extends AppCompatActivity {
         initCurvedNavigationView();
         initFabWineMenu();
         getFabWineMenuValue();
+        initTabs();
+        menuBisSelectedItems();
 
+        // Animation des TabLayout
         TabLayout cellarTabLayout = (TabLayout) findViewById(R.id.cellarTabLayout);
         cellarTabLayout.setTranslationY(-200f);
         cellarTabLayout.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
 
-
+        // Anmation du menuBis
         FrameLayout sortMenu = (FrameLayout) findViewById(R.id.sortMenu);
         sortMenu.setTranslationY(200f);
         sortMenu.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
 
-        initTabs();
 
-        menuBisSelectedItems();
 
     }
 
@@ -280,13 +284,19 @@ public class CellarActivity extends AppCompatActivity {
 
     private void loadSortMapWineBottleInListView() {
 
-        RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.cellarRecyclerView);
+        RecyclerView cellarRecyclerView = (RecyclerView) findViewById(R.id.cellarRecyclerView);
+        cellarRecyclerView.setLayoutManager(new LinearLayoutManager(cellarRecyclerView.getContext()));
         accesLocal = new AccesLocal(getApplicationContext());
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortMapWineBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
-        cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
-        myAdapterCellarRecyclerView.notifyDataSetChanged();
+        cellarRecyclerView.setHasFixedSize(true);
+        mAdapter = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        cellarRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
+        // Fade in du RecyclerView
+        cellarRecyclerView.setAlpha(0f);
+        cellarRecyclerView.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(1500).start();
     }
 
     private void loadSortColorWineBottleInListView() {

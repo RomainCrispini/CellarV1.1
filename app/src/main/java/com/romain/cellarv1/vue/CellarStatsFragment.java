@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -48,6 +49,8 @@ public class CellarStatsFragment extends Fragment {
     private OvershootInterpolator interpolator = new OvershootInterpolator();
 
     private PieChart pieChart;
+
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -98,9 +101,11 @@ public class CellarStatsFragment extends Fragment {
 
         loadWineColorPieChart();
 
+
         return cellarStatsFragment;
 
     }
+
 
     private void loadWineColorPieChart() {
 

@@ -2,6 +2,8 @@ package com.romain.cellarv1.vue;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -15,6 +17,8 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.romain.cellarv1.R;
@@ -52,7 +56,8 @@ public class CellarActivity extends AppCompatActivity {
 
     // Initialisation du menu bis
     private OvershootInterpolator interpolator = new OvershootInterpolator();
-    private FrameLayout sortMenu;
+    private FrameLayout sortMenuList;
+    private FrameLayout sortMenuStats;
     private ImageButton sortMap, getSortColor, getSortYear, getSortApogee;
     private ImageView sortRecover;
 
@@ -69,7 +74,6 @@ public class CellarActivity extends AppCompatActivity {
         //cellarRecyclerView = (RecyclerView) findViewById(R.id.cellarRecyclerView);
 
 
-
     }
 
     private void init() {
@@ -78,18 +82,21 @@ public class CellarActivity extends AppCompatActivity {
         initFabWineMenu();
         getFabWineMenuValue();
         initTabs();
-        menuBisSelectedItems();
+        menuBisListSelectedItems();
 
         // Animation des TabLayout
         TabLayout cellarTabLayout = (TabLayout) findViewById(R.id.cellarTabLayout);
         cellarTabLayout.setTranslationY(-200f);
         cellarTabLayout.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
 
-        // Anmation du menuBis
-        FrameLayout sortMenu = (FrameLayout) findViewById(R.id.sortMenu);
-        sortMenu.setTranslationY(200f);
-        sortMenu.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
+        // A l'ouverture, animation du menuBisList
+        FrameLayout sortMenuBisList = (FrameLayout) findViewById(R.id.sortMenuList);
+        sortMenuBisList.setTranslationY(200f);
+        sortMenuBisList.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
 
+        // A l'ouverture, on laisse caché le menuBisStats
+        FrameLayout sortMenuBisStats = (FrameLayout) findViewById(R.id.sortMenuStats);
+        sortMenuBisStats.setTranslationY(200f);
 
 
     }
@@ -210,7 +217,7 @@ public class CellarActivity extends AppCompatActivity {
         fabChamp.animate().translationX(0f).translationY(0f).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
     }
 
-    private void menuBisSelectedItems() {
+    private void menuBisListSelectedItems() {
 
         final ImageButton sortMap = (ImageButton) findViewById(R.id.sortMap);
         final ImageButton sortColor = (ImageButton) findViewById(R.id.sortColor);
@@ -367,11 +374,34 @@ public class CellarActivity extends AppCompatActivity {
         cellarTabLayout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
         cellarTabLayout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
 
-
         cellarTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 tab.getIcon().setColorFilter(Color.parseColor("#67828f"), PorterDuff.Mode.SRC_IN);
+
+                if(cellarTabLayout.getSelectedTabPosition() == 0) {
+                    // Disparition du menuBisStats
+                    FrameLayout sortMenuBisStats = (FrameLayout) findViewById(R.id.sortMenuStats);
+                    sortMenuBisStats.setTranslationY(0f);
+                    sortMenuBisStats.animate().translationY(200f).setInterpolator(interpolator).setDuration(1500).start();
+
+                    // Apparition du menuBisList
+                    FrameLayout sortMenuBisList = (FrameLayout) findViewById(R.id.sortMenuList);
+                    sortMenuBisList.setTranslationY(200f);
+                    sortMenuBisList.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
+                } else {
+                    // Disparition du menuBisList
+                    FrameLayout sortMenuBisList = (FrameLayout) findViewById(R.id.sortMenuList);
+                    sortMenuBisList.setTranslationY(0f);
+                    sortMenuBisList.animate().translationY(200f).setInterpolator(interpolator).setDuration(1500).start();
+
+                    // Apparition du menuBisStats
+                    FrameLayout sortMenuBisStats = (FrameLayout) findViewById(R.id.sortMenuStats);
+                    sortMenuBisStats.setTranslationY(200f);
+                    sortMenuBisStats.animate().translationY(0f).setInterpolator(interpolator).setDuration(1500).start();
+                }
+
+
             }
 
             @Override
@@ -381,6 +411,7 @@ public class CellarActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 

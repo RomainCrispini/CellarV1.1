@@ -79,7 +79,7 @@
                 <ImageButton
                     android:id="@+id/sortMap"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/transparent"
                     android:scaleType="centerCrop"

@@ -82,6 +82,7 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
             favorite = itemView.findViewById(R.id.favorite);
             delete = itemView.findViewById(R.id.delete);
 
+
             CurvedBottomNavigationView curvedBottomNavigationView = itemView.findViewById(R.id.curvedBottomNavigationView);
 
         }

@@ -24,24 +24,25 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="2387a848-68b1-4b38-bf54-e1af09418e21">
-        <schema name="main" object-types="table, constraint, index, column, dataset trigger, view" />
+      <connection connection-id="b7f5d3f9-80b1-4dba-97c8-5b41cf2a7280">
+        <schema name="" object-types="table, view, dataset trigger, index, constraint, column" />
+        <schema name="main" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="2387a848-68b1-4b38-bf54-e1af09418e21">
-      <console name="Connection" type="STANDARD" schema="main" session="Main" />
+    <connection id="b7f5d3f9-80b1-4dba-97c8-5b41cf2a7280">
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="2387a848-68b1-4b38-bf54-e1af09418e21" />
+    <connection id="b7f5d3f9-80b1-4dba-97c8-5b41cf2a7280" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="2387a848-68b1-4b38-bf54-e1af09418e21" dataset="main.bottle" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="b7f5d3f9-80b1-4dba-97c8-5b41cf2a7280" dataset=".bottle" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -66,7 +67,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="2387a848-68b1-4b38-bf54-e1af09418e21" active="true">
+      <connection id="b7f5d3f9-80b1-4dba-97c8-5b41cf2a7280" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -81,7 +82,8 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="$PROJECT_DIR$/../../cellar.sqlite" schema="main" />
+            <file path="sqlite.db" schema="main" />
+            <file path="$PROJECT_DIR$/../../cellar.sqlite" schema="" />
           </files>
           <type value="NONE" />
           <user value="" />

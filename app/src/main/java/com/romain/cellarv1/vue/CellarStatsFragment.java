@@ -125,8 +125,6 @@ public class CellarStatsFragment extends Fragment {
 
 
 
-
-
         Integer nbRed = accesLocal.nbRed();
         Integer nbRose = accesLocal.nbRose();
         Integer nbWhite = accesLocal.nbWhite();
@@ -158,9 +156,7 @@ public class CellarStatsFragment extends Fragment {
 
         pieChart.setData(data);
 
-        String gg = nbWhite.toString();
 
-        Toast.makeText(getContext(), gg, Toast.LENGTH_SHORT).show();
     }
 
 }

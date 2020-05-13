@@ -43,52 +43,54 @@ public class AccesLocal {
     }
 
 
-
-
-
-
-
+    /**
+     * 4 méthodes qui permettent de récupérer le nombre de bouteilles par couleur
+     */
     public int nbRed() {
-        int nbRed;
+        int nbRed = 0;
         bd = accesBD.getReadableDatabase();
-        String requete = "select * from bottle where winecolor = 'Rouge '";
+        String requete = "select sum(number) from bottle where winecolor = 'Rouge '";
         Cursor cursor = bd.rawQuery(requete, null);
-        nbRed = cursor.getCount();
-        cursor.close();
-        bd.close();
+        if(cursor.moveToFirst()) {
+            nbRed = cursor.getInt(0);
+        }
+        while (cursor.moveToNext());
         return nbRed;
     }
 
     public int nbRose() {
-        int nbRose;
+        int nbRose = 0;
         bd = accesBD.getReadableDatabase();
-        String requete = "select * from bottle where winecolor = 'Rose '";
+        String requete = "select sum(number) from bottle where winecolor = 'Rose '";
         Cursor cursor = bd.rawQuery(requete, null);
-        nbRose = cursor.getCount();
-        cursor.close();
-        bd.close();
+        if(cursor.moveToFirst()) {
+            nbRose = cursor.getInt(0);
+        }
+        while (cursor.moveToNext());
         return nbRose;
     }
 
     public int nbWhite() {
-        int nbWhite;
+        int nbWhite = 0;
         bd = accesBD.getReadableDatabase();
-        String requete = "select * from bottle where winecolor = 'Blanc '";
+        String requete = "select sum(number) from bottle where winecolor = 'Blanc '";
         Cursor cursor = bd.rawQuery(requete, null);
-        nbWhite = cursor.getCount();
-        cursor.close();
-        bd.close();
+        if(cursor.moveToFirst()) {
+            nbWhite = cursor.getInt(0);
+        }
+        while (cursor.moveToNext());
         return nbWhite;
     }
 
     public int nbChamp() {
-        int nbChamp;
+        int nbChamp = 0;
         bd = accesBD.getReadableDatabase();
-        String requete = "select * from bottle where winecolor = 'Effervescent '";
+        String requete = "select sum(number) from bottle where winecolor = 'Effervescent '";
         Cursor cursor = bd.rawQuery(requete, null);
-        nbChamp = cursor.getCount();
-        cursor.close();
-        bd.close();
+        if(cursor.moveToFirst()) {
+            nbChamp = cursor.getInt(0);
+        }
+        while (cursor.moveToNext());
         return nbChamp;
     }
 

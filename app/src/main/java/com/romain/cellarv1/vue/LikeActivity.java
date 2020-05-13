@@ -123,7 +123,7 @@ public class LikeActivity extends AppCompatActivity {
         fabRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(LikeActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("redWine", "redWine");
                 startActivity(intent);
@@ -137,7 +137,7 @@ public class LikeActivity extends AppCompatActivity {
         fabRose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(LikeActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("roseWine", "roseWine");
                 startActivity(intent);
@@ -151,7 +151,7 @@ public class LikeActivity extends AppCompatActivity {
         fabWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(LikeActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("whiteWine", "whiteWine");
                 startActivity(intent);
@@ -165,7 +165,7 @@ public class LikeActivity extends AppCompatActivity {
         fabChamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(LikeActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("champWine", "champWine");
                 startActivity(intent);
@@ -255,11 +255,11 @@ public class LikeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadSortMapLikeBottleInListView();
                 loadSortMapWishBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(LikeActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -268,11 +268,11 @@ public class LikeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadSortColorLikeBottleInListView();
                 loadSortColorWishBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(LikeActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -281,11 +281,11 @@ public class LikeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadLikeBottleInListView();
                 loadWishBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(LikeActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -294,11 +294,11 @@ public class LikeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadSortYearLikeBottleInListView();
                 loadSortYearWishBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(LikeActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -307,11 +307,11 @@ public class LikeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadSortApogeeLikeBottleInListView();
                 loadSortApogeeWishBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(LikeActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(LikeActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
             }
         });
     }
@@ -319,10 +319,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortMapLikeBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortMapLikeBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -330,10 +330,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortColorLikeBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortColorLikeBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -341,10 +341,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadLikeBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.recoverLikeWineBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -352,10 +352,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortYearLikeBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortYearLikeBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -363,10 +363,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortApogeeLikeBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.likeRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortApogeeLikeBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -374,10 +374,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortMapWishBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortMapWishBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -385,10 +385,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortColorWishBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortColorWishBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -396,10 +396,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadWishBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.recoverWishWineBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -407,10 +407,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortYearWishBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortYearWishBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -418,10 +418,10 @@ public class LikeActivity extends AppCompatActivity {
     private void loadSortApogeeWishBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.wishlistRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(LikeActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortApogeeWishBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(LikeActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -436,25 +436,25 @@ public class LikeActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.cellar:
                         //Toast.makeText(UserActivity.this, "USER", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(LikeActivity.this, CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.user:
                         //Toast.makeText(UserActivity.this, "USER", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(LikeActivity.this, UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.scan:
                         //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(LikeActivity.this, ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
                         //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(LikeActivity.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;

@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         fabRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("redWine", "redWine");
                 startActivity(intent);
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         fabRose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("roseWine", "roseWine");
                 startActivity(intent);
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         fabWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("whiteWine", "whiteWine");
                 startActivity(intent);
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         fabChamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("champWine", "champWine");
                 startActivity(intent);
@@ -224,31 +224,31 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 switch (item.getItemId()) {
                     case R.id.user:
                         //Toast.makeText(UserActivity.this, "USER", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(MainActivity.this, UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.cellar:
                         //Toast.makeText(UserActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(MainActivity.this, CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.scan:
                         //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(MainActivity.this, ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.like:
                         //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(MainActivity.this, LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
                         //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(MainActivity.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
@@ -440,7 +440,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
             googleMap.addMarker(new MarkerOptions().position(latLng).title(location));
             googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-            Toast.makeText(getApplicationContext(),address.getLatitude() + " " + address.getLongitude(),Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,address.getLatitude() + " " + address.getLongitude(),Toast.LENGTH_LONG).show();
         }
     }
 

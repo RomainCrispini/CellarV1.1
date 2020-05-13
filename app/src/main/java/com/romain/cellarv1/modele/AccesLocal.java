@@ -156,7 +156,7 @@ public class AccesLocal {
         List<WineBottle> wineBottleList = new ArrayList<>(); ////////////////////// Affiche des crochets et des virgules avec sa méthode toString()
         bd = accesBD.getReadableDatabase();
         WineBottle wineBottle;
-        String requete = "select * from bottle order by dateaddnewbottle asc";
+        String requete = "select * from bottle order by dateaddnewbottle desc";
         Cursor cursor = bd.rawQuery(requete, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {

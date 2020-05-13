@@ -22,6 +22,7 @@ public class WineBottle implements Serializable {
     private String wish;
     private String random;
 
+
     // Constructeur
     public WineBottle(Date dateAddNewBottle, String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String wish, String random) {
         this.dateAddNewBottle = dateAddNewBottle;

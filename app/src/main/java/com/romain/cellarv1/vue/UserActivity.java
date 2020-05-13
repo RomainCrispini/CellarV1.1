@@ -56,14 +56,14 @@ public class UserActivity extends AppCompatActivity {
         btnBackMap1.setOnClickListener(new LinearLayout.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                startActivity(new Intent(UserActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         btnBackMap2.setOnClickListener(new LinearLayout.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                startActivity(new Intent(UserActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
@@ -130,7 +130,7 @@ public class UserActivity extends AppCompatActivity {
         fabRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(UserActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("redWine", "redWine");
                 startActivity(intent);
@@ -144,7 +144,7 @@ public class UserActivity extends AppCompatActivity {
         fabRose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(UserActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("roseWine", "roseWine");
                 startActivity(intent);
@@ -158,7 +158,7 @@ public class UserActivity extends AppCompatActivity {
         fabWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(UserActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("whiteWine", "whiteWine");
                 startActivity(intent);
@@ -172,7 +172,7 @@ public class UserActivity extends AppCompatActivity {
         fabChamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(UserActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("champWine", "champWine");
                 startActivity(intent);
@@ -215,25 +215,25 @@ public class UserActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.cellar:
                         //Toast.makeText(UserActivity.this, "CELLAR", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(UserActivity.this, CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.scan:
                         //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(UserActivity.this, ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.like:
                         //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(UserActivity.this, LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
                         //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(UserActivity.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;

@@ -135,7 +135,7 @@ public class CellarActivity extends AppCompatActivity {
         fabRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(CellarActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("redWine", "redWine");
                 startActivity(intent);
@@ -149,7 +149,7 @@ public class CellarActivity extends AppCompatActivity {
         fabRose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(CellarActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("roseWine", "roseWine");
                 startActivity(intent);
@@ -163,7 +163,7 @@ public class CellarActivity extends AppCompatActivity {
         fabWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(CellarActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("whiteWine", "whiteWine");
                 startActivity(intent);
@@ -177,7 +177,7 @@ public class CellarActivity extends AppCompatActivity {
         fabChamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddActivity.class);
+                Intent intent = new Intent(CellarActivity.this, AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("champWine", "champWine");
                 startActivity(intent);
@@ -225,11 +225,11 @@ public class CellarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadSortMapWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(CellarActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -237,11 +237,11 @@ public class CellarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadSortColorWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(CellarActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -249,11 +249,11 @@ public class CellarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadRecoverWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(CellarActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -261,11 +261,11 @@ public class CellarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadSortYearWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(CellarActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
             }
         });
 
@@ -273,11 +273,11 @@ public class CellarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadSortApogeeWineBottleInListView();
-                sortMap.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortColor.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortRecover.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortYear.setColorFilter(getApplicationContext().getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
-                sortApogee.setColorFilter(getApplicationContext().getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
+                sortMap.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortColor.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortRecover.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortYear.setColorFilter(CellarActivity.this.getColor(R.color.green_middle_light), PorterDuff.Mode.SRC_IN);
+                sortApogee.setColorFilter(CellarActivity.this.getColor(R.color.green_light), PorterDuff.Mode.SRC_IN);
             }
         });
     }
@@ -286,11 +286,11 @@ public class CellarActivity extends AppCompatActivity {
 
         RecyclerView cellarRecyclerView = (RecyclerView) findViewById(R.id.cellarRecyclerView);
         cellarRecyclerView.setLayoutManager(new LinearLayoutManager(cellarRecyclerView.getContext()));
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(CellarActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortMapWineBottleList();
 
         cellarRecyclerView.setHasFixedSize(true);
-        mAdapter = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        mAdapter = new MyAdapterCellarRecyclerView(CellarActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
@@ -302,10 +302,10 @@ public class CellarActivity extends AppCompatActivity {
     private void loadSortColorWineBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.cellarRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(CellarActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortColorWineBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(CellarActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -313,10 +313,10 @@ public class CellarActivity extends AppCompatActivity {
     private void loadRecoverWineBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.cellarRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(CellarActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(CellarActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -324,10 +324,10 @@ public class CellarActivity extends AppCompatActivity {
     private void loadSortYearWineBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.cellarRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(CellarActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortYearWineBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(CellarActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -335,10 +335,10 @@ public class CellarActivity extends AppCompatActivity {
     private void loadSortApogeeWineBottleInListView() {
 
         RecyclerView cellarRecyclerView = (RecyclerView)findViewById(R.id.cellarRecyclerView);
-        accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(CellarActivity.this);
         ArrayList<WineBottle> wineBottleList = (ArrayList<WineBottle>) accesLocal.sortApogeeWineBottleList();
 
-        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(getApplicationContext(), wineBottleList);
+        MyAdapterCellarRecyclerView myAdapterCellarRecyclerView = new MyAdapterCellarRecyclerView(CellarActivity.this, wineBottleList);
         cellarRecyclerView.setAdapter(myAdapterCellarRecyclerView);
         myAdapterCellarRecyclerView.notifyDataSetChanged();
     }
@@ -396,25 +396,25 @@ public class CellarActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.user:
                         //Toast.makeText(UserActivity.this, "USER", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(CellarActivity.this, UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.scan:
                         //Toast.makeText(UserActivity.this, "SCAN", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(CellarActivity.this, ScanActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.like:
                         //Toast.makeText(UserActivity.this, "LIKE", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(CellarActivity.this, LikeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
                         //Toast.makeText(UserActivity.this, "SEARCH", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                        startActivity(new Intent(CellarActivity.this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         //overridePendingTransition(0, 0);
                         return true;

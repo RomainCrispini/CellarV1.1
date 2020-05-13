@@ -436,16 +436,19 @@ public class AddActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
+                        /*
                         if(txtCountry.getText().toString().equals("")) {
                             txtRegion.setError("tt");
                             Drawable warning = getResources().getDrawable(R.drawable.ic_add_black_24dp);
-                            //add an error icon to yur drawable files
+                            //add an error icon to your drawable files
                             warning.setBounds(0, 0, warning.getIntrinsicWidth(), warning.getIntrinsicHeight());
 
                             txtRegion.setCompoundDrawables(null,null, warning,null);
                             //txtRegion.setErrorColor(Color.BLUE);
                             btnAdd.setBackgroundColor(Color.RED);
                         }
+
+                         */
 
                         String country = "";
                         String region = "";
@@ -515,7 +518,7 @@ public class AddActivity extends AppCompatActivity {
                         popupAdd.dismiss();
 
                         popupSuccess.show();
-                        // Permet de faire aparaitre le panneau 2 secondes sans interventions
+                        // Permet de faire aparaitre le panneau 1 seconde sans interventions
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -540,7 +543,7 @@ public class AddActivity extends AppCompatActivity {
     }
 
     private void afficheResult(String country, String region, String wineColor, String domain, String appellation, Integer year, Integer apogee, Integer number, Integer estimate, String image, String favorite, String wish, String random) {
-        this.controle.createWineBottle(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random,  this);
+        this.controle.createWineBottle(country, region, wineColor, domain, appellation, year, apogee, number, estimate, image, favorite, wish, random,  AddActivity.this);
     }
 
     /**

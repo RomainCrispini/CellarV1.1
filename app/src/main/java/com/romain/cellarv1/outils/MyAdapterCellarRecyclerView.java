@@ -217,6 +217,10 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
 
                 Button btnAccept = (Button) popupDelete.findViewById(R.id.btnAccept);
                 Button btnDenie = (Button) popupDelete.findViewById(R.id.btnDenie);
+
+                ImageView imageFavorite = (ImageView) popupDelete.findViewById(R.id.imageFavorite);
+                ImageView imageWish = (ImageView) popupDelete.findViewById(R.id.imageWish);
+
                 ImageView imageWineColor = (ImageView) popupDelete.findViewById(R.id.imageWineColor);
                 ImageView imageBottle = (ImageView) popupDelete.findViewById(R.id.imageBottle);
                 TextView region = (TextView) popupDelete.findViewById(R.id.region);
@@ -247,6 +251,18 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                         break;
                 }
 
+                if(wineBottle.getFavorite().matches("1")) {
+                    imageFavorite.setVisibility(View.VISIBLE);
+                } else {
+                    imageFavorite.setVisibility(View.INVISIBLE);
+                }
+
+                if(wineBottle.getWish().matches("1")) {
+                    imageWish.setVisibility(View.VISIBLE);
+                } else {
+                    imageWish.setVisibility(View.INVISIBLE);
+                }
+
                 // On retire 1 au nombre de bouteilles
                 String bottleNumber = String.valueOf(wineBottle.getNumber() - 1);
                 number.setText(bottleNumber);
@@ -257,8 +273,6 @@ public class MyAdapterCellarRecyclerView extends RecyclerView.Adapter<MyAdapterC
                 millesime.setText((wineBottle.getYear()).toString());
 
                 popupDelete.show();
-
-
 
 
                 btnAccept.setOnClickListener(new Button.OnClickListener() {

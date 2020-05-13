@@ -19,10 +19,12 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.romain.cellarv1.R;
 import com.romain.cellarv1.modele.AccesLocal;
@@ -31,6 +33,7 @@ import com.romain.cellarv1.outils.MyAdapterCellarListView;
 import com.romain.cellarv1.outils.MyAdapterCellarRecyclerView;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -85,13 +88,7 @@ public class CellarStatsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
-
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -107,9 +104,8 @@ public class CellarStatsFragment extends Fragment {
 
     private void loadWineColorPieChart() {
 
+        pieChart.setUsePercentValues(false);
 
-
-        pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5, 10, 5, 5);
 
@@ -117,46 +113,88 @@ public class CellarStatsFragment extends Fragment {
 
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColor(Color.TRANSPARENT);
+        pieChart.setHoleRadius(70f);
         pieChart.setTransparentCircleRadius(0f);
-        pieChart.getLegend().setEnabled(false);
+        //pieChart.getLegend().setEnabled(false);
 
         accesLocal = new AccesLocal(getContext());
         //ArrayList<WineBottle> wineBottleArrayList = (ArrayList<WineBottle>) accesLocal.recoverWineBottleList();
-
-
 
         Integer nbRed = accesLocal.nbRed();
         Integer nbRose = accesLocal.nbRose();
         Integer nbWhite = accesLocal.nbWhite();
         Integer nbChamp = accesLocal.nbChamp();
 
+        // Modifie le nombre de couleurs du pie suivant les celle des bouteilles
+        ArrayList<Integer> COLORS = new ArrayList<>();
         ArrayList<PieEntry> values = new ArrayList<>();
-        values.add(new PieEntry(nbRed, "Rouge"));
-        values.add(new PieEntry(nbRose, "Rosé"));
-        values.add(new PieEntry(nbWhite, "Blanc"));
-        values.add(new PieEntry(nbChamp, "Effervescent"));
+        if(nbRed != 0) {
+            values.add(new PieEntry(nbRed, "Rouge"));
+            COLORS.add(Color.rgb(159, 6, 52)); // Rouge
+        } else {
+            return;
+        }
 
+        if(nbRose != 0) {
+            values.add(new PieEntry(nbRose, "Rosé"));
+            COLORS.add(Color.rgb(249, 175, 164)); // Rosé
+        } else {
+            return;
+        }
 
+        if(nbWhite != 0) {
+            values.add(new PieEntry(nbWhite, "Blanc"));
+            COLORS.add(Color.rgb(254, 207, 29)); // Blanc
+        } else {
+            return;
+        }
 
-        PieDataSet dataSet = new PieDataSet(values, "Bottles");
+        if(nbChamp != 0) {
+            values.add(new PieEntry(nbChamp, "Effervescent"));
+            COLORS.add(Color.rgb(222, 203, 135)); // Effervescent
+        } else {
+            return;
+        }
+
+        pieChart.setDrawEntryLabels(false);
+        //pieChart.setEntryLabelTextSize(4f);
+        //pieChart.setEntryLabelColor(Color.parseColor("#2F3B40"));
+
+        Legend legend = pieChart.getLegend();
+        legend.setTextColor(Color.parseColor("#67828f"));
+
+        PieDataSet dataSet = new PieDataSet(values, "");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
-        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-
+        dataSet.setColors(COLORS);
+        //dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
 
         pieChart.animateXY(0, 2000);
 
 
-
-
         PieData data = new PieData(dataSet);
+
         data.setValueTextSize(15f);
+        data.setValueFormatter(new MyPieChartValueFormatter());
         data.setValueTextColor(Color.parseColor("#2F3B40"));
 
-
         pieChart.setData(data);
+        pieChart.notifyDataSetChanged();
 
+    }
 
+    public class MyPieChartValueFormatter extends ValueFormatter {
+
+        private DecimalFormat mFormat;
+
+        public MyPieChartValueFormatter() {
+            mFormat = new DecimalFormat("#");
+        }
+
+        @Override
+        public String getFormattedValue(float value) {
+            return mFormat.format(value);
+        }
     }
 
 }

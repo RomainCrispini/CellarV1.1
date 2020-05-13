@@ -91,7 +91,10 @@ public class ScanActivity extends AppCompatActivity {
                 // Enregistrer le chemin complet
                 photoPath = photoFile.getAbsolutePath();
                 // Créer l'URI
-                Uri photoUri = FileProvider.getUriForFile(getApplicationContext(), getApplicationContext().getPackageName() + ".provider", photoFile);
+
+                Uri photoUri = FileProvider.getUriForFile(ScanActivity.this, ScanActivity.this.getPackageName() + ".provider", photoFile);
+                //Uri photoUri = FileProvider.getUriForFile(getApplicationContext(), getApplicationContext().getPackageName() + ".provider", photoFile);
+
                 // Transfert uri vers l'intent pour enregistrement photo dans fichier temporaire
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 // Ouvrir l'activity par rapport à l'intent
@@ -177,13 +180,13 @@ public class ScanActivity extends AppCompatActivity {
                     switch(item.getItemId()){
                         case R.id.user:
                             //Toast.makeText(getApplicationContext(), "USER", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                            startActivity(new Intent(ScanActivity.this, UserActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             //overridePendingTransition(0, 0);
                             return true;
                         case R.id.cellar:
                             //Toast.makeText(getApplicationContext(), "CELLAR", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                            startActivity(new Intent(ScanActivity.this, CellarActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             //overridePendingTransition(0, 0);
                             return true;

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toTopOf="@id/sortMenu"
+        app:layout_constraintBottom_toTopOf="@id/sortMenuList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cellarTabLayout" />
@@ -240,14 +240,12 @@
 
 
             <ImageView
-
                 android:layout_width="20dp"
                 android:layout_height="12dp"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/icone_menubis_fleches"
                 android:tint="@color/green_middle_light"/>
 
             <androidx.cardview.widget.CardView

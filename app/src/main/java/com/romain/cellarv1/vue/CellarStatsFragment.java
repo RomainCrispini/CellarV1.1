@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -46,9 +47,14 @@ public class CellarStatsFragment extends Fragment {
 
     private AccesLocal accesLocal;
 
+    // Interpolator pour animation des menuBis
     private OvershootInterpolator interpolator = new OvershootInterpolator();
 
+    // Tableaux
     private PieChart pieChart;
+
+    // TextViews
+    private TextView txtTotalNumber;
 
 
 
@@ -99,13 +105,24 @@ public class CellarStatsFragment extends Fragment {
         View cellarStatsFragment = inflater.inflate(R.layout.fragment_cellar_stats, container, false);
         pieChart = (PieChart) cellarStatsFragment.findViewById(R.id.pieChart);
 
+        txtTotalNumber = (TextView) cellarStatsFragment.findViewById(R.id.txtTotalNumber);
+
+        loadTotalNumber();
         loadWineColorPieChart();
+
+
 
 
         return cellarStatsFragment;
 
     }
 
+    private void loadTotalNumber() {
+        accesLocal = new AccesLocal(getContext());
+        Integer nbTotalBottle = accesLocal.nbTotal();
+
+        txtTotalNumber.setText(nbTotalBottle.toString());
+    }
 
     private void loadWineColorPieChart() {
 
@@ -166,7 +183,7 @@ public class CellarStatsFragment extends Fragment {
         //pieChart.setEntryLabelColor(Color.parseColor("#2F3B40"));
 
         Legend legend = pieChart.getLegend();
-        legend.setTextColor(Color.parseColor("#67828f"));
+        legend.setTextColor(Color.parseColor("#8DB3C5"));
 
         PieDataSet dataSet = new PieDataSet(values, "");
         dataSet.setSliceSpace(3f);

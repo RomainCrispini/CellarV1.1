@@ -42,6 +42,21 @@ public class AccesLocal {
         bd.close();
     }
 
+    /**
+     * Méthode qui permet de récupérer le nombre total de bouteilles
+     */
+    public int nbTotal() {
+        int nbTotal = 0;
+        bd = accesBD.getReadableDatabase();
+        String requete = "select sum(number) from bottle";
+        Cursor cursor = bd.rawQuery(requete, null);
+        if(cursor.moveToFirst()) {
+            nbTotal = cursor.getInt(0);
+        }
+        while (cursor.moveToNext());
+        return nbTotal;
+    }
+
 
     /**
      * 4 méthodes qui permettent de récupérer le nombre de bouteilles par couleur
